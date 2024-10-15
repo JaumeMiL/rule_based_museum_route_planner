@@ -1,20 +1,9 @@
-;;; ---------------------------------------------------------
-;;; ontologia_practica.clp
-;;; Translated by owl2clips
-;;; Translated to CLIPS from ontology ontologia_practica.ttl
-;;; :Date 11/10/2024 18:04:18
-;;; ---------------------------------------------------------
-;;; ontologia_practica.clp
-;;; Translated by owl2clips
-;;; Translated to CLIPS from ontology ontologia_practica.ttl
-;;; :Date 11/10/2024 18:04:18
-
 (defclass Visitant
+    (is-a USER)
     (role concrete)
     (pattern-match reactive)
-    (multislot Mira_a  ; This is the "mira-a" relationship
+    (multislot Mira_a
         (type INSTANCE)
-        (allowed-classes Obres)  ; It references instances of the class "Obres"
         (create-accessor read-write))
     (multislot autor_pref
         (type STRING)
@@ -33,13 +22,28 @@
         (create-accessor read-write))
 )
 
-(defclass Obres
+(defclass Visitant_acompanyat
+    (is-a Visitant)
     (role concrete)
     (pattern-match reactive)
-    (multislot Mirada_por  ; Optionally, to reference who is looking at the work of art
-        (type INSTANCE)
-        (allowed-classes Visitant)  ; It references instances of the class "Visitant"
+    (multislot tipus_de_grup
+        (type STRING)
         (create-accessor read-write))
+)
+
+(defclass Visitant_sol
+    (is-a Visitant)
+    (role concrete)
+    (pattern-match reactive)
+    (multislot tipus_de_comportament
+        (type STRING)
+        (create-accessor read-write))
+)
+
+(defclass Obres
+    (is-a USER)
+    (role concrete)
+    (pattern-match reactive)
     (multislot any_de_creacio
         (type INTEGER)
         (create-accessor read-write))
@@ -69,27 +73,5 @@
         (create-accessor read-write))
 )
 
-
-(defclass Visitant_acompanyat
-    (is-a Visitant)
-    (role concrete)
-    (pattern-match reactive)
-    (multislot tipus_de_grup
-        (type STRING)
-        (create-accessor read-write))
-)
-
-(defclass Visitant_sol
-    (is-a Visitant)
-    (role concrete)
-    (pattern-match reactive)
-    (multislot tipus_de_comportament
-        (type STRING)
-        (create-accessor read-write))
-)
-
-
-
 (definstances instances
 )
-
