@@ -36,10 +36,10 @@
 (defclass Obres
     (role concrete)
     (pattern-match reactive)
-    (multislot Mirada_por  ; Optionally, to reference who is looking at the work of art
-        (type INSTANCE)
-        (allowed-classes Visitant)  ; It references instances of the class "Visitant"
-        (create-accessor read-write))
+;    (multislot Mirada_por  ; Optionally, to reference who is looking at the work of art
+;        (type INSTANCE)
+;        (allowed-classes Visitant)  ; It references instances of the class "Visitant"
+;        (create-accessor read-write))
     (multislot any_de_creacio
         (type INTEGER)
         (create-accessor read-write))
