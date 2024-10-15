@@ -881,7 +881,7 @@
         (tematica "Religió")
         (dimensions 29664)
         (complexitat "Mitjana")
-        (relevancia "Mitjana-Alta")
+        (relevancia "Alta")
     )
 
     (Amalia_de_Llano_y_Dotres_condesa_de_Vilches
