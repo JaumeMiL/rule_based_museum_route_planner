@@ -10,7 +10,7 @@
 ;;; :Date 11/10/2024 18:04:18
 
 (defclass Visitant
-    (role concrete)
+    (is-a USER)
     (pattern-match reactive)
     (multislot Mira_a  ; This is the "mira-a" relationship
         (type INSTANCE)
@@ -34,9 +34,9 @@
 )
 
 (defclass Obres
-    (role concrete)
+    (is-a USER)
     (pattern-match reactive)
-;    (multislot Mirada_por  ; Optionally, to reference who is looking at the work of art
+;    (multislot Mirada_por ; Optionally, to reference who is looking at the work of art
 ;        (type INSTANCE)
 ;        (allowed-classes Visitant)  ; It references instances of the class "Visitant"
 ;        (create-accessor read-write))
@@ -69,7 +69,6 @@
         (create-accessor read-write))
 )
 
-
 (defclass Visitant_acompanyat
     (is-a Visitant)
     (role concrete)
@@ -87,9 +86,3 @@
         (type STRING)
         (create-accessor read-write))
 )
-
-
-
-(definstances instances
-)
-
