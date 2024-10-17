@@ -1,6 +1,6 @@
 (definstances instancies_obres
     (Davallament
-        (of Obres)
+        of Obres
         (any_de_creacio 1475)
         (epoca "Medieval")
         (estil "Renaixentista")
@@ -13,7 +13,7 @@
     )
     
     (Sant_Gregori_Papa
-        (of Obres)
+        of Obres
         (any_de_creacio 1495)
         (epoca "Medieval")
         (estil "Renaixentista")
@@ -26,7 +26,7 @@
     )
 
     (Maquina_de_Llaurar
-        (of Obres)
+        of Obres
         (any_de_creacio 1953)
         (epoca "Edat contemporània")
         (estil "Art Modern")
@@ -39,7 +39,7 @@
     )
 
     (Anunciacio
-        (of Obres)
+        of Obres
         (any_de_creacio 1800)
         (epoca "Edat contemporània")
         (estil "Art Modern")
@@ -52,7 +52,7 @@
     )
 
     (Seguici_Nupcial_Amb_Himeneu
-        (of Obres)
+        of Obres
         (any_de_creacio 1803)
         (epoca "Edat contemporània")
         (estil "Art Modern")
@@ -65,7 +65,7 @@
     )
 
     (Aparicio_de_la_Mare_de_Deu
-        (of Obres)
+        of Obres
         (any_de_creacio 1812)
         (epoca "Edat contemporània")
         (estil "Art Modern")
@@ -78,7 +78,7 @@
     )
 
     (Mort_de_Sant_Josep_Oriol
-        (of Obres)
+        of Obres
         (any_de_creacio 1806)
         (epoca "Edat contemporània")
         (estil "Art Modern")
@@ -91,7 +91,7 @@
     )
 
     (Sagrada_Familia
-        (of Obres)
+        of Obres
         (any_de_creacio 1812)
         (epoca "Edat contemporània")
         (estil "Tinta")
@@ -104,7 +104,7 @@
     )
 
     (Sant_Joan_Baptista
-        (of Obres)
+        of Obres
         (any_de_creacio 1790)
         (epoca "Edat moderna")
         (estil "Tinta")
@@ -117,7 +117,7 @@
     )
 
     (Dos_Frares_i_Grup_de_Gent
-        (of Obres)
+        of Obres
         (any_de_creacio 1812)
         (epoca "Edat contemporània")
         (estil "Dibuix")
@@ -130,7 +130,7 @@
     )
 
     (Retrat_del_Rei_Josep_I
-        (of Obres)
+        of Obres
         (any_de_creacio 1809)
         (epoca "Edat contemporània")
         (estil "Pintura a l'oli")
@@ -143,7 +143,7 @@
     )
 
     (Autoretrat
-        (of Obres)
+        of Obres
         (any_de_creacio 1802)
         (epoca "Edat contemporània")
         (estil "Art Modern")
@@ -156,7 +156,7 @@
     )
 
     (Un_Cafe_durant_Carnestoltes
-        (of Obres)
+        of Obres
         (any_de_creacio 1824)
         (epoca "Edat contemporània")
         (estil "Art Modern")
@@ -169,7 +169,7 @@
     )
 
     (Pintures_Murals_Conquesta_Mallorca
-        (of Obres)
+        of Obres
         (any_de_creacio 1288)
         (epoca "Edat Medieval")
         (estil "Gòtic")
@@ -182,7 +182,7 @@
     )
 
     (Sant_Agusti
-        (of Obres)
+        of Obres
         (any_de_creacio 1463)
         (epoca "Edat Medieval")
         (estil "Gòtic")
@@ -195,7 +195,7 @@
     )
 
     (Retaule_de_Sant_Cebria
-        (of Obres)
+        of Obres
         (any_de_creacio 1475)
         (epoca "Edat Medieval")
         (estil "Gòtic")
@@ -208,7 +208,7 @@
     )
 
     (Sant_Miquel_1455
-        (of Obres)
+        of Obres
         (any_de_creacio 1455)
         (epoca "Edat Medieval")
         (estil "Gòtic")
@@ -221,7 +221,7 @@
     )
 
     (Sant_Miquel_1450
-        (of Obres)
+        of Obres
         (any_de_creacio 1450)
         (epoca "Edat Medieval")
         (estil "Gòtic")
@@ -234,7 +234,7 @@
     )
 
     (Masia_Blanca_de_Bunyola
-        (of Obres)
+        of Obres
         (any_de_creacio 1902)
         (epoca "Edat contemporània")
         (estil "Art Modern")
@@ -246,9 +246,8 @@
         (rellevancia "Alta")
     )
 
-    (definstances instancies_obres
     (Cofre_de_joies_de_Lluis_XIV
-        (of Obres)
+        of Obres
         (any_de_creacio 1677)
         (epoca "Medieval")
         (estil "Escultura")
@@ -261,7 +260,7 @@
     )
 
     (Codi_d_Hammurabi
-        (of Obres)
+        of Obres
         (any_de_creacio -1792)
         (epoca "Babilònic antic")
         (estil "Escultura")
@@ -274,7 +273,7 @@
     )
 
     (La_Mona_Lisa
-        (of Obres)
+        of Obres
         (any_de_creacio 1519)
         (epoca "Medieval")
         (estil "Renaixentista")
@@ -287,7 +286,7 @@
     )
 
     (Les_Noces_de_Cana
-        (of Obres)
+        of Obres
         (any_de_creacio 1550)
         (epoca "Moderna")
         (estil "Escola d'Itàlia")
@@ -300,7 +299,7 @@
     )
 
     (La_Llibertat_guiant_el_poble
-        (of Obres)
+        of Obres
         (any_de_creacio 1830)
         (epoca "Contemporània")
         (estil "Romanticisme")
@@ -313,7 +312,7 @@
     )
 
     (Mare_de_Deu_de_les_Roques
-        (of Obres)
+        of Obres
         (any_de_creacio 1483)
         (epoca "Medieval")
         (estil "Escola d'Itàlia")
@@ -326,7 +325,7 @@
     )
 
     (Tique_de_Constantinoble
-        (of Obres)
+        of Obres
         (any_de_creacio 649)
         (epoca "Bizantina")
         (estil "Bizantí")
@@ -339,7 +338,7 @@
     )
 
     (El_Rai_de_la_Medusa
-        (of Obres)
+        of Obres
         (any_de_creacio 1818)
         (epoca "Contemporània")
         (estil "Romanticisme")
@@ -352,7 +351,7 @@
     )
 
     (La_coronacio_de_Napoleo
-        (of Obres)
+        of Obres
         (any_de_creacio 1806)
         (epoca "Contemporània")
         (estil "Neoclassicisme")
@@ -365,7 +364,7 @@
     )
 
     (Lamassu
-        (of Obres)
+        of Obres
         (any_de_creacio -720)
         (epoca "Antiga")
         (estil "Relleu mural")
@@ -378,7 +377,7 @@
     )
 
     (La_puntaire
-        (of Obres)
+        of Obres
         (any_de_creacio 1670)
         (epoca "Moderna")
         (estil "Escola holandesa")
@@ -391,7 +390,7 @@
     )
 
     (L_astonom
-        (of Obres)
+        of Obres
         (any_de_creacio 1668)
         (epoca "Moderna")
         (estil "Neoclassicisme")
@@ -404,7 +403,7 @@
     )
 
     (Calma_matinal_interior_del_bosc
-        (of Obres)
+        of Obres
         (any_de_creacio 1850)
         (epoca "Contemporània")
         (estil "Romanticisme")
@@ -417,7 +416,7 @@
     )
 
     (Crepuscle
-        (of Obres)
+        of Obres
         (any_de_creacio 1842)
         (epoca "Contemporània")
         (estil "Romanticisme")
@@ -430,7 +429,7 @@
     )
 
     (Inundacions_a_Saint_Cloud
-        (of Obres)
+        of Obres
         (any_de_creacio 1855)
         (epoca "Contemporània")
         (estil "Romanticisme")
@@ -443,7 +442,7 @@
     )
 
     (Bosc_de_Fontainebleau_Els_cacadors
-        (of Obres)
+        of Obres
         (any_de_creacio 1855)
         (epoca "Contemporània")
         (estil "Romanticisme")
@@ -456,7 +455,7 @@
     )
 
     (Parc_de_Saint_Cloud_en_un_dia_festiu
-        (of Obres)
+        of Obres
         (any_de_creacio 1829)
         (epoca "Contemporània")
         (estil "Romanticisme")
@@ -469,7 +468,7 @@
     )
 
     (Cabana_normanda_Vell_Trouville
-        (of Obres)
+        of Obres
         (any_de_creacio 1861)
         (epoca "Contemporània")
         (estil "Romanticisme")
@@ -482,7 +481,7 @@
     )
 
     (Sant_Jordi_matant_el_drac
-        (of Obres)
+        of Obres
         (any_de_creacio 1520)
         (epoca "Moderna")
         (estil "Escola de França Champagne")
@@ -495,7 +494,7 @@
     )
 
     (La_plana_davant_dels_Pirineus
-        (of Obres)
+        of Obres
         (any_de_creacio 1861)
         (epoca "Contemporània")
         (estil "Escola de Barbizon")
@@ -508,7 +507,7 @@
     )
 
     (La_crucifixion
-        (of Obres)
+        of Obres
         (any_de_creacio 1320)
         (epoca "baixa edat mitjana")
         (estil "tardogòtic")
@@ -521,7 +520,7 @@
     )
 
     (Robles_junto_al_agua
-        (of Obres)
+        of Obres
         (any_de_creacio 1832)
         (epoca "Contemporània")
         (estil "realisme")
@@ -534,7 +533,7 @@
     )
     
     (Vista_del_puerto_de_rotterdam
-        (of Obres)
+        of Obres
         (any_de_creacio 1856)
         (epoca "Contemporània")
         (estil "realisme")
@@ -547,7 +546,7 @@
     )
     
     (Jinete_arabe
-        (of Obres)
+        of Obres
         (any_de_creacio 1854)
         (epoca "Contemporània")
         (estil "romanticisme")
@@ -560,7 +559,7 @@
     )
 
     (Atardecer_en_la_pradera
-        (of Obres)
+        of Obres
         (any_de_creacio 1870)
         (epoca "Contemporània")
         (estil "realisme")
@@ -573,7 +572,7 @@
     )
     
     (El_bosque_de_Marly
-        (of Obres)
+        of Obres
         (any_de_creacio 1871)
         (epoca "Contemporània")
         (estil "impressionisme")
@@ -586,7 +585,7 @@
     )
     
     (Paisaje_con_tormenta
-        (of Obres)
+        of Obres
         (any_de_creacio 1701)
         (epoca "Moderna")
         (estil "Escola italiana")
@@ -599,7 +598,7 @@
     )
 
     (Es_sacrificio_de_Isaac
-        (of Obres)
+        of Obres
         (any_de_creacio 1715)
         (epoca "Moderna")
         (estil "Escola italiana")
@@ -612,7 +611,7 @@
     )
 
     (Retrato_del_conde_Fulvio_Grati
-        (of Obres)
+        of Obres
         (any_de_creacio 1720)
         (epoca "Moderna")
         (estil "Escola de Bolonya")
@@ -625,7 +624,7 @@
     )
 
     (La_piscina_probática
-        (of Obres)
+        of Obres
         (any_de_creacio 1724)
         (epoca "Moderna")
         (estil "Escola italiana")
@@ -638,7 +637,7 @@
     )
 
     (Bodegon_con_gato_y_pescado
-        (of Obres)
+        of Obres
         (any_de_creacio 1728)
         (epoca "Moderna")
         (estil "Escola francesa")
@@ -651,7 +650,7 @@
     )
     
     (Concierto_Campestre
-        (of Obres)
+        of Obres
         (any_de_creacio 1734)
         (epoca "Moderna")
         (estil "Escola francesa")
@@ -664,7 +663,7 @@
     )
 
     (Grupo_de_mendigos
-        (of Obres)
+        of Obres
         (any_de_creacio 1737)
         (epoca "Moderna")
         (estil "Escola italiana")
@@ -677,7 +676,7 @@
     )
     
     (Capricho_con_rio_y_puente
-        (of Obres)
+        of Obres
         (any_de_creacio 1745)
         (epoca "Moderna")
         (estil "Escola italiana")
@@ -690,7 +689,7 @@
     )
 
     (Paisaje_invernal_con_una_familia_de_campesinos
-        (of Obres)
+        of Obres
         (any_de_creacio 1780)
         (epoca "Moderna")
         (estil "Escola italiana")
@@ -703,7 +702,7 @@
     )
     
     (La_expulsion_de_los_mercaderes_del_templo
-        (of Obres)
+        of Obres
         (any_de_creacio 1750)
         (epoca "Moderna")
         (estil "Escola italiana")
@@ -716,7 +715,7 @@
     )
     
     (Frances_condesa_de_Dartmouth
-        (of Obres)
+        of Obres
         (any_de_creacio 1756)
         (epoca "Moderna")
         (estil "Escola britànica")
@@ -729,7 +728,7 @@
     )
     
     (La_apoteosis_de_Hercules
-        (of Obres)
+        of Obres
         (any_de_creacio 1765)
         (epoca "Moderna")
         (estil "Escola italiana")
@@ -742,7 +741,7 @@
     )
     
     (El_patio_de_la_aduana
-        (of Obres)
+        of Obres
         (any_de_creacio 1775)
         (epoca "Moderna")
         (estil "Escola francesa")
@@ -755,7 +754,7 @@
     )
     
     (La_Anunciacion
-        (of Obres)
+        of Obres
         (any_de_creacio 1576)
         (epoca "Moderna")
         (estil "Escola espanyola")
@@ -768,7 +767,7 @@
     )
 
     (El_embarco_de_santa_Paula_Romana
-        (of Obres)
+        of Obres
         (any_de_creacio 1639)
         (epoca "Edat Moderna")
         (estil "Clasicisme")
@@ -781,7 +780,7 @@
     )
 
     (Riña_de_gatos
-        (of Obres)
+        of Obres
         (any_de_creacio 1786)
         (epoca "Edat Moderna")
         (estil "Naturalisme")
@@ -794,7 +793,7 @@
     )
 
     (Ofrenda_a_Baco
-        (of Obres)
+        of Obres
         (any_de_creacio 1720)
         (epoca "Edat Moderna")
         (estil "Rococó")
@@ -807,7 +806,7 @@
     )
 
     (Eugenia_Martínez_Vallejo_vestida
-        (of Obres)
+        of Obres
         (any_de_creacio 1680)
         (epoca "Edat Moderna")
         (estil "Barroc")
@@ -820,7 +819,7 @@
     )
 
     (Cabeza_de_venado
-        (of Obres)
+        of Obres
         (any_de_creacio 1626)
         (epoca "Edat Moderna")
         (estil "Barroc")
@@ -833,7 +832,7 @@
     )
 
     (La_cita
-        (of Obres)
+        of Obres
         (any_de_creacio 1780)
         (epoca "Edat Moderna")
         (estil "Neoclassicisme")
@@ -846,7 +845,7 @@
     )
 
     (Sibila
-        (of Obres)
+        of Obres
         (any_de_creacio 1632)
         (epoca "Edat Moderna")
         (estil "Barroc")
@@ -859,7 +858,7 @@
     )
 
     (La_Vista_y_el_Olfato
-        (of Obres)
+        of Obres
         (any_de_creacio 1632)
         (epoca "Edat Moderna")
         (estil "Renaixement")
@@ -872,7 +871,7 @@
     )
 
     (La_Inmaculada_de_El_Escorial
-        (of Obres)
+        of Obres
         (any_de_creacio 1660)
         (epoca "Edat Moderna")
         (estil "Barroc")
@@ -885,7 +884,7 @@
     )
 
     (Amalia_de_Llano_y_Dotres_condesa_de_Vilches
-        (of Obres)
+        of Obres
         (any_de_creacio 1853)
         (epoca "Edat Contemporània")
         (estil "Romanticisme")
@@ -898,7 +897,7 @@
     )
 
     (La_familia_de_Carlos_IV
-        (of Obres)
+        of Obres
         (any_de_creacio 1800)
         (epoca "Edat Contemporània")
         (estil "Neoclassicisme")
@@ -911,7 +910,7 @@
     )
 
     (Cincinato_abandona_el_arado_para_dictar_leyes_a_Roma
-        (of Obres)
+        of Obres
         (any_de_creacio 1806)
         (epoca "Edat Contemporània")
         (estil "Neoclassicisme")
@@ -924,7 +923,7 @@
     )
 
     (Naumaquia_romana
-        (of Obres)
+        of Obres
         (any_de_creacio 1835)
         (epoca "Edat Contemporània")
         (estil "Barroc")
@@ -937,7 +936,7 @@
     )
 
     (Arco_de_triunfo
-        (of Obres)
+        of Obres
         (any_de_creacio 1607)
         (epoca "Edat Moderna")
         (estil "Barroc")
@@ -950,7 +949,7 @@
     )
 
     (Paisaje_con_Psique_y_Júpiter
-        (of Obres)
+        of Obres
         (any_de_creacio 1610)
         (epoca "Edat Moderna")
         (estil "Barroc")
@@ -963,7 +962,7 @@
     )
 
     (La_reina_Zenobia_ante_el_emperador_Aureliano
-        (of Obres)
+        of Obres
         (any_de_creacio 1717)
         (epoca "Edat Moderna")
         (estil "Rococó")
@@ -976,7 +975,7 @@
     )
 
     (Retrato_de_Isabel_Farnesio
-        (of Obres)
+        of Obres
         (any_de_creacio 1723)
         (epoca "Edat Moderna")
         (estil "Barroc")
@@ -989,7 +988,7 @@
     )
 
     (La_educacion_de_Aquiles
-        (of Obres)
+        of Obres
         (any_de_creacio 1727)
         (epoca "Edat Moderna")
         (estil "Barroc")
@@ -1002,7 +1001,7 @@
     )
 
     (Alejandro_Magno_en_el_Templo_de_Jerusalén
-        (of Obres)
+        of Obres
         (any_de_creacio 1736)
         (epoca "Edat Moderna")
         (estil "Barroc")
@@ -1015,7 +1014,7 @@
     )
 
     (La_idolatría_de_Salomón
-        (of Obres)
+        of Obres
         (any_de_creacio 1750)
         (epoca "Edat Moderna")
         (estil "Barroc")
@@ -1027,4 +1026,4 @@
         (relevancia "Mitjana")
     )
 )
-)
+
