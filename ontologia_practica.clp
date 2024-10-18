@@ -1189,15 +1189,15 @@
     
     ; Control de les opcions seleccionades
     (if (eq ?opc 1) then
-        (assert (freqüència-visites "Primer cop"))
+        (assert (frequencia-visites "Primer cop"))
         (printout t "Has seleccionat: Primer cop" crlf)
     )
     (if (eq ?opc 2) then
-        (assert (freqüència-visites "Esporàdic"))
+        (assert (frequencia-visites "Esporàdic"))
         (printout t "Has seleccionat: Esporàdic" crlf)
     )
     (if (eq ?opc 3) then
-        (assert (freqüència-visites "Freqüent"))
+        (assert (frequencia-visites "Freqüent"))
         (printout t "Has seleccionat: Freqüent" crlf)
     )
 )
