@@ -36,6 +36,9 @@
 (defclass Obres
     (is-a USER)
     (pattern-match reactive)
+    (slot Nom
+        (type STRING)
+        (create-accessor read-write))
 ;    (multislot Mirada_por ; Optionally, to reference who is looking at the work of art
 ;        (type INSTANCE)
 ;        (allowed-classes Visitant)  ; It references instances of the class "Visitant"
@@ -69,6 +72,17 @@
         (create-accessor read-write))
 )
 
+(defclass Sala
+    (is-a USER)
+    (slot id
+        (type INTEGER)
+        (create-accessor read-write))
+    (slot connected-to
+        (type INSTANCE)
+        (allowed-classes Sala)
+        (create-accessor read-write))
+)
+
 (defclass Visitant_acompanyat
     (is-a Visitant)
     (role concrete)
@@ -86,7 +100,6 @@
         (type STRING)
         (create-accessor read-write))
 )
-
 
 (definstances instancies_obres
     (Davallament
@@ -1117,6 +1130,23 @@
     )
 )
 
+(definstances instancies_visitants
+    (visitant1 of Visitants
+        (autor_pref "Leonardo da Vinci")
+        (epoca_pref "Renaixement")
+        (estil_pref "Renaixentista")
+        (primer_cop_o_no "Sí")
+        (tematica_pref "Religiós")
+    )
+    (visitant2 of Visitants
+        (autor_pref "Paul Huet")
+        (epoca_pref "Contemporània")
+        (estil_pref "Romanticisme")
+        (primer_cop_o_no "No")
+        (tematica_pref "Paisatge")
+    )
+)
+
 ; Funció de benvinguda i inici del programa
 (defrule MAIN::initialRule "Regla principal"
     (declare (salience 100))
@@ -1254,4 +1284,12 @@
         (assert (grup "Acompanyat"))
         (printout t "Has seleccionat: Acompanyat" crlf)
     )
+)
+
+(defrule bind-rooms
+    ?sala1 <- (Sala (id 1))
+    ?sala2 <- (Sala (id 2))
+    =>
+    (modify ?sala1 (connected-to ?sala2))
+    (modify ?sala2 (connected-to ?sala1))
 )
