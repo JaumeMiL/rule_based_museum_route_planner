@@ -1254,6 +1254,7 @@
         (assert (grup "Acompanyat"))
         (printout t "Has seleccionat: Acompanyat" crlf)
     )
+)
 (defrule MAIN::estil "Pregunta què estil prefereix el visitant"
     (declare (salience 6))
     =>
@@ -1270,6 +1271,7 @@
         (assert (grup "cubisme"))
         (printout t "Has seleccionat: cubisme" crlf)
     )
+)
 (defrule MAIN::author "Pregunta què autor prefereix el visitant"
     (declare (salience 9))
     =>
@@ -1349,3 +1351,6 @@
         (printout t "Has seleccionat: grup turístic" crlf)
     )
 )
+
+;(any-factp ((?f grup)) (eq ?f:implied (create$ "Sol"))) --> mira si existeix el fact (grup "Sol")
+;(any-factp ((?f grup)) (eq ?f:implied (create$ "Acompanyat"))) --> mira si existeix el fact (grup "Acompanyat")
