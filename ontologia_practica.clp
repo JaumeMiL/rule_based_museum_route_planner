@@ -1179,7 +1179,7 @@
 
 ; Pregunta sobre l'època preferida amb seleccions múltiples
 (defrule MAIN::preguntarEpoca "Pregunta sobre l'època preferida"
-    (declare (salience 10))
+    (declare (salience 20))
     =>
     (printout t "Quina és la teva època artística preferida?" crlf)
     (printout t "1. Medieval" crlf)
@@ -1214,7 +1214,7 @@
 )
 ; Segona pregunta sobre la durada de la visita
 (defrule MAIN::preguntarDuracio "Pregunta sobre la durada de la visita"
-    (declare (salience 9))
+    (declare (salience 19))
     =>
     (printout t "Quant temps tens disponible per la visita? (en hores): " crlf)
     (bind ?temps (read))
@@ -1224,7 +1224,7 @@
 
 ; Pregunta sobre la freqüència de visites al museu amb opcions numèriques
 (defrule MAIN::preguntarFreqVisita "Pregunta sobre la freqüència de visita al museu"
-    (declare (salience 8))
+    (declare (salience 17))
     =>
     (printout t "Com et consideres pel que fa a visitar museus d'art?" crlf)
     (printout t "1. És el meu primer cop" crlf)
@@ -1250,7 +1250,7 @@
 
 ; Pregunta sobre la temàtica preferida amb seleccions múltiples
 (defrule MAIN::preguntarTematica "Pregunta sobre la temàtica preferida"
-    (declare (salience 7))
+    (declare (salience 16))
     =>
     (printout t "Quina és la teva temàtica preferida?" crlf)
     (printout t "1. Religió" crlf)
@@ -1285,7 +1285,7 @@
 )
 
 (defrule MAIN::preguntarGrup "Pregunta sobre si el visitant ve sol o acompanyat"
-    (declare (salience 6))
+    (declare (salience 99))
     =>
     (printout t "Visitaràs el museu sol o acompanyat?" crlf)
     (printout t "1. Sol" crlf)
@@ -1302,32 +1302,32 @@
     )
 )
 (defrule MAIN::estil "Pregunta què estil prefereix el visitant"
-    (declare (salience 6))
+    (declare (salience 15))
     =>
     (printout t "Què estil prefereixes?" crlf)
     (printout t "1. neoclassicisme" crlf)
     (printout t "2. cubisme" crlf)
     (printout t "Selecciona una opció: " crlf)
-    (bind ?grup (read))
+    (bind ?groneixementup (read))
     (if (eq ?grup 1) then
-        (assert (grup "neoclassicisme"))
+        (assert (estil "neoclassicisme"))
         (printout t "Has seleccionat: neoclassicisme" crlf)
     )
     (if (eq ?grup 2) then
-        (assert (grup "cubisme"))
+        (assert (estil "cubisme"))
         (printout t "Has seleccionat: cubisme" crlf)
     )
 )
 (defrule MAIN::author "Pregunta què autor prefereix el visitant"
-    (declare (salience 9))
+    (declare (salience 1))
     =>
     (printout t "Quin és el teu autor preferit: " crlf)
     (bind ?autor (read))
     (assert (autor-preferit ?autor))
     (printout t "Autor preferit: " ?autor crlf)
 )
-(defrule MAIN::coneixement_art "Pregunta què coneixement d'art té  el visitant"
-    (declare (salience 6))
+(defrule MAIN::c_art "Pregunta què coneixement d'art té  el visitant"
+    (declare (salience 14))
     =>
     (printout t "Què coneixement d'art tens?" crlf)
     (printout t "1. Alt" crlf)
@@ -1336,15 +1336,15 @@
     (printout t "Selecciona una opció: " crlf)
     (bind ?grup (read))
     (if (eq ?grup 1) then
-        (assert (grup "alt"))
+        (assert (coneixement "alt"))
         (printout t "Has seleccionat: Alt" crlf)
     )
     (if (eq ?grup 2) then
-        (assert (grup "Mitjà"))
+        (assert (coneixement "Mitjà"))
         (printout t "Has seleccionat: Mitjà" crlf)
     )
     (if (eq ?grup 3) then
-        (assert (grup "Baix"))
+        (assert (coneixement "Baix"))
         (printout t "Has seleccionat: Baix" crlf)
     )
 )
@@ -1358,15 +1358,15 @@
     (printout t "Selecciona una opció: " crlf)
     (bind ?grup (read))
     (if (eq ?grup 1) then
-        (assert (grup "alt"))
+        (assert (interés "alt"))
         (printout t "Has seleccionat: Alt" crlf)
     )
     (if (eq ?grup 2) then
-        (assert (grup "Mitjà"))
+        (assert (interés "Mitjà"))
         (printout t "Has seleccionat: Mitjà" crlf)
     )
     (if (eq ?grup 3) then
-        (assert (grup "Baix"))
+        (assert (interés "Baix"))
         (printout t "Has seleccionat: Baix" crlf)
     )
 )
@@ -1381,19 +1381,19 @@
     (printout t "Selecciona una opció: " crlf)
     (bind ?grup (read))
     (if (eq ?grup 1) then
-        (assert (grup "amics"))
+        (assert (tipusgrup "amics"))
         (printout t "Has seleccionat: amics" crlf)
     )
     (if (eq ?grup 2) then
-        (assert (grup "familia"))
+        (assert (tipusgrup "familia"))
         (printout t "Has seleccionat: familia" crlf)
     )
     (if (eq ?grup 3) then
-        (assert (grup "classe"))
+        (assert (tipusgrup "classe"))
         (printout t "Has seleccionat: classe" crlf)
     )
     (if (eq ?grup 4) then
-        (assert (grup "grup turístic"))
+        (assert (tipusgrup "grup turístic"))
         (printout t "Has seleccionat: grup turístic" crlf)
     )
 )
