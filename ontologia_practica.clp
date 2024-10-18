@@ -1401,6 +1401,11 @@
 ;(any-factp ((?f grup)) (eq ?f:implied (create$ "Sol"))) --> mira si existeix el fact (grup "Sol")
 ;(any-factp ((?f grup)) (eq ?f:implied (create$ "Acompanyat"))) --> mira si existeix el fact (grup "Acompanyat")
 
+; ant ->            Visita > 2h, Primer com, Interes (Alt) o Coneixement (Alt)
+; butterfly ->      Visita > 2h, Primer com o esporàdic, Interes (mitjà) o Coneixement (Alt)
+; grasshopper ->    Visita < 2h, freq o esporàdic, (Interes (mitjà) i Coneixement (baix)) o (Interes (baix) i Coneixement (mitjà))
+; peix ->           Visita < 2h, freq o esporàdic, Interes (baix) i Coneixement (baix)
+
 (defrule bind-rooms
     ?sala1 <- (Sala (id 1))
     ?sala2 <- (Sala (id 2))
