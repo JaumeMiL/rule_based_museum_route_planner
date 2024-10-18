@@ -101,6 +101,8 @@
         (create-accessor read-write))
 )
 
+; INSTÀNCIES
+
 (definstances instancies_obres
     (Davallament
         of Obres
@@ -1147,6 +1149,20 @@
     )
 )
 
+(definstances instancies_sales
+    (sala1 of Sala (id 1) (connected-to 2 10))
+    (sala2 of Sala (id 2) (connected-to 1 3))
+    (sala3 of Sala (id 3) (connected-to 2 4))
+    (sala4 of Sala (id 4) (connected-to 3 5))
+    (sala5 of Sala (id 5) (connected-to 4 6))
+    (sala6 of Sala (id 6) (connected-to 5 7))
+    (sala7 of Sala (id 7) (connected-to 6 8))
+    (sala8 of Sala (id 8) (connected-to 7 9))
+    (sala9 of Sala (id 9) (connected-to 8 10))
+    (sala10 of Sala (id 10) (connected-to 9 1))
+)
+
+;;; REGLES
 ; Funció de benvinguda i inici del programa
 (defrule MAIN::initialRule "Regla principal"
     (declare (salience 100))
