@@ -1402,7 +1402,7 @@
 ;(any-factp ((?f grup)) (eq ?f:implied (create$ "Acompanyat"))) --> mira si existeix el fact (grup "Acompanyat")
 
 ; ant ->            Visita > 2h, Primer com, Interes (Alt) o Coneixement (Alt)
-; butterfly ->      Visita > 2h, Primer com o esporàdic, Interes (mitjà) o Coneixement (Alt)
+; butterfly ->      Visita > 2h, Primer com o esporàdic, Interes (mitjà) i Coneixement (Alt o mitja)
 ; grasshopper ->    Visita < 2h, freq o esporàdic, (Interes (mitjà) i Coneixement (baix)) o (Interes (baix) i Coneixement (mitjà))
 ; peix ->           Visita < 2h, freq o esporàdic, Interes (baix) i Coneixement (baix)
 
@@ -1414,3 +1414,16 @@
     (modify ?sala2 (connected-to ?sala1))
 )
 
+(defrule assignar-personalitat
+    (declare (salience 0))
+    =>
+    (if (and 
+            (any-factp ((?b frequencia-visites)) (eq ?f:implied (create$ "Primer cop")))
+            ((or 
+                (any-factp ((?c interés)) (eq ?f:implied (create$ "alt")))
+                (any-factp ((?c coneixement)) (eq ?f:implied (create$ "alt")))
+            )
+            )
+        )
+    )
+)
