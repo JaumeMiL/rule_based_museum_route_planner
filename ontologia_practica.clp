@@ -1117,3 +1117,141 @@
     )
 )
 
+; Funció de benvinguda i inici del programa
+(defrule MAIN::initialRule "Regla principal"
+    (declare (salience 100))
+    =>
+    (printout t "..........................................................." crlf)
+    (printout t "                       Museu del 'SBC                      " crlf)
+    (printout t "..........................................................." crlf)
+    (printout t crlf)     
+    (printout t "En Ramon, en Dani, en Nils i en Jaume us donem la benvinguda al museu!" crlf)
+    (printout t "Estem aquí per recomanar-vos la ruta que millor us encaixi pel nostre museu." crlf)
+    (printout t "Per això comencem amb unes quantes preguntes que ens ajudaran a saber les vostres preferències." crlf crlf)
+    (printout t crlf)
+)
+
+; Pregunta sobre l'època preferida amb seleccions múltiples
+(defrule MAIN::preguntarEpoca "Pregunta sobre l'època preferida"
+    (declare (salience 10))
+    =>
+    (printout t "Quina és la teva època artística preferida?" crlf)
+    (printout t "1. Medieval" crlf)
+    (printout t "2. Renaixement" crlf)
+    (printout t "3. Barroc" crlf)
+    (printout t "4. Edat contemporània" crlf)
+    (printout t "5. No tinc una preferència en quant a època artística" crlf)
+    (printout t "Selecciona una o més opcions (per ex: 1 3 o 24): " crlf)
+    (bind ?opc (readline))  ; Llegim la cadena d'opcions
+
+    ; Verifiquem cada opció utilitzant str-index
+    (if (integerp (str-index "1" ?opc)) then
+        (assert (preferencia-epoca "Medieval"))
+        (printout t "Has seleccionat: Medieval" crlf)
+    )
+    (if (integerp (str-index "2" ?opc)) then
+        (assert (preferencia-epoca "Renaixement"))
+        (printout t "Has seleccionat: Renaixement" crlf)
+    )
+    (if (integerp (str-index "3" ?opc)) then
+        (assert (preferencia-epoca "Barroc"))
+        (printout t "Has seleccionat: Barroc" crlf)
+    )
+    (if (integerp (str-index "4" ?opc)) then
+        (assert (preferencia-epoca "Edat contemporània"))
+        (printout t "Has seleccionat: Edat contemporània" crlf)
+    )
+    (if (integerp (str-index "5" ?opc)) then
+        (assert (preferencia-epoca "ND")) ; ND = Not Defined
+        (printout t "Has seleccionat: No tinc una preferència en quant a època artística" crlf)
+    )
+)
+; Segona pregunta sobre la durada de la visita
+(defrule MAIN::preguntarDuracio "Pregunta sobre la durada de la visita"
+    (declare (salience 9))
+    =>
+    (printout t "Quant temps tens disponible per la visita? (en hores): " crlf)
+    (bind ?temps (read))
+    (assert (temps-visita ?temps))
+    (printout t "Temps disponible: " ?temps " hores" crlf)
+)
+
+; Pregunta sobre la freqüència de visites al museu amb opcions numèriques
+(defrule MAIN::preguntarFreqVisita "Pregunta sobre la freqüència de visita al museu"
+    (declare (salience 8))
+    =>
+    (printout t "Com et consideres pel que fa a visitar museus d'art?" crlf)
+    (printout t "1. És el meu primer cop" crlf)
+    (printout t "2. Visitant esporàdic" crlf)
+    (printout t "3. Visitant freqüent" crlf)
+    (printout t "Selecciona una opció (1, 2 o 3): " crlf)
+    (bind ?opc (read))
+    
+    ; Control de les opcions seleccionades
+    (if (eq ?opc 1) then
+        (assert (freqüència-visites "Primer cop"))
+        (printout t "Has seleccionat: Primer cop" crlf)
+    )
+    (if (eq ?opc 2) then
+        (assert (freqüència-visites "Esporàdic"))
+        (printout t "Has seleccionat: Esporàdic" crlf)
+    )
+    (if (eq ?opc 3) then
+        (assert (freqüència-visites "Freqüent"))
+        (printout t "Has seleccionat: Freqüent" crlf)
+    )
+)
+
+; Pregunta sobre la temàtica preferida amb seleccions múltiples
+(defrule MAIN::preguntarTematica "Pregunta sobre la temàtica preferida"
+    (declare (salience 7))
+    =>
+    (printout t "Quina és la teva temàtica preferida?" crlf)
+    (printout t "1. Religió" crlf)
+    (printout t "2. Mitologia" crlf)
+    (printout t "3. Paisatge" crlf)
+    (printout t "4. Retrats" crlf)
+    (printout t "5. No tinc una preferència en quant a temàtica" crlf)
+    (printout t "Selecciona una o més opcions (per ex: 1 3 o 24): " crlf)
+    (bind ?opc (readline))
+
+    ; Verifiquem cada opció utilitzant str-index i integerp
+    (if (integerp (str-index "1" ?opc)) then
+        (assert (preferencia-tematica "Religió"))
+        (printout t "Has seleccionat: Religió" crlf)
+    )
+    (if (integerp (str-index "2" ?opc)) then
+        (assert (preferencia-tematica "Mitologia"))
+        (printout t "Has seleccionat: Mitologia" crlf)
+    )
+    (if (integerp (str-index "3" ?opc)) then
+        (assert (preferencia-tematica "Paisatge"))
+        (printout t "Has seleccionat: Paisatge" crlf)
+    )
+    (if (integerp (str-index "4" ?opc)) then
+        (assert (preferencia-tematica "Retrats"))
+        (printout t "Has seleccionat: Retrats" crlf)
+    )
+    (if (integerp (str-index "5" ?opc)) then
+        (assert (preferencia-tematica "ND")) ; ND = Not Defined
+        (printout t "Has seleccionat: No tinc una preferència en quant a temàtica" crlf)
+    )
+)
+
+(defrule MAIN::preguntarGrup "Pregunta sobre si el visitant ve sol o acompanyat"
+    (declare (salience 6))
+    =>
+    (printout t "Visitaràs el museu sol o acompanyat?" crlf)
+    (printout t "1. Sol" crlf)
+    (printout t "2. Acompanyat" crlf)
+    (printout t "Selecciona una opció: " crlf)
+    (bind ?grup (read))
+    (if (eq ?grup 1) then
+        (assert (grup "Sol"))
+        (printout t "Has seleccionat: Sol" crlf)
+    )
+    (if (eq ?grup 2) then
+        (assert (grup "Acompanyat"))
+        (printout t "Has seleccionat: Acompanyat" crlf)
+    )
+)
