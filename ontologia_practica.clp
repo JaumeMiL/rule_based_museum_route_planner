@@ -1254,4 +1254,98 @@
         (assert (grup "Acompanyat"))
         (printout t "Has seleccionat: Acompanyat" crlf)
     )
+(defrule MAIN::estil "Pregunta què estil prefereix el visitant"
+    (declare (salience 6))
+    =>
+    (printout t "Què estil prefereixes?" crlf)
+    (printout t "1. neoclassicisme" crlf)
+    (printout t "2. cubisme" crlf)
+    (printout t "Selecciona una opció: " crlf)
+    (bind ?grup (read))
+    (if (eq ?grup 1) then
+        (assert (grup "neoclassicisme"))
+        (printout t "Has seleccionat: neoclassicisme" crlf)
+    )
+    (if (eq ?grup 2) then
+        (assert (grup "cubisme"))
+        (printout t "Has seleccionat: cubisme" crlf)
+    )
+(defrule MAIN::author "Pregunta què autor prefereix el visitant"
+    (declare (salience 9))
+    =>
+    (printout t "Quin és el teu autor preferit: " crlf)
+    (bind ?autor (read))
+    (assert (autor-preferit ?autor))
+    (printout t "Autor preferit: " ?autor crlf)
+)
+(defrule MAIN::coneixement_art "Pregunta què coneixement d'art té  el visitant"
+    (declare (salience 6))
+    =>
+    (printout t "Què coneixement d'art tens?" crlf)
+    (printout t "1. Alt" crlf)
+    (printout t "2. Mitjà" crlf)
+    (printout t "2. Baix" crlf)
+    (printout t "Selecciona una opció: " crlf)
+    (bind ?grup (read))
+    (if (eq ?grup 1) then
+        (assert (grup "alt"))
+        (printout t "Has seleccionat: Alt" crlf)
+    )
+    (if (eq ?grup 2) then
+        (assert (grup "Mitjà"))
+        (printout t "Has seleccionat: Mitjà" crlf)
+    )
+    (if (eq ?grup 3) then
+        (assert (grup "Baix"))
+        (printout t "Has seleccionat: Baix" crlf)
+    )
+)
+(defrule MAIN::interés "Pregunta què interés té  el visitant"
+    (declare (salience 6))
+    =>
+    (printout t "Què interés tens sobre l'exposat?" crlf)
+    (printout t "1. Alt" crlf)
+    (printout t "2. Mitjà" crlf)
+    (printout t "3. Baix" crlf)
+    (printout t "Selecciona una opció: " crlf)
+    (bind ?grup (read))
+    (if (eq ?grup 1) then
+        (assert (grup "alt"))
+        (printout t "Has seleccionat: Alt" crlf)
+    )
+    (if (eq ?grup 2) then
+        (assert (grup "Mitjà"))
+        (printout t "Has seleccionat: Mitjà" crlf)
+    )
+    (if (eq ?grup 3) then
+        (assert (grup "Baix"))
+        (printout t "Has seleccionat: Baix" crlf)
+    )
+)
+(defrule MAIN::tipgrup "Pregunta què tipus de grup"
+    (declare (salience 6))
+    =>
+    (printout t "Amb qui vens?" crlf)
+    (printout t "1. amics" crlf)
+    (printout t "2. familia" crlf)
+    (printout t "3. classe" crlf)
+    (printout t "4. grup turístic" crlf)
+    (printout t "Selecciona una opció: " crlf)
+    (bind ?grup (read))
+    (if (eq ?grup 1) then
+        (assert (grup "amics"))
+        (printout t "Has seleccionat: amics" crlf)
+    )
+    (if (eq ?grup 2) then
+        (assert (grup "familia"))
+        (printout t "Has seleccionat: familia" crlf)
+    )
+    (if (eq ?grup 3) then
+        (assert (grup "classe"))
+        (printout t "Has seleccionat: classe" crlf)
+    )
+    (if (eq ?grup 4) then
+        (assert (grup "grup turístic"))
+        (printout t "Has seleccionat: grup turístic" crlf)
+    )
 )
