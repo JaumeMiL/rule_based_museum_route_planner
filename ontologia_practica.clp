@@ -370,7 +370,7 @@
         (autor_quadre "Leonardo da Vinci")
         (sala 711)
         (tematica "Retrat")
-        (dimensions 0.424)
+        (dimensions 4240)
         (complexitat "Mitjana")
         (rellevancia "Alta")
     )
