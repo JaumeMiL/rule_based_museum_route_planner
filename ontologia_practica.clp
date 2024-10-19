@@ -1398,8 +1398,8 @@
     )
 )
 
-;(any-factp ((?f grup)) (eq ?f:implied (create$ "Sol"))) --> mira si existeix el fact (grup "Sol")
-;(any-factp ((?f grup)) (eq ?f:implied (create$ "Acompanyat"))) --> mira si existeix el fact (grup "Acompanyat")
+;(any-factp ((?f grup)) (eq ?f:implied (create$ "Sol")))        --> mira si existeix el fact (grup "Sol")         NOMES LINEA DE COMANDES!!
+;(any-factp ((?f grup)) (eq ?f:implied (create$ "Acompanyat"))) --> mira si existeix el fact (grup "Acompanyat")  NOMES LINEA DE COMANDES!!
 
 (defrule bind-rooms
     ?sala1 <- (Sala (id 1))
