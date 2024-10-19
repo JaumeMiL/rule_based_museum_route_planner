@@ -1452,9 +1452,12 @@
         (frequencia-visites "Esporàdic"))
     (temps-visita ?temps&:(< ?temps 2)) 
     (or
-        (and (interés "Mitjà") (coneixement "Baix"))
-        (and (interés "Baix") (coneixement "Mitjà")))            
-     =>
+        (interés "Mitjà")
+        (interés "Baix"))   
+    (or
+        (coneixement "Baix")
+        (coneixement "Mitjà"))
+    =>
     (assert (tipus-visitant "Grasshopper"))
 )
 
