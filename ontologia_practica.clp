@@ -1445,7 +1445,7 @@
 ;;      Grasshopper      ;;
 
 ; grasshopper -> Visita < 2h, freq o esporàdic, (Interes (mitjà) i Coneixement (baix)) o (Interes (baix) i Coneixement (mitjà))
-(defrule classificar-visitant-butterfly
+(defrule classificar-visitant-grasshopper
     (grup "Sol")
     (or
         (frequencia-visites "Freqüent")
@@ -1461,7 +1461,7 @@
 ;;      Fish      ;;
 
 ; fish -> Visita < 2h, freq o esporàdic, Interes (baix) i Coneixement (baix)
-(defrule classificar-visitant-ant
+(defrule classificar-visitant-fish
     (grup "Sol")
     (or
         (frequencia-visites "Freqüent")
