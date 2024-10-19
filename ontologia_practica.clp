@@ -1401,11 +1401,6 @@
 ;(any-factp ((?f grup)) (eq ?f:implied (create$ "Sol"))) --> mira si existeix el fact (grup "Sol")
 ;(any-factp ((?f grup)) (eq ?f:implied (create$ "Acompanyat"))) --> mira si existeix el fact (grup "Acompanyat")
 
-; ant ->            Visita > 2h, Primer com, Interes (Alt) o Coneixement (Alt)
-; butterfly ->      Visita > 2h, Primer com o esporàdic, Interes (mitjà) i Coneixement (Alt o mitja)
-; grasshopper ->    Visita < 2h, freq o esporàdic, (Interes (mitjà) i Coneixement (baix)) o (Interes (baix) i Coneixement (mitjà))
-; peix ->           Visita < 2h, freq o esporàdic, Interes (baix) i Coneixement (baix)
-
 (defrule bind-rooms
     ?sala1 <- (Sala (id 1))
     ?sala2 <- (Sala (id 2))
@@ -1414,18 +1409,68 @@
     (modify ?sala2 (connected-to ?sala1))
 )
 
-(defrule assignar-personalitat
-    (declare (salience 0))
+;;;     Clasificacció de Visitant individual     ;;;
+
+;;      Ant      ;;
+
+; ant -> Visita > 2h, Primer com, Interes (Alt) o Coneixement (Alt)
+(defrule classificar-visitant-ant
+    (grup "Sol")
+    (frequencia-visites "Primer cop")
+    (temps-visita ?temps&:(>= ?temps 2))  
+    (or 
+        (interés "alt")                  
+        (coneixement "alt"))             
     =>
-    (if (and 
-            (any-factp ((?b frequencia-visites)) (eq ?f:implied (create$ "Primer cop")))
-            ((or 
-                (any-factp ((?c interés)) (eq ?f:implied (create$ "alt")))
-                (any-factp ((?c coneixement)) (eq ?f:implied (create$ "alt")))
-            )
-            )
-        )
-    )
+    (assert (tipus-visitant "Ant"))
+)
+
+;;      Butterfly      ;;
+
+; butterfly -> Visita > 2h, Primer com o esporàdic, Interes (mitjà) i Coneixement (Alt o mitja)
+(defrule classificar-visitant-butterfly
+    (grup "Sol")
+    (or
+        (frequencia-visites "Primer cop")
+        (frequencia-visites "Esporàdic"))
+    (temps-visita ?temps&:(>= ?temps 2)) 
+    (interés "mitjà")  
+    (or
+        (coneixement "Mitjà")                
+        (coneixement "alt"))             
+     =>
+    (assert (tipus-visitant "Butterfly"))
+)
+
+;;      Grasshopper      ;;
+
+; grasshopper -> Visita < 2h, freq o esporàdic, (Interes (mitjà) i Coneixement (baix)) o (Interes (baix) i Coneixement (mitjà))
+(defrule classificar-visitant-butterfly
+    (grup "Sol")
+    (or
+        (frequencia-visites "Freqüent")
+        (frequencia-visites "Esporàdic"))
+    (temps-visita ?temps&:(< ?temps 2)) 
+    (or
+        (and (interés "Mitjà") (coneixement "Baix"))
+        (and (interés "Baix") (coneixement "Mitjà")))            
+     =>
+    (assert (tipus-visitant "Grasshopper"))
+)
+
+;;      Fish      ;;
+
+; fish -> Visita < 2h, freq o esporàdic, Interes (baix) i Coneixement (baix)
+(defrule classificar-visitant-ant
+    (grup "Sol")
+    (or
+        (frequencia-visites "Freqüent")
+        (frequencia-visites "Esporàdic"))
+    (temps-visita ?temps&:(< ?temps 2))  
+    (interés "Baix")                  
+    (coneixement "Baix")             
+    =>
+    (assert (tipus-visitant "Fish"))
 )
 
 ; Rule to calculate interest in each artwork based on visitor preferences
