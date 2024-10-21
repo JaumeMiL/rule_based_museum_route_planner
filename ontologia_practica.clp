@@ -1077,7 +1077,7 @@
     (declare (salience 100))
     =>
     (printout t "..........................................................." crlf)
-    (printout t "                       Museu del 'SBC                      " crlf)
+    (printout t "                       Museu de l'SBC                      " crlf)
     (printout t "..........................................................." crlf)
     (printout t crlf)     
     (printout t "En Ramon, en Dani, en Nils i en Jaume us donem la benvinguda al museu!" crlf)
