@@ -1054,6 +1054,7 @@
 )
 
 ;;; REGLES
+(defmodule PreguntesGenerals)
 ; Funció de benvinguda i inici del programa
 (defrule MAIN::initialRule "Regla principal"
     (declare (salience 100))
@@ -1066,6 +1067,24 @@
     (printout t "Estem aquí per recomanar-vos la ruta que millor us encaixi pel nostre museu." crlf)
     (printout t "Per això comencem amb unes quantes preguntes que ens ajudaran a saber les vostres preferències." crlf crlf)
     (printout t crlf)
+)
+
+(defrule MAIN::preguntarGrup "Pregunta sobre si el visitant ve sol o acompanyat"
+    (declare (salience 99))
+    =>
+    (printout t "Visitaràs el museu sol o acompanyat?" crlf)
+    (printout t "1. Sol" crlf)
+    (printout t "2. Acompanyat" crlf)
+    (printout t "Selecciona una opció: " crlf)
+    (bind ?grup (read))
+    (if (eq ?grup 1) then
+        (assert (grup "Sol"))
+        (printout t "Has seleccionat: Sol" crlf)
+    )
+    (if (eq ?grup 2) then
+        (assert (grup "Acompanyat"))
+        (printout t "Has seleccionat: Acompanyat" crlf)
+    )
 )
 
 ; Pregunta sobre l'època preferida amb seleccions múltiples
@@ -1175,25 +1194,7 @@
     )
 )
 
-(defrule MAIN::preguntarGrup "Pregunta sobre si el visitant ve sol o acompanyat"
-    (declare (salience 99))
-    =>
-    (printout t "Visitaràs el museu sol o acompanyat?" crlf)
-    (printout t "1. Sol" crlf)
-    (printout t "2. Acompanyat" crlf)
-    (printout t "Selecciona una opció: " crlf)
-    (bind ?grup (read))
-    (if (eq ?grup 1) then
-        (assert (grup "Sol"))
-        (printout t "Has seleccionat: Sol" crlf)
-    )
-    (if (eq ?grup 2) then
-        (assert (grup "Acompanyat"))
-        (printout t "Has seleccionat: Acompanyat" crlf)
-    )
-)
-
-(defrule MAIN::estil "Pregunta què estil prefereix el visitant"
+(defrule MAIN::estil "Pregunta quin estil prefereix el visitant"
     (declare (salience 15))
     =>
     (printout t "Què estil prefereixes?" crlf)
@@ -1211,7 +1212,7 @@
     )
 )
 
-(defrule MAIN::author "Pregunta què autor prefereix el visitant"
+(defrule MAIN::author "Pregunta quin autor prefereix el visitant"
     (declare (salience 1))
     =>
     (printout t "Quin és el teu autor preferit: " crlf)
@@ -1219,7 +1220,8 @@
     (assert (autor-preferit ?autor))
     (printout t "Autor preferit: " ?autor crlf)
 )
-(defrule MAIN::c_art "Pregunta què coneixement d'art té  el visitant"
+
+(defrule MAIN::c_art "Pregunta quin coneixement d'art té  el visitant"
     (declare (salience 14))
     =>
     (printout t "Què coneixement d'art tens?" crlf)
@@ -1263,6 +1265,8 @@
         (printout t "Has seleccionat: Baix" crlf)
     )
 )
+
+(defmodule PreguntesGrup)
 (defrule MAIN::tipgrup "Pregunta el tipus de grup"
     (declare (salience 6))
     (grup "Acompanyat")
@@ -1294,7 +1298,7 @@
 
 ;(any-factp ((?f grup)) (eq ?f:implied (create$ "Sol")))        --> mira si existeix el fact (grup "Sol")         NOMES LINEA DE COMANDES!!
 ;(any-factp ((?f grup)) (eq ?f:implied (create$ "Acompanyat"))) --> mira si existeix el fact (grup "Acompanyat")  NOMES LINEA DE COMANDES!!
-
+(defmodule ClassificacioVisitant)
 (defrule bind-rooms
     ?sala1 <- (object (is-a Sala) (id 1))
     ?sala2 <- (object (is-a Sala) (id 2))
@@ -1375,6 +1379,12 @@
     =>
     (assert (tipus-visitant "Grup"))
 )
+
+(defmodule CalcularRuta)
+(reset)
+(focus PreguntesGenerals PreguntesGrup ClassificacioVisitant CalcularRuta)
+(run)
+(facts *)
 
 ; Rule to calculate interest in each artwork based on visitor preferences
 ; (defrule calculate-artwork-interest
