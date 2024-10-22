@@ -1265,6 +1265,7 @@
 )
 (defrule MAIN::tipgrup "Pregunta el tipus de grup"
     (declare (salience 6))
+    (grup "Acompanyat")
     =>
     (printout t "Amb qui vens?" crlf)
     (printout t "1. amics" crlf)
@@ -1367,6 +1368,12 @@
     (coneixement "Baix")             
     =>
     (assert (tipus-visitant "Fish"))
+)
+
+(defrule classificar-visitant-grup
+    (grup "Acompanyat")             
+    =>
+    (assert (tipus-visitant "Grup"))
 )
 
 ; Rule to calculate interest in each artwork based on visitor preferences
