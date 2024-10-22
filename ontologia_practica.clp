@@ -1370,7 +1370,7 @@
 
 ; Rule to calculate interest in each artwork based on visitor preferences
 (defrule calculate-artwork-interest
-    (Visitant (autor_pref ?artist) (epoca_pref ?period) (estil_pref ?style) (tematica_pref ?theme))
+    ;(Visitant (autor_pref ?artist) (epoca_pref ?period) (estil_pref ?style) (tematica_pref ?theme))
     (Obres (autor_quadre ?artist) (epoca ?period) (estil ?style) (tematica ?theme) (rellevancia ?relevance))
     =>
     (bind ?match-count 0)
@@ -1400,7 +1400,7 @@
 ; Example rule to select artworks in a room based on interest and visiting style
 (defrule select-artworks
     (path ?current-room ?next-room)
-    (Visitant (visiting_style ?style))
+    (tipus_visitant ?style)
     (artwork-interest ?artwork ?interest)
     (Obres (sala ?current-room) (titol ?title)) ; Access the artwork title
     =>
@@ -1408,18 +1408,9 @@
     (printout t "In room " ?current-room ", consider: " ?title " (interest: " ?interest ") " crlf)
 )
 
-; Rule to read the visiting style
-(defrule MAIN::assignar-persona "Assignar persona"
-    (assignar-persona)
-    =>
-    (bind ?style (read))
-    (assert (Visitant (visiting_style ?style)))
-    (printout t "You selected: " ?style crlf)
-)
-
 ; Rule to start the route
 (defrule start-route
-    (Visitant (visiting_style ?style))
+    (tipus_visitant ?style)
     =>
     (printout t "Generating a route for a " ?style " visitor..." crlf)
     (assert (start-room 1))  ; Start in room 1
