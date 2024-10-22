@@ -1294,11 +1294,11 @@
 ;(any-factp ((?f grup)) (eq ?f:implied (create$ "Acompanyat"))) --> mira si existeix el fact (grup "Acompanyat")  NOMES LINEA DE COMANDES!!
 
 (defrule bind-rooms
-    ?sala1 <- (Sala (id 1))
-    ?sala2 <- (Sala (id 2))
+    ?sala1 <- (object (is-a Sala) (id 1))
+    ?sala2 <- (object (is-a Sala) (id 2))
     =>
-    (modify ?sala1 (connected-to ?sala2))
-    (modify ?sala2 (connected-to ?sala1))
+    (send ?sala1 put connected-to (create$ (send ?sala1 get connected-to) ?sala2))
+    (send ?sala2 put connected-to (create$ (send ?sala2 get connected-to) ?sala1))
 )
 
 ;;;     Clasificacció de Visitant individual     ;;;
