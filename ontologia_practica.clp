@@ -1056,7 +1056,7 @@
 )
 
 ;;; REGLES
-(defmodule PreguntesGenerals)
+;(defmodule PreguntesGenerals)
 ; Funció de benvinguda i inici del programa
 (defrule initialRule "Regla principal"
     (declare (salience 100))
@@ -1229,7 +1229,7 @@
     (printout t "Què coneixement d'art tens?" crlf)
     (printout t "1. Alt" crlf)
     (printout t "2. Mitjà" crlf)
-    (printout t "2. Baix" crlf)
+    (printout t "3. Baix" crlf)
     (printout t "Selecciona una opció: " crlf)
     (bind ?grup (read))
     (if (eq ?grup 1) then
@@ -1268,7 +1268,7 @@
     )
 )
 
-(defmodule PreguntesGrup)
+;(defmodule PreguntesGrup)
 (defrule tipgrup "Pregunta el tipus de grup"
     (declare (salience 6))
     (grup "Acompanyat")
@@ -1300,7 +1300,7 @@
 
 ;(any-factp ((?f grup)) (eq ?f:implied (create$ "Sol")))        --> mira si existeix el fact (grup "Sol")         NOMES LINEA DE COMANDES!!
 ;(any-factp ((?f grup)) (eq ?f:implied (create$ "Acompanyat"))) --> mira si existeix el fact (grup "Acompanyat")  NOMES LINEA DE COMANDES!!
-(defmodule ClassificacioVisitant)
+;(defmodule ClassificacioVisitant)
 
 ;;;     Clasificacció de Visitant individual     ;;;
 
@@ -1312,7 +1312,7 @@
     (frequencia-visites "Primer cop")
     (temps-visita ?temps&:(>= ?temps 2))  
     (or 
-        (interés "alt")                  
+        (interes "alt")                  
         (coneixement "alt"))             
     =>
     (assert (tipus-visitant "Ant"))
@@ -1327,7 +1327,7 @@
         (frequencia-visites "Primer cop")
         (frequencia-visites "Esporàdic"))
     (temps-visita ?temps&:(>= ?temps 2)) 
-    (interés "mitjà")  
+    (interes "mitjà")  
     (or
         (coneixement "Mitjà")                
         (coneixement "alt"))             
@@ -1345,8 +1345,8 @@
         (frequencia-visites "Esporàdic"))
     (temps-visita ?temps&:(< ?temps 2)) 
     (or
-        (interés "Mitjà")
-        (interés "Baix"))   
+        (interes "Mitjà")
+        (interes "Baix"))   
     (or
         (coneixement "Baix")
         (coneixement "Mitjà"))
@@ -1363,7 +1363,7 @@
         (frequencia-visites "Freqüent")
         (frequencia-visites "Esporàdic"))
     (temps-visita ?temps&:(< ?temps 2))  
-    (interés "Baix")                  
+    (interes "Baix")                  
     (coneixement "Baix")             
     =>
     (assert (tipus-visitant "Fish"))
