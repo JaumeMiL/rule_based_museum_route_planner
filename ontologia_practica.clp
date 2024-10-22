@@ -9,6 +9,8 @@
 ;;; Translated to CLIPS from ontology ontologia_practica.ttl
 ;;; :Date 11/10/2024 18:04:18
 
+(defmodule MAIN (export ?ALL))
+
 (defclass Visitant
     (is-a USER)
     (pattern-match reactive)
@@ -1056,7 +1058,7 @@
 ;;; REGLES
 (defmodule PreguntesGenerals)
 ; Funció de benvinguda i inici del programa
-(defrule MAIN::initialRule "Regla principal"
+(defrule initialRule "Regla principal"
     (declare (salience 100))
     =>
     (printout t "..........................................................." crlf)
@@ -1069,7 +1071,7 @@
     (printout t crlf)
 )
 
-(defrule MAIN::preguntarGrup "Pregunta sobre si el visitant ve sol o acompanyat"
+(defrule preguntarGrup "Pregunta sobre si el visitant ve sol o acompanyat"
     (declare (salience 99))
     =>
     (printout t "Visitaràs el museu sol o acompanyat?" crlf)
@@ -1088,7 +1090,7 @@
 )
 
 ; Pregunta sobre l'època preferida amb seleccions múltiples
-(defrule MAIN::preguntarEpoca "Pregunta sobre l'època preferida"
+(defrule preguntarEpoca "Pregunta sobre l'època preferida"
     (declare (salience 20))
     =>
     (printout t "Quina és la teva època artística preferida?" crlf)
@@ -1123,7 +1125,7 @@
     )
 )
 ; Segona pregunta sobre la durada de la visita
-(defrule MAIN::preguntarDuracio "Pregunta sobre la durada de la visita"
+(defrule preguntarDuracio "Pregunta sobre la durada de la visita"
     (declare (salience 19))
     =>
     (printout t "Quant temps tens disponible per la visita? (en hores): " crlf)
@@ -1133,7 +1135,7 @@
 )
 
 ; Pregunta sobre la freqüència de visites al museu amb opcions numèriques
-(defrule MAIN::preguntarFreqVisita "Pregunta sobre la freqüència de visita al museu"
+(defrule preguntarFreqVisita "Pregunta sobre la freqüència de visita al museu"
     (declare (salience 17))
     =>
     (printout t "Com et consideres pel que fa a visitar museus d'art?" crlf)
@@ -1159,7 +1161,7 @@
 )
 
 ; Pregunta sobre la temàtica preferida amb seleccions múltiples
-(defrule MAIN::preguntarTematica "Pregunta sobre la temàtica preferida"
+(defrule preguntarTematica "Pregunta sobre la temàtica preferida"
     (declare (salience 16))
     =>
     (printout t "Quina és la teva temàtica preferida?" crlf)
@@ -1194,7 +1196,7 @@
     )
 )
 
-(defrule MAIN::estil "Pregunta quin estil prefereix el visitant"
+(defrule estil "Pregunta quin estil prefereix el visitant"
     (declare (salience 15))
     =>
     (printout t "Què estil prefereixes?" crlf)
@@ -1212,7 +1214,7 @@
     )
 )
 
-(defrule MAIN::author "Pregunta quin autor prefereix el visitant"
+(defrule author "Pregunta quin autor prefereix el visitant"
     (declare (salience 1))
     =>
     (printout t "Quin és el teu autor preferit: " crlf)
@@ -1221,7 +1223,7 @@
     (printout t "Autor preferit: " ?autor crlf)
 )
 
-(defrule MAIN::c_art "Pregunta quin coneixement d'art té  el visitant"
+(defrule c_art "Pregunta quin coneixement d'art té  el visitant"
     (declare (salience 14))
     =>
     (printout t "Què coneixement d'art tens?" crlf)
@@ -1243,7 +1245,7 @@
         (printout t "Has seleccionat: Baix" crlf)
     )
 )
-(defrule MAIN::interes "Pregunta quin interès té el visitant"
+(defrule interes "Pregunta quin interès té el visitant"
     (declare (salience 6))
     =>
     (printout t "Quin interès tens sobre l'exposat?" crlf)
@@ -1267,7 +1269,7 @@
 )
 
 (defmodule PreguntesGrup)
-(defrule MAIN::tipgrup "Pregunta el tipus de grup"
+(defrule tipgrup "Pregunta el tipus de grup"
     (declare (salience 6))
     (grup "Acompanyat")
     =>
@@ -1373,11 +1375,11 @@
     (assert (tipus-visitant "Grup"))
 )
 
-(defmodule CalcularRuta)
-(reset)
-(focus PreguntesGenerals PreguntesGrup ClassificacioVisitant CalcularRuta)
-(run)
-(facts *)
+;(defmodule CalcularRuta)
+;(reset)
+;(focus PreguntesGenerals PreguntesGrup ClassificacioVisitant CalcularRuta)
+;(run)
+;(facts *)
 
 ; Rule to calculate interest in each artwork based on visitor preferences
 ; (defrule calculate-artwork-interest
