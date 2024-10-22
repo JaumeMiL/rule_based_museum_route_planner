@@ -1370,50 +1370,50 @@
 )
 
 ; Rule to calculate interest in each artwork based on visitor preferences
-(defrule calculate-artwork-interest
-    ;(Visitant (autor_pref ?artist) (epoca_pref ?period) (estil_pref ?style) (tematica_pref ?theme))
-    (Obres (autor_quadre ?artist) (epoca ?period) (estil ?style) (tematica ?theme) (rellevancia ?relevance))
-    =>
-    (bind ?match-count 0)
-    (if (eq ?artist (fact-slot-value ?f2 autor_quadre)) then (bind ?match-count (+ ?match-count 1)))
-    (if (eq ?period (fact-slot-value ?f2 epoca)) then (bind ?match-count (+ ?match-count 1)))
-    (if (eq ?style (fact-slot-value ?f2 estil)) then (bind ?match-count (+ ?match-count 1)))
-    (if (eq ?theme (fact-slot-value ?f2 tematica)) then (bind ?match-count (+ ?match-count 1)))
-    (bind ?interest (calculate-interest ?relevance ?match-count))
-    (assert (artwork-interest ?f2 ?interest))
-)
+; (defrule calculate-artwork-interest
+;     ;(Visitant (autor_pref ?artist) (epoca_pref ?period) (estil_pref ?style) (tematica_pref ?theme))
+;     (Obres (autor_quadre ?artist) (epoca ?period) (estil ?style) (tematica ?theme) (rellevancia ?relevance))
+;     =>
+;     (bind ?match-count 0)
+;     (if (eq ?artist (fact-slot-value ?f2 autor_quadre)) then (bind ?match-count (+ ?match-count 1)))
+;     (if (eq ?period (fact-slot-value ?f2 epoca)) then (bind ?match-count (+ ?match-count 1)))
+;     (if (eq ?style (fact-slot-value ?f2 estil)) then (bind ?match-count (+ ?match-count 1)))
+;     (if (eq ?theme (fact-slot-value ?f2 tematica)) then (bind ?match-count (+ ?match-count 1)))
+;     (bind ?interest (calculate-interest ?relevance ?match-count))
+;     (assert (artwork-interest ?f2 ?interest))
+; )
 
-; Simple pathfinding rule (breadth-first search) - You'll need to refine this
-(defrule find-path
-    (start-room ?start)
-    (end-room ?end)
-    (not (path ?start ?end)) 
-    (Sala (id ?start) (connected-to $?neighbors))
-    =>
-    (foreach ?neighbor $?neighbors
-      (assert (path ?start ?neighbor))
-      (if (eq ?neighbor ?end) then
-        (printout t "Path found: " ?start " -> " ?end crlf)
-      else
-        (assert (start-room ?neighbor))))
-)
+; ; Simple pathfinding rule (breadth-first search) - You'll need to refine this
+; (defrule find-path
+;     (start-room ?start)
+;     (end-room ?end)
+;     (not (path ?start ?end)) 
+;     (Sala (id ?start) (connected-to $?neighbors))
+;     =>
+;     (foreach ?neighbor $?neighbors
+;       (assert (path ?start ?neighbor))
+;       (if (eq ?neighbor ?end) then
+;         (printout t "Path found: " ?start " -> " ?end crlf)
+;       else
+;         (assert (start-room ?neighbor))))
+; )
 
-; Example rule to select artworks in a room based on interest and visiting style
-(defrule select-artworks
-    (path ?current-room ?next-room)
-    (tipus_visitant ?style)
-    (artwork-interest ?artwork ?interest)
-    (Obres (sala ?current-room) (titol ?title)) ; Access the artwork title
-    =>
-    ; Logic to select artworks based on interest and style
-    (printout t "In room " ?current-room ", consider: " ?title " (interest: " ?interest ") " crlf)
-)
+; ; Example rule to select artworks in a room based on interest and visiting style
+; (defrule select-artworks
+;     (path ?current-room ?next-room)
+;     (tipus_visitant ?style)
+;     (artwork-interest ?artwork ?interest)
+;     (Obres (sala ?current-room) (titol ?title)) ; Access the artwork title
+;     =>
+;     ; Logic to select artworks based on interest and style
+;     (printout t "In room " ?current-room ", consider: " ?title " (interest: " ?interest ") " crlf)
+; )
 
-; Rule to start the route
-(defrule start-route
-    (tipus_visitant ?style)
-    =>
-    (printout t "Generating a route for a " ?style " visitor..." crlf)
-    (assert (start-room 1))  ; Start in room 1
-    (assert (end-room 1))    ; End in room 1
-)
+; ; Rule to start the route
+; (defrule start-route
+;     (tipus_visitant ?style)
+;     =>
+;     (printout t "Generating a route for a " ?style " visitor..." crlf)
+;     (assert (start-room 1))  ; Start in room 1
+;     (assert (end-room 1))    ; End in room 1
+; )
