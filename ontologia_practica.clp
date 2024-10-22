@@ -71,6 +71,7 @@
 
 (defclass Sala
     (is-a USER)
+    (pattern-match reactive)
     (slot id
         (type INTEGER)
         (create-accessor read-write))
