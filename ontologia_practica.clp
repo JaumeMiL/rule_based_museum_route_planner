@@ -1041,22 +1041,6 @@
     )
 )
 
-(definstances instancies_visitants
-    (visitant1 of Visitants
-        (autor_pref "Leonardo da Vinci")
-        (epoca_pref "Renaixement")
-        (estil_pref "Renaixentista")
-        (primer_cop_o_no "Sí")
-        (tematica_pref "Religiós")
-    )
-    (visitant2 of Visitants
-        (autor_pref "Paul Huet")
-        (epoca_pref "Contemporània")
-        (estil_pref "Romanticisme")
-        (primer_cop_o_no "No")
-        (tematica_pref "Paisatge")
-    )
-)
 
 (definstances instancies_sales
     (sala1 of Sala (id 1) (connected-to 2 10))
@@ -1210,6 +1194,7 @@
         (printout t "Has seleccionat: Acompanyat" crlf)
     )
 )
+
 (defrule MAIN::estil "Pregunta què estil prefereix el visitant"
     (declare (salience 15))
     =>
@@ -1218,15 +1203,16 @@
     (printout t "2. cubisme" crlf)
     (printout t "Selecciona una opció: " crlf)
     (bind ?groneixementup (read))
-    (if (eq ?grup 1) then
+    (if (eq ?groneixementup 1) then
         (assert (estil "neoclassicisme"))
         (printout t "Has seleccionat: neoclassicisme" crlf)
     )
-    (if (eq ?grup 2) then
+    (if (eq ?groneixementup 2) then
         (assert (estil "cubisme"))
         (printout t "Has seleccionat: cubisme" crlf)
     )
 )
+
 (defrule MAIN::author "Pregunta què autor prefereix el visitant"
     (declare (salience 1))
     =>
