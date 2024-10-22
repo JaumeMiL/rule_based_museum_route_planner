@@ -1371,16 +1371,16 @@
 
 ; Rule to calculate interest in each artwork based on visitor preferences
 (defrule calculate-artwork-interest
-  (Visitant (autor_pref ?artist) (epoca_pref ?period) (estil_pref ?style) (tematica_pref ?theme))
-  (Obres (autor_quadre ?artist) (epoca ?period) (estil ?style) (tematica ?theme) (rellevancia ?relevance))
-  =>
-  (bind ?match-count 0)
-  (if (eq ?artist (fact-slot-value ?f2 autor_quadre)) then (bind ?match-count (+ ?match-count 1)))
-  (if (eq ?period (fact-slot-value ?f2 epoca)) then (bind ?match-count (+ ?match-count 1)))
-  (if (eq ?style (fact-slot-value ?f2 estil)) then (bind ?match-count (+ ?match-count 1)))
-  (if (eq ?theme (fact-slot-value ?f2 tematica)) then (bind ?match-count (+ ?match-count 1)))
-  (bind ?interest (calculate-interest ?relevance ?match-count))
-  (assert (artwork-interest ?f2 ?interest))
+    (Visitant (autor_pref ?artist) (epoca_pref ?period) (estil_pref ?style) (tematica_pref ?theme))
+    (Obres (autor_quadre ?artist) (epoca ?period) (estil ?style) (tematica ?theme) (rellevancia ?relevance))
+    =>
+    (bind ?match-count 0)
+    (if (eq ?artist (fact-slot-value ?f2 autor_quadre)) then (bind ?match-count (+ ?match-count 1)))
+    (if (eq ?period (fact-slot-value ?f2 epoca)) then (bind ?match-count (+ ?match-count 1)))
+    (if (eq ?style (fact-slot-value ?f2 estil)) then (bind ?match-count (+ ?match-count 1)))
+    (if (eq ?theme (fact-slot-value ?f2 tematica)) then (bind ?match-count (+ ?match-count 1)))
+    (bind ?interest (calculate-interest ?relevance ?match-count))
+    (assert (artwork-interest ?f2 ?interest))
 )
 
 ; Simple pathfinding rule (breadth-first search) - You'll need to refine this
