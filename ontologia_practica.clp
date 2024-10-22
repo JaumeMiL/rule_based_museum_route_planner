@@ -101,270 +101,11 @@
 ; INSTÀNCIES
 
 (definstances instancies_obres
-    (Davallament
-        of Obres
-        (any_de_creacio 1475)
-        (epoca "Medieval")
-        (estil "Renaixentista")
-        (autor_quadre "Anònim")
-        (sala 0)
-        (tematica "Religió")
-        (dimensions 1998.15)
-        (complexitat "Alta")
-        (rellevancia "Mitjana")
-    )
-    
-    (Sant_Gregori_Papa
-        of Obres
-        (any_de_creacio 1495)
-        (epoca "Medieval")
-        (estil "Renaixentista")
-        (autor_quadre "Pedro Berruguete")
-        (sala 9)
-        (tematica "Religió")
-        (dimensions 1280)
-        (complexitat "Mitjana")
-        (rellevancia "Baixa")
-    )
-
-    (Maquina_de_Llaurar
-        of Obres
-        (any_de_creacio 1953)
-        (epoca "Edat contemporània")
-        (estil "Art Modern")
-        (autor_quadre "Desconegut")
-        (sala 8)
-        (tematica "Conceptual")
-        (dimensions 1280)
-        (complexitat "Baixa")
-        (rellevancia "Baixa")
-    )
-
-    (Anunciacio
-        of Obres
-        (any_de_creacio 1800)
-        (epoca "Edat contemporània")
-        (estil "Art Modern")
-        (autor_quadre "Josep Bernat Flaugier")
-        (sala 8)
-        (tematica "Religiosa")
-        (dimensions 12615)
-        (complexitat "Alta")
-        (rellevancia "Mitjana")
-    )
-
-    (Seguici_Nupcial_Amb_Himeneu
-        of Obres
-        (any_de_creacio 1803)
-        (epoca "Edat contemporània")
-        (estil "Art Modern")
-        (autor_quadre "Josep Bernat Flaugier")
-        (sala 9)
-        (tematica "Mitològica")
-        (dimensions 4017)
-        (complexitat "Mitjana")
-        (rellevancia "Baixa")
-    )
-
-    (Aparicio_de_la_Mare_de_Deu
-        of Obres
-        (any_de_creacio 1812)
-        (epoca "Edat contemporània")
-        (estil "Art Modern")
-        (autor_quadre "Josep Bernat Flaugier")
-        (sala 6)
-        (tematica "Religiosa")
-        (dimensions 2928)
-        (complexitat "Alta")
-        (rellevancia "Baixa")
-    )
-
-    (Mort_de_Sant_Josep_Oriol
-        of Obres
-        (any_de_creacio 1806)
-        (epoca "Edat contemporània")
-        (estil "Art Modern")
-        (autor_quadre "Josep Bernat Flaugier")
-        (sala 0)
-        (tematica "Religiosa")
-        (dimensions 263.34)
-        (complexitat "Alta")
-        (rellevancia "Mitjana")
-    )
-
-    (Sagrada_Familia
-        of Obres
-        (any_de_creacio 1812)
-        (epoca "Edat contemporània")
-        (estil "Tinta")
-        (autor_quadre "Josep Bernat Flaugier")
-        (sala 5)
-        (tematica "Religiosa")
-        (dimensions 459.34)
-        (complexitat "Baixa")
-        (rellevancia "Baixa")
-    )
-
-    (Sant_Joan_Baptista
-        of Obres
-        (any_de_creacio 1790)
-        (epoca "Edat moderna")
-        (estil "Tinta")
-        (autor_quadre "Josep Bernat Flaugier")
-        (sala 2)
-        (tematica "Religiosa")
-        (dimensions 1168.75)
-        (complexitat "Mitjana")
-        (rellevancia "Baixa")
-    )
-
-    (Dos_Frares_i_Grup_de_Gent
-        of Obres
-        (any_de_creacio 1812)
-        (epoca "Edat contemporània")
-        (estil "Dibuix")
-        (autor_quadre "Josep Bernat Flaugier")
-        (sala 8)
-        (tematica "Religiosa")
-        (dimensions 690.8)
-        (complexitat "Baixa")
-        (rellevancia "Baixa")
-    )
-
-    (Retrat_del_Rei_Josep_I
-        of Obres
-        (any_de_creacio 1809)
-        (epoca "Edat contemporània")
-        (estil "Pintura a l'oli")
-        (autor_quadre "Josep Bernat Flaugier")
-        (sala 2)
-        (tematica "Religiosa")
-        (dimensions 13888)
-        (complexitat "Baixa")
-        (rellevancia "Baixa")
-    )
-
-    (Autoretrat
-        of Obres
-        (any_de_creacio 1802)
-        (epoca "Edat contemporània")
-        (estil "Art Modern")
-        (autor_quadre "Salvador Mayol")
-        (sala 3)
-        (tematica "Autoretrat")
-        (dimensions 3220)
-        (complexitat "Alta")
-        (rellevancia "Mitjana")
-    )
-
-    (Un_Cafe_durant_Carnestoltes
-        of Obres
-        (any_de_creacio 1824)
-        (epoca "Edat contemporània")
-        (estil "Art Modern")
-        (autor_quadre "Salvador Mayol")
-        (sala 1)
-        (tematica "Autoretrat")
-        (dimensions 19608)
-        (complexitat "Mitjana")
-        (rellevancia "Baixa")
-    )
-
-    (Pintures_Murals_Conquesta_Mallorca
-        of Obres
-        (any_de_creacio 1288)
-        (epoca "Edat Medieval")
-        (estil "Gòtic")
-        (autor_quadre "Desconegut")
-        (sala 8)
-        (tematica "Històrica")
-        (dimensions 6048)
-        (complexitat "Baixa")
-        (rellevancia "Mitjana")
-    )
-
-    (Sant_Agusti
-        of Obres
-        (any_de_creacio 1463)
-        (epoca "Edat Medieval")
-        (estil "Gòtic")
-        (autor_quadre "Jaume Huguet")
-        (sala 0)
-        (tematica "Religiosa")
-        (dimensions 48250)
-        (complexitat "Alta")
-        (rellevancia "Baixa")
-    )
-
-    (Retaule_de_Sant_Cebria
-        of Obres
-        (any_de_creacio 1475)
-        (epoca "Edat Medieval")
-        (estil "Gòtic")
-        (autor_quadre "Jaume Huguet")
-        (sala 1)
-        (tematica "Religiosa")
-        (dimensions 55357)
-        (complexitat "Alta")
-        (rellevancia "Baixa")
-    )
-
-    (Sant_Miquel_1455
-        of Obres
-        (any_de_creacio 1455)
-        (epoca "Edat Medieval")
-        (estil "Gòtic")
-        (autor_quadre "Jaume Huguet")
-        (sala 0)
-        (tematica "Religiosa")
-        (dimensions 29318)
-        (complexitat "Mitjana")
-        (rellevancia "Mitjana")
-    )
-
-    (Sant_Miquel_1450
-        of Obres
-        (any_de_creacio 1450)
-        (epoca "Edat Medieval")
-        (estil "Gòtic")
-        (autor_quadre "Jaume Huguet")
-        (sala 2)
-        (tematica "Religiosa")
-        (dimensions 34080)
-        (complexitat "Alta")
-        (rellevancia "Alta")
-    )
-
-    (Masia_Blanca_de_Bunyola
-        of Obres
-        (any_de_creacio 1902)
-        (epoca "Edat contemporània")
-        (estil "Art Modern")
-        (autor_quadre "Santiago Rusiñol")
-        (sala 0)
-        (tematica "Paisatges")
-        (dimensions 5376)
-        (complexitat "Mitjana")
-        (rellevancia "Alta")
-    )
-
-    (Cofre_de_joies_de_Lluis_XIV
-        of Obres
-        (any_de_creacio 1677)
-        (epoca "Medieval")
-        (estil "Escultura")
-        (autor_quadre "Jakob Blanck")
-        (sala 5)
-        (tematica "Monarquia")
-        (dimensions 1197)
-        (complexitat "Alta")
-        (rellevancia "Baixa")
-    )
-
+    ;; Sala 1 - Època Antiga i Medieval
     (Codi_d_Hammurabi
         of Obres
         (any_de_creacio -1792)
-        (epoca "Babilònic antic")
+        (epoca "Antiga")
         (estil "Escultura")
         (autor_quadre "Desconegut")
         (sala 1)
@@ -373,709 +114,386 @@
         (complexitat "Mitjana")
         (rellevancia "Alta")
     )
-
-    (La_Mona_Lisa
-        of Obres
-        (any_de_creacio 1519)
-        (epoca "Medieval")
-        (estil "Renaixentista")
-        (autor_quadre "Leonardo da Vinci")
-        (sala 6)
-        (tematica "Retrat")
-        (dimensions 4240)
-        (complexitat "Mitjana")
-        (rellevancia "Alta")
-    )
-
-    (Les_Noces_de_Cana
-        of Obres
-        (any_de_creacio 1550)
-        (epoca "Moderna")
-        (estil "Escola d'Itàlia")
-        (autor_quadre "Paolo Caliari")
-        (sala 4)
-        (tematica "Religiosa")
-        (dimensions 673238)
-        (complexitat "Alta")
-        (rellevancia "Alta")
-    )
-
-    (La_Llibertat_guiant_el_poble
-        of Obres
-        (any_de_creacio 1830)
-        (epoca "Contemporània")
-        (estil "Romanticisme")
-        (autor_quadre "Eugène Delacroix")
-        (sala 9)
-        (tematica "Revolucionària")
-        (dimensions 84500)
-        (complexitat "Mitjana")
-        (rellevancia "Alta")
-    )
-
-    (Mare_de_Deu_de_les_Roques
-        of Obres
-        (any_de_creacio 1483)
-        (epoca "Medieval")
-        (estil "Escola d'Itàlia")
-        (autor_quadre "Leonardo da Vinci")
-        (sala 3)
-        (tematica "Religiosa")
-        (dimensions 24278)
-        (complexitat "Mitjana")
-        (rellevancia "Mitjana")
-    )
-
-    (Tique_de_Constantinoble
-        of Obres
-        (any_de_creacio 649)
-        (epoca "Bizantina")
-        (estil "Bizantí")
-        (autor_quadre "Desconegut")
-        (sala 3)
-        (tematica "Mitològica")
-        (dimensions 688.2)
-        (complexitat "Baixa")
-        (rellevancia "Baixa")
-    )
-
-    (El_Rai_de_la_Medusa
-        of Obres
-        (any_de_creacio 1818)
-        (epoca "Contemporània")
-        (estil "Romanticisme")
-        (autor_quadre "Théodore Géricault")
-        (sala 6)
-        (tematica "Esdeveniment històric")
-        (dimensions 351556)
-        (complexitat "Alta")
-        (rellevancia "Alta")
-    )
-
-    (La_coronacio_de_Napoleo
-        of Obres
-        (any_de_creacio 1806)
-        (epoca "Contemporània")
-        (estil "Neoclassicisme")
-        (autor_quadre "Jacques-Louis David")
-        (sala 0)
-        (tematica "Esdeveniment històric")
-        (dimensions 607659)
-        (complexitat "Alta")
-        (rellevancia "Alta")
-    )
-
     (Lamassu
         of Obres
         (any_de_creacio -720)
         (epoca "Antiga")
-        (estil "Relleu mural")
+        (estil "Escultura")
         (autor_quadre "Desconegut")
-        (sala 0)
-        (tematica "Mitològica")
+        (sala 1)
+        (tematica "Mitologia")
         (dimensions 180188)
         (complexitat "Mitjana")
         (rellevancia "Mitjana")
     )
-
-    (La_puntaire
+    (Tique_de_Constantinoble
         of Obres
-        (any_de_creacio 1670)
-        (epoca "Moderna")
-        (estil "Escola holandesa")
-        (autor_quadre "Johannes Vermeer")
-        (sala 0)
-        (tematica "Retrat")
-        (dimensions 504)
-        (complexitat "Mitjana")
-        (rellevancia "Mitjana")
-    )
-
-    (L_astonom
-        of Obres
-        (any_de_creacio 1668)
-        (epoca "Moderna")
-        (estil "Neoclassicisme")
-        (autor_quadre "Jacques-Louis David")
+        (any_de_creacio 649)
+        (epoca "Medieval")
+        (estil "Bizantí")
+        (autor_quadre "Desconegut")
         (sala 1)
-        (tematica "Retrat")
-        (dimensions 2295)
+        (tematica "Mitologia")
+        (dimensions 688.2)
+        (complexitat "Baixa")
+        (rellevancia "Baixa")
+    )
+    (Pintures_Murals_Conquesta_Mallorca
+        of Obres
+        (any_de_creacio 1288)
+        (epoca "Medieval")
+        (estil "Gòtic")
+        (autor_quadre "Desconegut")
+        (sala 1)
+        (tematica "Història")
+        (dimensions 6048)
         (complexitat "Baixa")
         (rellevancia "Mitjana")
     )
-
-    (Calma_matinal_interior_del_bosc
+    (La_crucifixio
         of Obres
-        (any_de_creacio 1850)
-        (epoca "Contemporània")
-        (estil "Romanticisme")
-        (autor_quadre "Paul Huet")
+        (any_de_creacio 1320)
+        (epoca "Medieval")
+        (estil "Gòtic")
+        (autor_quadre "Agnolo Gaddi")
         (sala 1)
-        (tematica "Paisatge")
-        (dimensions 4988)
-        (complexitat "Mitjana")
+        (tematica "Religió")
+        (dimensions 594.5)
+        (complexitat "Baixa")
         (rellevancia "Baixa")
     )
-
-    (Crepuscle
+    (Sant_Miquel_1450
         of Obres
-        (any_de_creacio 1842)
-        (epoca "Contemporània")
-        (estil "Romanticisme")
-        (autor_quadre "Paul Huet")
-        (sala 5)
-        (tematica "Paisatge")
-        (dimensions 9882)
-        (complexitat "Mitjana")
-        (rellevancia "Baixa")
+        (any_de_creacio 1450)
+        (epoca "Medieval")
+        (estil "Gòtic")
+        (autor_quadre "Jaume Huguet")
+        (sala 1)
+        (tematica "Religió")
+        (dimensions 34080)
+        (complexitat "Alta")
+        (rellevancia "Alta")
     )
-
-    (Inundacions_a_Saint_Cloud
+    (Sant_Miquel_1455
         of Obres
-        (any_de_creacio 1855)
-        (epoca "Contemporània")
-        (estil "Romanticisme")
-        (autor_quadre "Paul Huet")
-        (sala 0)
-        (tematica "Paisatge")
-        (dimensions 60900)
+        (any_de_creacio 1455)
+        (epoca "Medieval")
+        (estil "Gòtic")
+        (autor_quadre "Jaume Huguet")
+        (sala 1)
+        (tematica "Religió")
+        (dimensions 29318)
         (complexitat "Mitjana")
         (rellevancia "Mitjana")
     )
-
-    (Bosc_de_Fontainebleau_Els_cacadors
+    (Sant_Agusti
         of Obres
-        (any_de_creacio 1855)
-        (epoca "Contemporània")
-        (estil "Romanticisme")
-        (autor_quadre "Paul Huet")
-        (sala 2)
-        (tematica "Paisatge")
-        (dimensions 10875)
-        (complexitat "Mitjana")
-        (rellevancia "Baixa")
-    )
-
-    (Parc_de_Saint_Cloud_en_un_dia_festiu
-        of Obres
-        (any_de_creacio 1829)
-        (epoca "Contemporània")
-        (estil "Romanticisme")
-        (autor_quadre "Paul Huet")
-        (sala 2)
-        (tematica "Paisatge")
-        (dimensions 1656)
+        (any_de_creacio 1463)
+        (epoca "Medieval")
+        (estil "Gòtic")
+        (autor_quadre "Jaume Huguet")
+        (sala 1)
+        (tematica "Religió")
+        (dimensions 48250)
         (complexitat "Alta")
         (rellevancia "Baixa")
     )
 
-    (Cabana_normanda_Vell_Trouville
+    ;; Sala 2 - Renaixement i Manierisme
+    (Davallament
         of Obres
-        (any_de_creacio 1861)
-        (epoca "Contemporània")
-        (estil "Romanticisme")
-        (autor_quadre "Paul Huet")
-        (sala 3)
-        (tematica "Vida quotidiana")
-        (dimensions 4988)
+        (any_de_creacio 1475)
+        (epoca "Edat Moderna")
+        (estil "Renaixement")
+        (autor_quadre "Desconegut")
+        (sala 2)
+        (tematica "Religió")
+        (dimensions 1998.15)
+        (complexitat "Alta")
+        (rellevancia "Mitjana")
+    )
+    (Retaule_de_Sant_Cebria
+        of Obres
+        (any_de_creacio 1475)
+        (epoca "Edat Moderna")
+        (estil "Gòtic")
+        (autor_quadre "Jaume Huguet")
+        (sala 2)
+        (tematica "Religió")
+        (dimensions 55357)
+        (complexitat "Alta")
+        (rellevancia "Baixa")
+    )
+    (Mare_de_Deu_de_les_Roques
+        of Obres
+        (any_de_creacio 1483)
+        (epoca "Edat Moderna")
+        (estil "Renaixement")
+        (autor_quadre "Leonardo da Vinci")
+        (sala 2)
+        (tematica "Religió")
+        (dimensions 24278)
         (complexitat "Mitjana")
         (rellevancia "Mitjana")
     )
-
+    (Sant_Gregori_Papa
+        of Obres
+        (any_de_creacio 1495)
+        (epoca "Edat Moderna")
+        (estil "Renaixement")
+        (autor_quadre "Pedro Berruguete")
+        (sala 2)
+        (tematica "Religió")
+        (dimensions 1280)
+        (complexitat "Mitjana")
+        (rellevancia "Baixa")
+    )
+    (La_Mona_Lisa
+        of Obres
+        (any_de_creacio 1519)
+        (epoca "Edat Moderna")
+        (estil "Renaixement")
+        (autor_quadre "Leonardo da Vinci")
+        (sala 2)
+        (tematica "Retrat")
+        (dimensions 0.424)
+        (complexitat "Mitjana")
+        (rellevancia "Alta")
+    )
     (Sant_Jordi_matant_el_drac
         of Obres
         (any_de_creacio 1520)
-        (epoca "Moderna")
-        (estil "Escola de França Champagne")
+        (epoca "Edat Moderna")
+        (estil "Renaixement")
         (autor_quadre "Grégoire Guérard")
-        (sala 6)
-        (tematica "Mitològica")
+        (sala 2)
+        (tematica "Mitologia")
         (dimensions 5244)
         (complexitat "Mitjana")
         (rellevancia "Mitjana")
     )
-
-    (La_plana_davant_dels_Pirineus
+    (Les_Noces_de_Cana
         of Obres
-        (any_de_creacio 1861)
-        (epoca "Contemporània")
-        (estil "Escola de Barbizon")
-        (autor_quadre "Théodore Rousseau")
-        (sala 8)
-        (tematica "Paisatge")
-        (dimensions 646.25)
-        (complexitat "Baixa")
-        (rellevancia "Baixa")
-    )
-
-    (La_crucifixion
-        of Obres
-        (any_de_creacio 1320)
-        (epoca "baixa edat mitjana")
-        (estil "tardogòtic")
-        (autor_quadre "Agnolo Gaddi")
-        (sala 6)
-        (tematica "religió")
-        (dimensions 594.5)
-        (complexitat "baixa")
-        (relevancia "baixa")
-    )
-
-    (Robles_junto_al_agua
-        of Obres
-        (any_de_creacio 1832)
-        (epoca "Contemporània")
-        (estil "realisme")
-        (autor_quadre "Christian E.B.Morgenstern")
-        (sala 5)
-        (tematica "paisatge")
-        (dimensions 7135.5)
-        (complexitat "alta")
-        (relevancia "baixa")
-    )
-    
-    (Vista_del_puerto_de_rotterdam
-        of Obres
-        (any_de_creacio 1856)
-        (epoca "Contemporània")
-        (estil "realisme")
-        (autor_quadre "Johan Barthold Jongkind")
-        (sala 6)
-        (tematica "paisatge")
-        (dimensions 2408)
-        (complexitat "alta")
-        (relevancia "baixa")
-    )
-    
-    (Jinete_arabe
-        of Obres
-        (any_de_creacio 1854)
-        (epoca "Contemporània")
-        (estil "romanticisme")
-        (autor_quadre "")
-        (sala 6)
-        (tematica "paisatge")
-        (dimensions 2408)
-        (complexitat "mitjana")
-        (relevancia "baixa")
-    )
-
-    (Atardecer_en_la_pradera
-        of Obres
-        (any_de_creacio 1870)
-        (epoca "Contemporània")
-        (estil "realisme")
-        (autor_quadre "Albert Bierstadt")
-        (sala 9)
-        (tematica "paisatge")
-        (dimensions 9999.9)
-        (complexitat "alta")
-        (relevancia "baixa")
-    )
-    
-    (El_bosque_de_Marly
-        of Obres
-        (any_de_creacio 1871)
-        (epoca "Contemporània")
-        (estil "impressionisme")
-        (autor_quadre "Camille Pissarro")
-        (sala 3)
-        (tematica "paisatge")
-        (dimensions 2475)
-        (complexitat "alta")
-        (relevancia "baixa")
-    )
-    
-    (Paisaje_con_tormenta
-        of Obres
-        (any_de_creacio 1701)
-        (epoca "Moderna")
-        (estil "Escola italiana")
-        (autor_quadre "Marco Ricci")
-        (sala 6)
-        (tematica "paisatge")
-        (dimensions 12994)
-        (complexitat "alta")
-        (relevancia "baixa")
-    )
-
-    (Es_sacrificio_de_Isaac
-        of Obres
-        (any_de_creacio 1715)
-        (epoca "Moderna")
-        (estil "Escola italiana")
-        (autor_quadre "Giambiattista Piazzetta")
-        (sala 8)
-        (tematica "religiós")
-        (dimensions 12550.0)
-        (complexitat "mitjana")
-        (relevancia "baixa")
-    )
-
-    (Retrato_del_conde_Fulvio_Grati
-        of Obres
-        (any_de_creacio 1720)
-        (epoca "Moderna")
-        (estil "Escola de Bolonya")
-        (autor_quadre "Giuseppe Maria Crespi")
-        (sala 9)
-        (tematica "retrat")
-        (dimensions 34884)
-        (complexitat "mitjana")
-        (relevancia "baixa")
-    )
-
-    (La_piscina_probática
-        of Obres
-        (any_de_creacio 1724)
-        (epoca "Moderna")
-        (estil "Escola italiana")
-        (autor_quadre "Giovanni Paolo Panini")
-        (sala 0)
-        (tematica "religiosa")
-        (dimensions 7220.05)
-        (complexitat "alta")
-        (relevancia "baixa")
-    )
-
-    (Bodegon_con_gato_y_pescado
-        of Obres
-        (any_de_creacio 1728)
-        (epoca "Moderna")
-        (estil "Escola francesa")
-        (autor_quadre "Jean Baptiste Siméon Chardin")
-        (sala 1)
-        (tematica "bodegó")
-        (dimensions 5008.5)
-        (complexitat "baixa")
-        (relevancia "baixa")
-    )
-    
-    (Concierto_Campestre
-        of Obres
-        (any_de_creacio 1734)
-        (epoca "Moderna")
-        (estil "Escola francesa")
-        (autor_quadre "Jean-Baptiste Pater")
-        (sala 6)
-        (tematica "escena de gènere")
-        (dimensions 3630.5)
-        (complexitat "mitjana")
-        (relevancia "baixa")
-    )
-
-    (Grupo_de_mendigos
-        of Obres
-        (any_de_creacio 1737)
-        (epoca "Moderna")
-        (estil "Escola italiana")
-        (autor_quadre "Giacomo Cerutti")
+        (any_de_creacio 1550)
+        (epoca "Edat Moderna")
+        (estil "Renaixement")
+        (autor_quadre "Paolo Caliari")
         (sala 2)
-        (tematica "escena de gènere")
-        (dimensions 12397.5)
-        (complexitat "mitjana")
-        (relevancia "baixa")
+        (tematica "Religió")
+        (dimensions 673238)
+        (complexitat "Alta")
+        (rellevancia "Alta")
     )
-    
-    (Capricho_con_rio_y_puente
-        of Obres
-        (any_de_creacio 1745)
-        (epoca "Moderna")
-        (estil "Escola italiana")
-        (autor_quadre "Bernardo Bellotto")
-        (sala 8)
-        (tematica "paisatge")
-        (dimensions 3540.5)
-        (complexitat "mitjana")
-        (relevancia "baixa")
-    )
-
-    (Paisaje_invernal_con_una_familia_de_campesinos
-        of Obres
-        (any_de_creacio 1780)
-        (epoca "Moderna")
-        (estil "Escola italiana")
-        (autor_quadre "Francesco Foschi")
-        (sala 3)
-        (tematica "escena de gènere")
-        (dimensions 2976)
-        (complexitat "alta")
-        (relevancia "baixa")
-    )
-    
-    (La_expulsion_de_los_mercaderes_del_templo
-        of Obres
-        (any_de_creacio 1750)
-        (epoca "Moderna")
-        (estil "Escola italiana")
-        (autor_quadre "Giandomenico Tiepolo")
-        (sala 0)
-        (tematica "religiós")
-        (dimensions 20280)
-        (complexitat "alta")
-        (relevancia "baixa")
-    )
-    
-    (Frances_condesa_de_Dartmouth
-        of Obres
-        (any_de_creacio 1756)
-        (epoca "Moderna")
-        (estil "Escola britànica")
-        (autor_quadre "Sir Joshua Reynolds")
-        (sala 1)
-        (tematica "retrat")
-        (dimensions 12954)
-        (complexitat "baixa")
-        (relevancia "baixa")
-    )
-    
-    (La_apoteosis_de_Hercules
-        of Obres
-        (any_de_creacio 1765)
-        (epoca "Moderna")
-        (estil "Escola italiana")
-        (autor_quadre "Giandomenico Tiepolo")
-        (sala 0)
-        (tematica "mitologia")
-        (dimensions 8661.15)
-        (complexitat "alta")
-        (relevancia "baixa")
-    )
-    
-    (El_patio_de_la_aduana
-        of Obres
-        (any_de_creacio 1775)
-        (epoca "Moderna")
-        (estil "Escola francesa")
-        (autor_quadre "Nicolas-Bernard Lépicié")
-        (sala 5)
-        (tematica "escena de gènere")
-        (dimensions 16072)
-        (complexitat "alta")
-        (relevancia "baixa")
-    )
-    
     (La_Anunciacion
         of Obres
         (any_de_creacio 1576)
-        (epoca "Moderna")
-        (estil "Escola espanyola")
-        (autor_quadre "El Greco")
-        (sala 9)
-        (tematica "religiosa")
-        (dimensions 11466)
-        (complexitat "alta")
-        (relevancia "alta")
-    )
-
-    (El_embarco_de_santa_Paula_Romana
-        of Obres
-        (any_de_creacio 1639)
-        (epoca "Edat Moderna")
-        (estil "Clasicisme")
-        (autor_quadre "Claudio de Lorena")
-        (sala 4)
-        (tematica "Religió")
-        (dimensions 30595)
-        (complexitat "Mitjana")
-        (relevancia "Mitjana")
-    )
-
-    (Riña_de_gatos
-        of Obres
-        (any_de_creacio 1786)
-        (epoca "Edat Moderna")
-        (estil "Naturalisme")
-        (autor_quadre "Francisco de Goya y Lucientes")
-        (sala 6)
-        (tematica "Animals")
-        (dimensions 11104.25)
-        (complexitat "Mitjana")
-        (relevancia "Baixa")
-    )
-
-    (Ofrenda_a_Baco
-        of Obres
-        (any_de_creacio 1720)
-        (epoca "Edat Moderna")
-        (estil "Rococó")
-        (autor_quadre "Michel-Ange Houasse")
-        (sala 5)
-        (tematica "Mitologia")
-        (dimensions 22500)
-        (complexitat "Mitjana-Alta")
-        (relevancia "Mitjana")
-    )
-
-    (Eugenia_Martínez_Vallejo_vestida
-        of Obres
-        (any_de_creacio 1680)
-        (epoca "Edat Moderna")
-        (estil "Barroc")
-        (autor_quadre "Juan Carreño de Miranda")
-        (sala 9)
-        (tematica "Retrat")
-        (dimensions 17655)
-        (complexitat "Baixa")
-        (relevancia "Mitjana")
-    )
-
-    (Cabeza_de_venado
-        of Obres
-        (any_de_creacio 1626)
-        (epoca "Edat Moderna")
-        (estil "Barroc")
-        (autor_quadre "Diego Rodríguez de Silva y Velázquez")
-        (sala 1)
-        (tematica "Animals")
-        (dimensions 3432)
-        (complexitat "Baixa")
-        (relevancia "Mitjana")
-    )
-
-    (La_cita
-        of Obres
-        (any_de_creacio 1780)
-        (epoca "Edat Moderna")
-        (estil "Neoclassicisme")
-        (autor_quadre "Francisco de Goya y Lucientes")
-        (sala 5)
-        (tematica "Paisatge")
-        (dimensions 15100)
-        (complexitat "Mitjana")
-        (relevancia "Mitjana")
-    )
-
-    (Sibila
-        of Obres
-        (any_de_creacio 1632)
-        (epoca "Edat Moderna")
-        (estil "Barroc")
-        (autor_quadre "Diego Rodríguez de Silva y Velázquez")
-        (sala 9)
-        (tematica "Retrat")
-        (dimensions 3100)
-        (complexitat "Mitjana")
-        (relevancia "Baixa")
-    )
-
-    (La_Vista_y_el_Olfato
-        of Obres
-        (any_de_creacio 1632)
         (epoca "Edat Moderna")
         (estil "Renaixement")
-        (autor_quadre "Jan Brueghel 'el Viejo'")
-        (sala 3)
-        (tematica "Al·legoria")
-        (dimensions 46464)
-        (complexitat "Alta")
-        (relevancia "Mitjana")
-    )
-
-    (La_Inmaculada_de_El_Escorial
-        of Obres
-        (any_de_creacio 1660)
-        (epoca "Edat Moderna")
-        (estil "Barroc")
-        (autor_quadre "Bartolomé Esteban Murillo")
-        (sala 5)
-        (tematica "Religió")
-        (dimensions 29664)
-        (complexitat "Mitjana")
-        (relevancia "Alta")
-    )
-
-    (Amalia_de_Llano_y_Dotres_condesa_de_Vilches
-        of Obres
-        (any_de_creacio 1853)
-        (epoca "Edat Contemporània")
-        (estil "Romanticisme")
-        (autor_quadre "Federico de Madrazo y Kuntz")
+        (autor_quadre "El Greco")
         (sala 2)
-        (tematica "Retrat")
-        (dimensions 11214)
-        (complexitat "Mitjana")
-        (relevancia "Mitjana")
-    )
-
-    (La_familia_de_Carlos_IV
-        of Obres
-        (any_de_creacio 1800)
-        (epoca "Edat Contemporània")
-        (estil "Neoclassicisme")
-        (autor_quadre "Francisco de Goya y Lucientes")
-        (sala 1)
-        (tematica "Retrat")
-        (dimensions 94080)
+        (tematica "Religió")
+        (dimensions 11466)
         (complexitat "Alta")
-        (relevancia "Alta")
+        (rellevancia "Alta")
     )
 
-    (Cincinato_abandona_el_arado_para_dictar_leyes_a_Roma
-        of Obres
-        (any_de_creacio 1806)
-        (epoca "Edat Contemporània")
-        (estil "Neoclassicisme")
-        (autor_quadre "Juan Antonio Ribera y Fernández")
-        (sala 9)
-        (tematica "Història")
-        (dimensions 34400)
-        (complexitat "Mitjana")
-        (relevancia "Alta")
-    )
-
-    (Naumaquia_romana
-        of Obres
-        (any_de_creacio 1835)
-        (epoca "Edat Contemporània")
-        (estil "Barroc")
-        (autor_quadre "Giovanni Lanfranco")
-        (sala 7)
-        (tematica "Paisatge")
-        (dimensions 65522)
-        (complexitat "Mitjana")
-        (relevancia "Baixa")
-    )
-
+    ;; Sala 3 - Barroc primerenc
     (Arco_de_triunfo
         of Obres
         (any_de_creacio 1607)
         (epoca "Edat Moderna")
         (estil "Barroc")
         (autor_quadre "Domenichino")
-        (sala 9)
+        (sala 3)
         (tematica "Arquitectura")
         (dimensions 4200)
         (complexitat "Baixa")
-        (relevancia "Baixa")
+        (rellevancia "Baixa")
     )
-
-    (Paisaje_con_Psique_y_Júpiter
+    (Paisaje_con_Psique_y_Jupiter
         of Obres
         (any_de_creacio 1610)
         (epoca "Edat Moderna")
         (estil "Barroc")
         (autor_quadre "Pedro Pablo Rubens")
-        (sala 0)
+        (sala 3)
         (tematica "Arquitectura")
         (dimensions 12255)
         (complexitat "Baixa")
-        (relevancia "Baixa")
+        (rellevancia "Baixa")
+    )
+    (Cabeza_de_venado
+        of Obres
+        (any_de_creacio 1626)
+        (epoca "Edat Moderna")
+        (estil "Barroc")
+        (autor_quadre "Diego Rodríguez de Silva y Velázquez")
+        (sala 3)
+        (tematica "Animals")
+        (dimensions 3432)
+        (complexitat "Baixa")
+        (rellevancia "Mitjana")
+    )
+    (Sibila
+        of Obres
+        (any_de_creacio 1632)
+        (epoca "Edat Moderna")
+        (estil "Barroc")
+        (autor_quadre "Diego Rodríguez de Silva y Velázquez")
+        (sala 3)
+        (tematica "Retrat")
+        (dimensions 3100)
+        (complexitat "Mitjana")
+        (rellevancia "Baixa")
+    )
+    (La_Vista_y_el_Olfato
+        of Obres
+        (any_de_creacio 1632)
+        (epoca "Edat Moderna")
+        (estil "Barroc")
+        (autor_quadre "Jan Brueghel 'el Vell'")
+        (sala 3)
+        (tematica "Al·legoria")
+        (dimensions 46464)
+        (complexitat "Alta")
+        (rellevancia "Mitjana")
+    )
+    (El_embarco_de_santa_Paula_Romana
+        of Obres
+        (any_de_creacio 1639)
+        (epoca "Edat Moderna")
+        (estil "Classicisme")
+        (autor_quadre "Claudio de Lorena")
+        (sala 3)
+        (tematica "Religió")
+        (dimensions 30595)
+        (complexitat "Mitjana")
+        (rellevancia "Mitjana")
+    )
+    (La_Inmaculada_de_El_Escorial
+        of Obres
+        (any_de_creacio 1660)
+        (epoca "Edat Moderna")
+        (estil "Barroc")
+        (autor_quadre "Bartolomé Esteban Murillo")
+        (sala 3)
+        (tematica "Religió")
+        (dimensions 29664)
+        (complexitat "Mitjana")
+        (rellevancia "Alta")
+    )
+    (La_puntaire
+        of Obres
+        (any_de_creacio 1670)
+        (epoca "Edat Moderna")
+        (estil "Barroc")
+        (autor_quadre "Johannes Vermeer")
+        (sala 3)
+        (tematica "Retrat")
+        (dimensions 504)
+        (complexitat "Mitjana")
+        (rellevancia "Mitjana")
     )
 
+    ;; Sala 4 - Barroc i Rococó
+    (L_astronom
+        of Obres
+        (any_de_creacio 1668)
+        (epoca "Edat Moderna")
+        (estil "Barroc")
+        (autor_quadre "Johannes Vermeer")
+        (sala 4)
+        (tematica "Retrat")
+        (dimensions 2295)
+        (complexitat "Baixa")
+        (rellevancia "Mitjana")
+    )
+    (Cofre_de_joies_de_Lluis_XIV
+        of Obres
+        (any_de_creacio 1677)
+        (epoca "Edat Moderna")
+        (estil "Escultura")
+        (autor_quadre "Jakob Blanck")
+        (sala 4)
+        (tematica "Monarquia")
+        (dimensions 1197)
+        (complexitat "Alta")
+        (rellevancia "Baixa")
+    )
+    (Eugenia_Martinez_Vallejo_vestida
+        of Obres
+        (any_de_creacio 1680)
+        (epoca "Edat Moderna")
+        (estil "Barroc")
+        (autor_quadre "Juan Carreño de Miranda")
+        (sala 4)
+        (tematica "Retrat")
+        (dimensions 17655)
+        (complexitat "Baixa")
+        (rellevancia "Mitjana")
+    )
+    (Paisaje_con_tormenta
+        of Obres
+        (any_de_creacio 1701)
+        (epoca "Edat Moderna")
+        (estil "Barroc")
+        (autor_quadre "Marco Ricci")
+        (sala 4)
+        (tematica "Paisatge")
+        (dimensions 12994)
+        (complexitat "Alta")
+        (rellevancia "Baixa")
+    )
+    (Es_sacrificio_de_Isaac
+        of Obres
+        (any_de_creacio 1715)
+        (epoca "Edat Moderna")
+        (estil "Barroc")
+        (autor_quadre "Giambattista Piazzetta")
+        (sala 4)
+        (tematica "Religió")
+        (dimensions 12550)
+        (complexitat "Mitjana")
+        (rellevancia "Baixa")
+    )
     (La_reina_Zenobia_ante_el_emperador_Aureliano
         of Obres
         (any_de_creacio 1717)
         (epoca "Edat Moderna")
         (estil "Rococó")
         (autor_quadre "Giambattista Tiepolo")
-        (sala 8)
+        (sala 4)
         (tematica "Història")
         (dimensions 125000)
         (complexitat "Alta")
-        (relevancia "Mitjana")
+        (rellevancia "Mitjana")
+    )
+    (Retrato_del_conde_Fulvio_Grati
+        of Obres
+        (any_de_creacio 1720)
+        (epoca "Edat Moderna")
+        (estil "Barroc")
+        (autor_quadre "Giuseppe Maria Crespi")
+        (sala 4)
+        (tematica "Retrat")
+        (dimensions 34884)
+        (complexitat "Mitjana")
+        (rellevancia "Baixa")
+    )
+    (Ofrenda_a_Baco
+        of Obres
+        (any_de_creacio 1720)
+        (epoca "Edat Moderna")
+        (estil "Rococó")
+        (autor_quadre "Michel-Ange Houasse")
+        (sala 4)
+        (tematica "Mitologia")
+        (dimensions 22500)
+        (complexitat "Mitjana")
+        (rellevancia "Mitjana")
     )
 
+    ;; Sala 5 - Rococó i Neoclassicisme
     (Retrato_de_Isabel_Farnesio
         of Obres
         (any_de_creacio 1723)
@@ -1086,65 +504,540 @@
         (tematica "Retrat")
         (dimensions 16560)
         (complexitat "Mitjana")
-        (relevancia "Mitjana")
+        (rellevancia "Mitjana")
     )
-
+    (La_piscina_probatica
+        of Obres
+        (any_de_creacio 1724)
+        (epoca "Edat Moderna")
+        (estil "Barroc")
+        (autor_quadre "Giovanni Paolo Panini")
+        (sala 5)
+        (tematica "Religió")
+        (dimensions 7220.05)
+        (complexitat "Alta")
+        (rellevancia "Baixa")
+    )
     (La_educacion_de_Aquiles
         of Obres
         (any_de_creacio 1727)
         (epoca "Edat Moderna")
         (estil "Barroc")
         (autor_quadre "Sebastiano Conca")
-        (sala 2)
+        (sala 5)
         (tematica "Paisatge")
         (dimensions 4366)
         (complexitat "Mitjana")
-        (relevancia "Mitjana")
+        (rellevancia "Mitjana")
     )
-
-    (Alejandro_Magno_en_el_Templo_de_Jerusalén
+    (Bodegon_con_gato_y_pescado
         of Obres
-        (any_de_creacio 1736)
+        (any_de_creacio 1728)
         (epoca "Edat Moderna")
         (estil "Barroc")
-        (autor_quadre "Sebastiano Conca")
-        (sala 4)
-        (tematica "Història")
-        (dimensions 3763)
-        (complexitat "Alta")
-        (relevancia "Mitjana")
+        (autor_quadre "Jean Baptiste Siméon Chardin")
+        (sala 5)
+        (tematica "Bodegó")
+        (dimensions 5008.5)
+        (complexitat "Baixa")
+        (rellevancia "Baixa")
     )
-
-    (La_idolatría_de_Salomón
+    (Concierto_Campestre
+        of Obres
+        (any_de_creacio 1734)
+        (epoca "Edat Moderna")
+        (estil "Rococó")
+        (autor_quadre "Jean-Baptiste Pater")
+        (sala 5)
+        (tematica "Escena de gènere")
+        (dimensions 3630.5)
+        (complexitat "Mitjana")
+        (rellevancia "Baixa")
+    )
+    (Grupo_de_mendigos
+        of Obres
+        (any_de_creacio 1737)
+        (epoca "Edat Moderna")
+        (estil "Barroc")
+        (autor_quadre "Giacomo Cerutti")
+        (sala 5)
+        (tematica "Escena de gènere")
+        (dimensions 12397.5)
+        (complexitat "Mitjana")
+        (rellevancia "Baixa")
+    )
+    (Capricho_con_rio_y_puente
+        of Obres
+        (any_de_creacio 1745)
+        (epoca "Edat Moderna")
+        (estil "Barroc")
+        (autor_quadre "Bernardo Bellotto")
+        (sala 5)
+        (tematica "Paisatge")
+        (dimensions 3540.5)
+        (complexitat "Mitjana")
+        (rellevancia "Baixa")
+    )
+    (La_expulsion_de_los_mercaderes_del_templo
         of Obres
         (any_de_creacio 1750)
         (epoca "Edat Moderna")
         (estil "Barroc")
-        (autor_quadre "Sebastiano Conca")
-        (sala 8)
+        (autor_quadre "Giandomenico Tiepolo")
+        (sala 5)
         (tematica "Religió")
-        (dimensions 3834)
+        (dimensions 20280)
         (complexitat "Alta")
-        (relevancia "Mitjana")
+        (rellevancia "Baixa")
+    )
+    (Frances_condesa_de_Dartmouth
+        of Obres
+        (any_de_creacio 1756)
+        (epoca "Edat Moderna")
+        (estil "Barroc")
+        (autor_quadre "Sir Joshua Reynolds")
+        (sala 5)
+        (tematica "Retrat")
+        (dimensions 12954)
+        (complexitat "Baixa")
+        (rellevancia "Baixa")
+    )
+    (La_apoteosis_de_Hercules
+        of Obres
+        (any_de_creacio 1765)
+        (epoca "Edat Moderna")
+        (estil "Rococó")
+        (autor_quadre "Giandomenico Tiepolo")
+        (sala 5)
+        (tematica "Mitologia")
+        (dimensions 8661.15)
+        (complexitat "Alta")
+        (rellevancia "Baixa")
+    )
+    (El_patio_de_la_aduana
+        of Obres
+        (any_de_creacio 1775)
+        (epoca "Edat Moderna")
+        (estil "Barroc")
+        (autor_quadre "Nicolas-Bernard Lépicié")
+        (sala 5)
+        (tematica "Escena de gènere")
+        (dimensions 16072)
+        (complexitat "Alta")
+        (rellevancia "Baixa")
+    )
+    (Paisaje_invernal_con_una_familia_de_campesinos
+        of Obres
+        (any_de_creacio 1780)
+        (epoca "Edat Moderna")
+        (estil "Barroc")
+        (autor_quadre "Francesco Foschi")
+        (sala 5)
+        (tematica "Escena de gènere")
+        (dimensions 2976)
+        (complexitat "Alta")
+        (rellevancia "Baixa")
+    )
+
+    ;; Sala 6 - Neoclassicisme i Romanticisme
+    (La_cita
+        of Obres
+        (any_de_creacio 1780)
+        (epoca "Edat Moderna")
+        (estil "Neoclassicisme")
+        (autor_quadre "Francisco de Goya y Lucientes")
+        (sala 6)
+        (tematica "Paisatge")
+        (dimensions 15100)
+        (complexitat "Mitjana")
+        (rellevancia "Mitjana")
+    )
+    (Riña_de_gatos
+        of Obres
+        (any_de_creacio 1786)
+        (epoca "Edat Moderna")
+        (estil "Naturalisme")
+        (autor_quadre "Francisco de Goya y Lucientes")
+        (sala 6)
+        (tematica "Animals")
+        (dimensions 11104.25)
+        (complexitat "Mitjana")
+        (rellevancia "Baixa")
+    )
+    (La_familia_de_Carlos_IV
+        of Obres
+        (any_de_creacio 1800)
+        (epoca "Edat Contemporània")
+        (estil "Neoclassicisme")
+        (autor_quadre "Francisco de Goya y Lucientes")
+        (sala 6)
+        (tematica "Retrat")
+        (dimensions 94080)
+        (complexitat "Alta")
+        (rellevancia "Alta")
+    )
+    (Cincinato_abandona_el_arado_para_dictar_leyes_a_Roma
+        of Obres
+        (any_de_creacio 1806)
+        (epoca "Edat Contemporània")
+        (estil "Neoclassicisme")
+        (autor_quadre "Juan Antonio Ribera y Fernández")
+        (sala 6)
+        (tematica "Història")
+        (dimensions 34400)
+        (complexitat "Mitjana")
+        (rellevancia "Alta")
+    )
+    (La_coronacio_de_Napoleo
+        of Obres
+        (any_de_creacio 1806)
+        (epoca "Edat Contemporània")
+        (estil "Neoclassicisme")
+        (autor_quadre "Jacques-Louis David")
+        (sala 6)
+        (tematica "Esdeveniment històric")
+        (dimensions 607659)
+        (complexitat "Alta")
+        (rellevancia "Alta")
+    )
+    (El_Rai_de_la_Medusa
+        of Obres
+        (any_de_creacio 1818)
+        (epoca "Edat Contemporània")
+        (estil "Romanticisme")
+        (autor_quadre "Théodore Géricault")
+        (sala 6)
+        (tematica "Esdeveniment històric")
+        (dimensions 351556)
+        (complexitat "Alta")
+        (rellevancia "Alta")
+    )
+    (La_Llibertat_guiant_el_poble
+        of Obres
+        (any_de_creacio 1830)
+        (epoca "Edat Contemporània")
+        (estil "Romanticisme")
+        (autor_quadre "Eugène Delacroix")
+        (sala 6)
+        (tematica "Revolucionària")
+        (dimensions 84500)
+        (complexitat "Mitjana")
+        (rellevancia "Alta")
+    )
+    (Amalia_de_Llano_y_Dotres_condesa_de_Vilches
+        of Obres
+        (any_de_creacio 1853)
+        (epoca "Edat Contemporània")
+        (estil "Romanticisme")
+        (autor_quadre "Federico de Madrazo y Kuntz")
+        (sala 6)
+        (tematica "Retrat")
+        (dimensions 11214)
+        (complexitat "Mitjana")
+        (rellevancia "Mitjana")
+    )
+
+
+
+    ;; Sala 7 - Paisatges Romàntics i Realistes
+    (Calma_matinal_interior_del_bosc
+        of Obres
+        (any_de_creacio 1850)
+        (epoca "Edat Contemporània")
+        (estil "Romanticisme")
+        (autor_quadre "Paul Huet")
+        (sala 7)
+        (tematica "Paisatge")
+        (dimensions 4988)
+        (complexitat "Mitjana")
+        (rellevancia "Baixa")
+    )
+    (Crepuscle
+        of Obres
+        (any_de_creacio 1842)
+        (epoca "Edat Contemporània")
+        (estil "Romanticisme")
+        (autor_quadre "Paul Huet")
+        (sala 7)
+        (tematica "Paisatge")
+        (dimensions 9882)
+        (complexitat "Mitjana")
+        (rellevancia "Baixa")
+    )
+    (Inundacions_a_Saint_Cloud
+        of Obres
+        (any_de_creacio 1855)
+        (epoca "Edat Contemporània")
+        (estil "Romanticisme")
+        (autor_quadre "Paul Huet")
+        (sala 7)
+        (tematica "Paisatge")
+        (dimensions 60900)
+        (complexitat "Mitjana")
+        (rellevancia "Mitjana")
+    )
+    (Bosc_de_Fontainebleau_Els_cacadors
+        of Obres
+        (any_de_creacio 1855)
+        (epoca "Edat Contemporània")
+        (estil "Romanticisme")
+        (autor_quadre "Paul Huet")
+        (sala 7)
+        (tematica "Paisatge")
+        (dimensions 10875)
+        (complexitat "Mitjana")
+        (rellevancia "Baixa")
+    )
+
+    ;; Sala 7 - Paisatges Romàntics
+    (Parc_de_Saint_Cloud_en_un_dia_festiu
+        of Obres
+        (any_de_creacio 1829)
+        (epoca "Edat Contemporània")
+        (estil "Romanticisme")
+        (autor_quadre "Paul Huet")
+        (sala 7)
+        (tematica "Paisatge")
+        (dimensions 1656)
+        (complexitat "Alta")
+        (rellevancia "Baixa")
+    )
+    (Cabana_normanda_Vell_Trouville
+        of Obres
+        (any_de_creacio 1861)
+        (epoca "Edat Contemporània")
+        (estil "Romanticisme")
+        (autor_quadre "Paul Huet")
+        (sala 7)
+        (tematica "Vida quotidiana")
+        (dimensions 4988)
+        (complexitat "Mitjana")
+        (rellevancia "Mitjana")
+    )
+    (La_plana_davant_dels_Pirineus
+        of Obres
+        (any_de_creacio 1861)
+        (epoca "Edat Contemporània")
+        (estil "Escola de Barbizon")
+        (autor_quadre "Théodore Rousseau")
+        (sala 7)
+        (tematica "Paisatge")
+        (dimensions 646.25)
+        (complexitat "Baixa")
+        (rellevancia "Baixa")
+    )
+
+    ;; Sala 8 - Paisatges Realistes i Impressionistes
+    (Robles_junto_al_agua
+        of Obres
+        (any_de_creacio 1832)
+        (epoca "Edat Contemporània")
+        (estil "Realisme")
+        (autor_quadre "Christian E.B.Morgenstern")
+        (sala 8)
+        (tematica "Paisatge")
+        (dimensions 7135.5)
+        (complexitat "Alta")
+        (rellevancia "Baixa")
+    )
+    (Vista_del_puerto_de_rotterdam
+        of Obres
+        (any_de_creacio 1856)
+        (epoca "Edat Contemporània")
+        (estil "Realisme")
+        (autor_quadre "Johan Barthold Jongkind")
+        (sala 8)
+        (tematica "Paisatge")
+        (dimensions 2408)
+        (complexitat "Alta")
+        (rellevancia "Baixa")
+    )
+    (Atardecer_en_la_pradera
+        of Obres
+        (any_de_creacio 1870)
+        (epoca "Edat Contemporània")
+        (estil "Realisme")
+        (autor_quadre "Albert Bierstadt")
+        (sala 8)
+        (tematica "Paisatge")
+        (dimensions 9999.9)
+        (complexitat "Alta")
+        (rellevancia "Baixa")
+    )
+    (El_bosque_de_Marly
+        of Obres
+        (any_de_creacio 1871)
+        (epoca "Edat Contemporània")
+        (estil "Impressionisme")
+        (autor_quadre "Camille Pissarro")
+        (sala 8)
+        (tematica "Paisatge")
+        (dimensions 2475)
+        (complexitat "Alta")
+        (rellevancia "Baixa")
+    )
+    (Jinete_arabe
+        of Obres
+        (any_de_creacio 1854)
+        (epoca "Edat Contemporània")
+        (estil "Romanticisme")
+        (autor_quadre "Desconegut")
+        (sala 8)
+        (tematica "Paisatge")
+        (dimensions 2408)
+        (complexitat "Mitjana")
+        (rellevancia "Baixa")
+    )
+
+    ;; Sala 9 - Obres de Josep Bernat Flaugier
+    (Anunciacio
+        of Obres
+        (any_de_creacio 1800)
+        (epoca "Edat Contemporània")
+        (estil "Neoclassicisme")
+        (autor_quadre "Josep Bernat Flaugier")
+        (sala 9)
+        (tematica "Religiosa")
+        (dimensions 12615)
+        (complexitat "Alta")
+        (rellevancia "Mitjana")
+    )
+    (Seguici_Nupcial_Amb_Himeneu
+        of Obres
+        (any_de_creacio 1803)
+        (epoca "Edat Contemporània")
+        (estil "Neoclassicisme")
+        (autor_quadre "Josep Bernat Flaugier")
+        (sala 9)
+        (tematica "Mitològica")
+        (dimensions 4017)
+        (complexitat "Mitjana")
+        (rellevancia "Baixa")
+    )
+    (Mort_de_Sant_Josep_Oriol
+        of Obres
+        (any_de_creacio 1806)
+        (epoca "Edat Contemporània")
+        (estil "Neoclassicisme")
+        (autor_quadre "Josep Bernat Flaugier")
+        (sala 9)
+        (tematica "Religiosa")
+        (dimensions 263.34)
+        (complexitat "Alta")
+        (rellevancia "Mitjana")
+    )
+    (Retrat_del_Rei_Josep_I
+        of Obres
+        (any_de_creacio 1809)
+        (epoca "Edat Contemporània")
+        (estil "Pintura a l'oli")
+        (autor_quadre "Josep Bernat Flaugier")
+        (sala 9)
+        (tematica "Retrat")
+        (dimensions 13888)
+        (complexitat "Baixa")
+        (rellevancia "Baixa")
+    )
+    (Aparicio_de_la_Mare_de_Deu
+        of Obres
+        (any_de_creacio 1812)
+        (epoca "Edat Contemporània")
+        (estil "Neoclassicisme")
+        (autor_quadre "Josep Bernat Flaugier")
+        (sala 9)
+        (tematica "Religiosa")
+        (dimensions 2928)
+        (complexitat "Alta")
+        (rellevancia "Baixa")
+    )
+    (Dos_Frares_i_Grup_de_Gent
+        of Obres
+        (any_de_creacio 1812)
+        (epoca "Edat Contemporània")
+        (estil "Dibuix")
+        (autor_quadre "Josep Bernat Flaugier")
+        (sala 9)
+        (tematica "Religiosa")
+        (dimensions 690.8)
+        (complexitat "Baixa")
+        (rellevancia "Baixa")
+    )
+    (Sant_Joan_Baptista
+        of Obres
+        (any_de_creacio 1790)
+        (epoca "Edat Contemporània")
+        (estil "Neoclassicisme")
+        (autor_quadre "Josep Bernat Flaugier")
+        (sala 9)
+        (tematica "Religiosa")
+        (dimensions 1168.75)
+        (complexitat "Mitjana")
+        (rellevancia "Baixa")
+    )
+    (Sagrada_Familia
+        of Obres
+        (any_de_creacio 1812)
+        (epoca "Edat Contemporània")
+        (estil "Tinta")
+        (autor_quadre "Josep Bernat Flaugier")
+        (sala 9)
+        (tematica "Religiosa")
+        (dimensions 459.34)
+        (complexitat "Baixa")
+        (rellevancia "Baixa")
+    )
+
+    ;; Sala 10 - Art Modern Català
+    (Autoretrat
+        of Obres
+        (any_de_creacio 1802)
+        (epoca "Edat Contemporània")
+        (estil "Art Modern")
+        (autor_quadre "Salvador Mayol")
+        (sala 10)
+        (tematica "Autoretrat")
+        (dimensions 3220)
+        (complexitat "Alta")
+        (rellevancia "Mitjana")
+    )
+    (Un_Cafe_durant_Carnestoltes
+        of Obres
+        (any_de_creacio 1824)
+        (epoca "Edat Contemporània")
+        (estil "Art Modern")
+        (autor_quadre "Salvador Mayol")
+        (sala 10)
+        (tematica "Vida quotidiana")
+        (dimensions 19608)
+        (complexitat "Mitjana")
+        (rellevancia "Baixa")
+    )
+    (Masia_Blanca_de_Bunyola
+        of Obres
+        (any_de_creacio 1902)
+        (epoca "Edat Contemporània")
+        (estil "Modernisme")
+        (autor_quadre "Santiago Rusiñol")
+        (sala 10)
+        (tematica "Paisatge")
+        (dimensions 5376)
+        (complexitat "Mitjana")
+        (rellevancia "Alta")
+    )
+    (Maquina_de_Llaurar
+        of Obres
+        (any_de_creacio 1953)
+        (epoca "Edat Contemporània")
+        (estil "Art Modern")
+        (autor_quadre "Desconegut")
+        (sala 10)
+        (tematica "Conceptual")
+        (dimensions 1280)
+        (complexitat "Baixa")
+        (rellevancia "Baixa")
     )
 )
 
-(definstances instancies_visitants
-    (visitant1 of Visitants
-        (autor_pref "Leonardo da Vinci")
-        (epoca_pref "Renaixement")
-        (estil_pref "Renaixentista")
-        (primer_cop_o_no "Sí")
-        (tematica_pref "Religiós")
-    )
-    (visitant2 of Visitants
-        (autor_pref "Paul Huet")
-        (epoca_pref "Contemporània")
-        (estil_pref "Romanticisme")
-        (primer_cop_o_no "No")
-        (tematica_pref "Paisatge")
-    )
-)
 
 (definstances instancies_sales
     (sala1 of Sala (id 1) (connected-to 2 10))
@@ -1165,7 +1058,7 @@
     (declare (salience 100))
     =>
     (printout t "..........................................................." crlf)
-    (printout t "                       Museu del 'SBC                      " crlf)
+    (printout t "                       Museu de l'SBC                      " crlf)
     (printout t "..........................................................." crlf)
     (printout t crlf)     
     (printout t "En Ramon, en Dani, en Nils i en Jaume us donem la benvinguda al museu!" crlf)
@@ -1298,6 +1191,7 @@
         (printout t "Has seleccionat: Acompanyat" crlf)
     )
 )
+
 (defrule MAIN::estil "Pregunta què estil prefereix el visitant"
     (declare (salience 15))
     =>
@@ -1306,15 +1200,16 @@
     (printout t "2. cubisme" crlf)
     (printout t "Selecciona una opció: " crlf)
     (bind ?groneixementup (read))
-    (if (eq ?grup 1) then
+    (if (eq ?groneixementup 1) then
         (assert (estil "neoclassicisme"))
         (printout t "Has seleccionat: neoclassicisme" crlf)
     )
-    (if (eq ?grup 2) then
+    (if (eq ?groneixementup 2) then
         (assert (estil "cubisme"))
         (printout t "Has seleccionat: cubisme" crlf)
     )
 )
+
 (defrule MAIN::author "Pregunta què autor prefereix el visitant"
     (declare (salience 1))
     =>
@@ -1395,13 +1290,8 @@
     )
 )
 
-;(any-factp ((?f grup)) (eq ?f:implied (create$ "Sol"))) --> mira si existeix el fact (grup "Sol")
-;(any-factp ((?f grup)) (eq ?f:implied (create$ "Acompanyat"))) --> mira si existeix el fact (grup "Acompanyat")
-
-; ant ->            Visita > 2h, Primer com, Interes (Alt) o Coneixement (Alt)
-; butterfly ->      Visita > 2h, Primer com o esporàdic, Interes (mitjà) i Coneixement (Alt o mitja)
-; grasshopper ->    Visita < 2h, freq o esporàdic, (Interes (mitjà) i Coneixement (baix)) o (Interes (baix) i Coneixement (mitjà))
-; peix ->           Visita < 2h, freq o esporàdic, Interes (baix) i Coneixement (baix)
+;(any-factp ((?f grup)) (eq ?f:implied (create$ "Sol")))        --> mira si existeix el fact (grup "Sol")         NOMES LINEA DE COMANDES!!
+;(any-factp ((?f grup)) (eq ?f:implied (create$ "Acompanyat"))) --> mira si existeix el fact (grup "Acompanyat")  NOMES LINEA DE COMANDES!!
 
 (defrule bind-rooms
     ?sala1 <- (Sala (id 1))
@@ -1411,18 +1301,71 @@
     (modify ?sala2 (connected-to ?sala1))
 )
 
-(defrule assignar-personalitat
-    (declare (salience 0))
+;;;     Clasificacció de Visitant individual     ;;;
+
+;;      Ant      ;;
+
+; ant -> Visita > 2h, Primer com, Interes (Alt) o Coneixement (Alt)
+(defrule classificar-visitant-ant
+    (grup "Sol")
+    (frequencia-visites "Primer cop")
+    (temps-visita ?temps&:(>= ?temps 2))  
+    (or 
+        (interés "alt")                  
+        (coneixement "alt"))             
     =>
-    (if (and 
-            (any-factp ((?b frequencia-visites)) (eq ?f:implied (create$ "Primer cop")))
-            ((or 
-                (any-factp ((?c interes)) (eq ?f:implied (create$ "alt")))
-                (any-factp ((?c coneixement)) (eq ?f:implied (create$ "alt")))
-            )
-            )
-        )
-    )
+    (assert (tipus-visitant "Ant"))
+)
+
+;;      Butterfly      ;;
+
+; butterfly -> Visita > 2h, Primer com o esporàdic, Interes (mitjà) i Coneixement (Alt o mitja)
+(defrule classificar-visitant-butterfly
+    (grup "Sol")
+    (or
+        (frequencia-visites "Primer cop")
+        (frequencia-visites "Esporàdic"))
+    (temps-visita ?temps&:(>= ?temps 2)) 
+    (interés "mitjà")  
+    (or
+        (coneixement "Mitjà")                
+        (coneixement "alt"))             
+     =>
+    (assert (tipus-visitant "Butterfly"))
+)
+
+;;      Grasshopper      ;;
+
+; grasshopper -> Visita < 2h, freq o esporàdic, (Interes (mitjà) i Coneixement (baix)) o (Interes (baix) i Coneixement (mitjà))
+(defrule classificar-visitant-grasshopper
+    (grup "Sol")
+    (or
+        (frequencia-visites "Freqüent")
+        (frequencia-visites "Esporàdic"))
+    (temps-visita ?temps&:(< ?temps 2)) 
+    (or
+        (interés "Mitjà")
+        (interés "Baix"))   
+    (or
+        (coneixement "Baix")
+        (coneixement "Mitjà"))
+    =>
+    (assert (tipus-visitant "Grasshopper"))
+)
+
+;;      Fish      ;;
+
+; fish -> Visita < 2h, freq o esporàdic, Interes (baix) i Coneixement (baix)
+(defrule classificar-visitant-fish
+    (grup "Sol")
+    (or
+        (frequencia-visites "Freqüent")
+        (frequencia-visites "Esporàdic"))
+    (temps-visita ?temps&:(< ?temps 2))  
+    (interés "Baix")                  
+    (coneixement "Baix")             
+    =>
+    (assert (tipus-visitant "Fish"))
 )
 
 ; Rule to calculate interest in each artwork based on visitor preferences
