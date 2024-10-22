@@ -1299,13 +1299,6 @@
 ;(any-factp ((?f grup)) (eq ?f:implied (create$ "Sol")))        --> mira si existeix el fact (grup "Sol")         NOMES LINEA DE COMANDES!!
 ;(any-factp ((?f grup)) (eq ?f:implied (create$ "Acompanyat"))) --> mira si existeix el fact (grup "Acompanyat")  NOMES LINEA DE COMANDES!!
 (defmodule ClassificacioVisitant)
-(defrule bind-rooms
-    ?sala1 <- (object (is-a Sala) (id 1))
-    ?sala2 <- (object (is-a Sala) (id 2))
-    =>
-    (send ?sala1 put connected-to (create$ (send ?sala1 get connected-to) ?sala2))
-    (send ?sala2 put connected-to (create$ (send ?sala2 get connected-to) ?sala1))
-)
 
 ;;;     Clasificacció de Visitant individual     ;;;
 
