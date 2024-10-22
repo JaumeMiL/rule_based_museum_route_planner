@@ -1308,6 +1308,7 @@
 
 ; ant -> Visita > 2h, Primer com, Interes (Alt) o Coneixement (Alt)
 (defrule classificar-visitant-ant
+    (declare (salience 0))
     (grup "Sol")
     (frequencia-visites "Primer cop")
     (temps-visita ?temps&:(>= ?temps 2))  
@@ -1322,6 +1323,7 @@
 
 ; butterfly -> Visita > 2h, Primer com o esporàdic, Interes (mitjà) i Coneixement (Alt o mitja)
 (defrule classificar-visitant-butterfly
+    (declare (salience 0))
     (grup "Sol")
     (or
         (frequencia-visites "Primer cop")
@@ -1339,6 +1341,7 @@
 
 ; grasshopper -> Visita < 2h, freq o esporàdic, (Interes (mitjà) i Coneixement (baix)) o (Interes (baix) i Coneixement (mitjà))
 (defrule classificar-visitant-grasshopper
+    (declare (salience 0))
     (grup "Sol")
     (or
         (frequencia-visites "Freqüent")
@@ -1358,6 +1361,7 @@
 
 ; fish -> Visita < 2h, freq o esporàdic, Interes (baix) i Coneixement (baix)
 (defrule classificar-visitant-fish
+    (declare (salience 0))
     (grup "Sol")
     (or
         (frequencia-visites "Freqüent")
@@ -1370,6 +1374,7 @@
 )
 
 (defrule classificar-visitant-grup
+    (declare (salience 0))
     (grup "Acompanyat")             
     =>
     (assert (tipus-visitant "Grup"))
