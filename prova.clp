@@ -14,6 +14,9 @@
     (multislot autor_quadre
         (type STRING)
         (create-accessor read-write))
+    (multislot sala
+        (type INTEGER)
+        (create-accessor read-write))
     (multislot complexitat
         (type STRING)
         (create-accessor read-write))
@@ -50,41 +53,63 @@
     )
 )
 
-(deffacts in-c
-    (contador 0)
-    (mean_t 30)         ; promedio de tiempo mirando la obra (s)
-    (mean_d_t 20)       ; promedio de tiempo de desplazamiento entre el museo (s)
-    (Cantidad_obras 80)
-    (weight 5)
-
-    (temps-visita 1)
+(make-instance Codi_d_Hammurabi 
+    of Obres
+    (any_de_creacio -1792)
     (epoca "Antiga")
-    (preferencia-tematica "Legal")
     (estil "Escultura")
-    (autor-preferit "Desconegut")
+    (autor_quadre "Desconegut")
+    (sala 1)
+    (tematica "Legal")
+    (dimensions 17775)
+    (complexitat "Mitjana")
+    (rellevancia "Alta")
 )
+
+;(defrule in-c
+;    (declare (salience 0))
+;    =>
+;    (assert (contador 0))
+;    (assert (mean_t 30))         ; promedio de tiempo mirando la obra (s)
+;    (assert (mean_d_t 20))       ; promedio de tiempo de desplazamiento entre el museo (s)
+;    (assert (Cantidad_obras 80))
+;    (assert (weight 5))
+;    (assert (temps-visita 1))
+;    (assert (epoca "Antiga"))
+;    (assert (preferencia-tematica "Legal"))
+;    (assert (estil "Escultura"))
+;    (assert (autor-preferit "Desconegut"))
+;)
 
 (defrule matchcuadres
     (declare (salience 0))
 
     ;   Agafem Obres
-    ?obra <- (Obres (epoca ?ep) (estil ?es) (autor_quadre ?auq) (tematica ?ot) (rellevancia ?r) (sala ?s))
+    ?obra <- (object (is-a Obres) (epoca ?ep) (estil ?es) (autor_quadre ?auq) (tematica ?ot) (rellevancia ?r) (sala ?s))
 
     ;   Agafem preferencies
-    (epoca ?e) (preferencia-tematica ?t) (estil ?esv) (autor-preferit ?au)
+    ?fetep <- (epoca ?e) 
+    ?fettem <- (preferencia-tematica ?t) 
+    ?fetestil <- (estil ?esv) 
+    ?fetaut <- (autor-preferit ?au)
     
     ;   Agafem Comptador
-    (contador ?c)
+    ?cont <- (contador ?c)
 
     ;   Fem Matching
-    (test (eq ?ep ?e))
-    (test (eq ?es ?esv))
-    (test (eq ?auq ?au))
-    (test (eq ?ot ?t))
+    (test (printout t "Comparando epoca: " ?e " con " ?ep crlf))
+    (test (printout t "Comparando estil: " ?esv " con " ?es crlf))
+    (test (printout t "Comparando autor: " ?au " con " ?auq crlf))
+    (test (printout t "Comparando tematica: " ?t " con " ?ot crlf))
+
+    (test (eq ?e ?ep))
+    (test (eq ?esv ?es))
+    (test (eq ?au ?auq))
+    (test (eq ?t ?ot))
     =>
     (assert (mirant ?obra))
     (printout t ?obra ": ha fet match")
-    (retract (contador ?c))
+    (retract ?cont)
     (assert (contador (+ ?c 1)))
 )
 
@@ -93,9 +118,9 @@
 ;)
 
 
-(defrule NoCuadrosSuficientes
-    (contador ?c) (weight ?w) (temps-visita ?tv) (mean_t ?mt) (mean_d_t ?mdt)
-    (test (< ?c (* (/ (- (* ?tv 3600) ?mdt) ?mt) 100)))
-    =>
-    (assert (nocuadsuf True))
-)
+;(defrule NoCuadrosSuficientes
+;    (contador ?c) (weight ?w) (temps-visita ?tv) (mean_t ?mt) (mean_d_t ?mdt)
+;    (test (< ?c (* (/ (- (* ?tv 3600) ?mdt) ?mt) 100)))
+;    =>
+;    (assert (nocuadsuf True))
+;)
