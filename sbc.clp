@@ -302,7 +302,7 @@
         (rellevancia "Baixa")
     )
     (Obres
-        (nom "Paisaje_con_Psique_y_Jupiter")
+        (nom "Paisaje con Psique y Jupiter")
         (any_de_creacio 1610)
         (epoca "Edat Moderna")
         (estil "Barroc")
@@ -314,7 +314,7 @@
         (rellevancia "Baixa")
     )
     (Obres
-        (nom "Cabeza_de_venado")
+        (nom "Cabeza de venado")
         (any_de_creacio 1626)
         (epoca "Edat Moderna")
         (estil "Barroc")
@@ -338,7 +338,7 @@
         (rellevancia "Baixa")
     )
     (Obres
-        (nom "La_Vista_y_el_Olfato")
+        (nom "La Vista y el Olfato")
         (any_de_creacio 1632)
         (epoca "Edat Moderna")
         (estil "Barroc")
@@ -350,7 +350,7 @@
         (rellevancia "Mitjana")
     )
     (Obres
-        (nom "El_embarco_de_santa_Paula_Romana")
+        (nom "El embarco de santa Paula Romana")
         (any_de_creacio 1639)
         (epoca "Edat Moderna")
         (estil "Classicisme")
@@ -362,7 +362,7 @@
         (rellevancia "Mitjana")
     )
     (Obres
-        (nom "La_Inmaculada_de_El_Escorial")
+        (nom "La Inmaculada de El Escorial")
         (any_de_creacio 1660)
         (epoca "Edat Moderna")
         (estil "Barroc")
@@ -374,7 +374,7 @@
         (rellevancia "Alta")
     )
     (Obres
-        (nom "La_puntaire")
+        (nom "La puntaire")
         (any_de_creacio 1670)
         (epoca "Edat Moderna")
         (estil "Barroc")
@@ -388,7 +388,7 @@
 
     ;; Sala 4 - Barroc i Rococó
     (Obres
-        (nom "L_astronom")
+        (nom "L'astrònom")
         (any_de_creacio 1668)
         (epoca "Edat Moderna")
         (estil "Barroc")
@@ -412,7 +412,7 @@
         (rellevancia "Baixa")
     )
     (Obres
-        (nom "Eugenia_Martínez_Vallejo vestida de Menina")
+        (nom "Eugenia Martínez Vallejo vestida de Menina")
         (any_de_creacio 1680)
         (epoca "Edat Moderna")
         (estil "Barroc")
@@ -436,7 +436,7 @@
         (rellevancia "Baixa")
     )
     (Obres
-        (nom "El_sacrificio_de_Isaac")
+        (nom "El sacrificio de Isaac")
         (any_de_creacio 1715)
         (epoca "Edat Moderna")
         (estil "Barroc")
@@ -460,7 +460,7 @@
         (rellevancia "Mitjana")
     )
     (Obres
-        (nom "Retrato_del_conde_Fulvio_Grati")
+        (nom "Retrato del conde Fulvio Grati")
         (any_de_creacio 1720)
         (epoca "Edat Moderna")
         (estil "Barroc")
@@ -510,7 +510,7 @@
         (rellevancia "Baixa")
     )
     (Obres
-        (nom "La_educacion_de_Aquiles")
+        (nom "La educacion de Aquiles")
         (any_de_creacio 1727)
         (epoca "Edat Moderna")
         (estil "Barroc")
@@ -558,7 +558,7 @@
         (rellevancia "Baixa")
     )
     (Obres
-        (nom "Capricho_con_rio_y_puente")
+        (nom "Capricho con rio y puente")
         (any_de_creacio 1745)
         (epoca "Edat Moderna")
         (estil "Barroc")
@@ -570,7 +570,7 @@
         (rellevancia "Baixa")
     )
     (Obres
-        (nom "La_expulsion_de_los_mercaderes_del_templo")
+        (nom "La expulsion de los mercaderes del templo")
         (any_de_creacio 1750)
         (epoca "Edat Moderna")
         (estil "Barroc")
@@ -582,7 +582,7 @@
         (rellevancia "Baixa")
     )
     (Obres
-        (nom "Frances_condesa_de_Dartmouth")
+        (nom "Frances condesa de Dartmouth")
         (any_de_creacio 1756)
         (epoca "Edat Moderna")
         (estil "Barroc")
@@ -594,7 +594,7 @@
         (rellevancia "Baixa")
     )
     (Obres
-        (nom "La_apoteosis_de_Hercules")
+        (nom "La apoteosis de Hercules")
         (any_de_creacio 1765)
         (epoca "Edat Moderna")
         (estil "Rococó")
@@ -606,7 +606,7 @@
         (rellevancia "Baixa")
     )
     (Obres
-        (nom "El_patio_de_la_aduana")
+        (nom "El patio de la aduana")
         (any_de_creacio 1775)
         (epoca "Edat Moderna")
         (estil "Barroc")
@@ -656,7 +656,7 @@
         (rellevancia "Baixa")
     )
     (Obres
-        (nom "La_familia_de_Carlos_IV")
+        (nom "La familia de Carlos IV")
         (any_de_creacio 1800)
         (epoca "Edat Contemporània")
         (estil "Neoclassicisme")
@@ -668,7 +668,7 @@
         (rellevancia "Alta")
     )
     (Obres
-        (nom "Cincinato_abandona_el_arado_para_dictar_leyes_a_Roma")
+        (nom "Cincinato abandona el arado para dictar leyes a Roma")
         (any_de_creacio 1806)
         (epoca "Edat Contemporània")
         (estil "Neoclassicisme")
