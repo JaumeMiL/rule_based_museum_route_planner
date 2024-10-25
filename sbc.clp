@@ -1371,16 +1371,27 @@
     (printout t "Generant ruta per a un visitant de tipus: " ?style crlf)
     (assert (Ruta (start-room 1) (end-room 10)))  ; Suposem una sala final predeterminada
     (assert (current-room 1))
-    (assert (Sala (id 1) (connected-to 2 10)))
 )
 
-(defrule done
-    (current-room ?current)
+(defrule anar-a-la-sala
     ?sala <- (Sala (id ?current) (connected-to $?next-rooms))
+    ?sala-actual <- (current-room ?current)
     =>
     (printout t "La sala actual és la sala " ?current crlf)
     (printout t "Les sales següents són: " $?next-rooms crlf)
+    (printout t "Selecciona la sala a la que vols anar: " crlf)
+    (bind ?next (read))
+    (if (member$ ?next $?next-rooms)
+        then
+        (retract ?sala-actual)
+        (assert (current-room ?next))
+        (printout t "Movent-se a la sala: " ?next crlf)
+        else
+        (assert (current-room ?current))
+        (printout t "Sala no vàlida. Si us plau, intenta-ho de nou." crlf)
+    )
 )
+
 
 ; Regla per moure’s d’una sala a una altra
 ; (defrule seguir-ruta
