@@ -9,14 +9,13 @@
 ;;; Translated to CLIPS from ontology ontologia_practica.ttl
 ;;; :Date 11/10/2024 18:04:18
 
-(defmodule MAIN (export ?ALL))
+; (defmodule MAIN (export ?ALL))
 
 (defclass Visitant
     (is-a USER)
     (pattern-match reactive)
-    (multislot Mira_a  ; This is the "mira-a" relationship
-        (type INSTANCE)
-        (allowed-classes Obres)  ; It references instances of the class "Obres"
+    (multislot Mira_a
+        (type STRING)
         (create-accessor read-write))
     (multislot autor_pref
         (type STRING)
@@ -35,52 +34,27 @@
         (create-accessor read-write))
 )
 
-(defclass Obres
-    (is-a USER)
-    (pattern-match reactive)
-    (slot Nom
-        (type STRING)
-        (create-accessor read-write))
-;    (multislot Mirada_por ; Optionally, to reference who is looking at the work of art
-;        (type INSTANCE)
-;        (allowed-classes Visitant)  ; It references instances of the class "Visitant"
-;        (create-accessor read-write))
-    (multislot any_de_creacio
-        (type INTEGER)
-        (create-accessor read-write))
-    (multislot autor_quadre
-        (type STRING)
-        (create-accessor read-write))
-    (multislot complexitat
-        (type STRING)
-        (create-accessor read-write))
-    (multislot dimensions
-        (type INTEGER)
-        (create-accessor read-write))
-    (multislot epoca
-        (type STRING)
-        (create-accessor read-write))
-    (multislot estil
-        (type STRING)
-        (create-accessor read-write))
-    (multislot rellevancia
-        (type STRING)
-        (create-accessor read-write))
-    (multislot tematica
-        (type STRING)
-        (create-accessor read-write))
-)
-
-(defclass Sala
-    (is-a USER)
-    (pattern-match reactive)
-    (slot id
-        (type INTEGER)
-        (create-accessor read-write))
-    (slot connected-to
-        (type INSTANCE)
-        (allowed-classes Sala)
-        (create-accessor read-write))
+(deftemplate Obres
+    (slot nom
+        (type STRING))
+    (slot any_de_creacio
+        (type INTEGER))
+    (slot epoca
+        (type STRING))
+    (slot estil
+        (type STRING))
+    (slot autor_quadre
+        (type STRING))
+    (slot sala
+        (type INTEGER))
+    (slot tematica
+        (type STRING))
+    (slot dimensions
+        (type INTEGER))
+    (slot complexitat
+        (type STRING))
+    (slot rellevancia
+        (type STRING))
 )
 
 (defclass Visitant_acompanyat
@@ -101,12 +75,26 @@
         (create-accessor read-write))
 )
 
+(deftemplate Sala
+    (slot id
+        (type INTEGER))
+    (multislot connected-to
+        (type INTEGER))
+)
+
+(deftemplate Ruta
+    (slot start-room
+        (type INTEGER))
+    (slot end-room
+        (type INTEGER))
+)
+
 ; INSTÀNCIES
 
-(definstances instancies_obres
+(deffacts instancies_obres
     ;; Sala 1 - Època Antiga i Medieval
-    (Codi_d_Hammurabi
-        of Obres
+    (Obres 
+        (nom "Codi d'Hammurabi")
         (any_de_creacio -1792)
         (epoca "Antiga")
         (estil "Escultura")
@@ -117,8 +105,8 @@
         (complexitat "Mitjana")
         (rellevancia "Alta")
     )
-    (Lamassu
-        of Obres
+    (Obres 
+        (nom "Lamassu")
         (any_de_creacio -720)
         (epoca "Antiga")
         (estil "Escultura")
@@ -129,20 +117,20 @@
         (complexitat "Mitjana")
         (rellevancia "Mitjana")
     )
-    (Tique_de_Constantinoble
-        of Obres
+    (Obres
+        (nom "Tique de Constantinoble")
         (any_de_creacio 649)
         (epoca "Medieval")
         (estil "Bizantí")
         (autor_quadre "Desconegut")
         (sala 1)
         (tematica "Mitologia")
-        (dimensions 688.2)
+        (dimensions 688)
         (complexitat "Baixa")
         (rellevancia "Baixa")
     )
-    (Pintures_Murals_Conquesta_Mallorca
-        of Obres
+    (Obres
+        (nom "Pintures Murals Conquesta Mallorca")
         (any_de_creacio 1288)
         (epoca "Medieval")
         (estil "Gòtic")
@@ -153,20 +141,20 @@
         (complexitat "Baixa")
         (rellevancia "Mitjana")
     )
-    (La_crucifixio
-        of Obres
+    (Obres
+        (nom "La crucifixió")
         (any_de_creacio 1320)
         (epoca "Medieval")
         (estil "Gòtic")
         (autor_quadre "Agnolo Gaddi")
         (sala 1)
         (tematica "Religió")
-        (dimensions 594.5)
+        (dimensions 594)
         (complexitat "Baixa")
         (rellevancia "Baixa")
     )
-    (Sant_Miquel_1450
-        of Obres
+    (Obres
+        (nom "Sant Miquel 1450")
         (any_de_creacio 1450)
         (epoca "Medieval")
         (estil "Gòtic")
@@ -177,8 +165,8 @@
         (complexitat "Alta")
         (rellevancia "Alta")
     )
-    (Sant_Miquel_1455
-        of Obres
+    (Obres
+        (nom "Sant Miquel 1455")
         (any_de_creacio 1455)
         (epoca "Medieval")
         (estil "Gòtic")
@@ -189,8 +177,8 @@
         (complexitat "Mitjana")
         (rellevancia "Mitjana")
     )
-    (Sant_Agusti
-        of Obres
+    (Obres
+        (nom "Sant Agustí")
         (any_de_creacio 1463)
         (epoca "Medieval")
         (estil "Gòtic")
@@ -203,20 +191,20 @@
     )
 
     ;; Sala 2 - Renaixement i Manierisme
-    (Davallament
-        of Obres
+    (Obres
+        (nom "Davallament")
         (any_de_creacio 1475)
         (epoca "Edat Moderna")
         (estil "Renaixement")
         (autor_quadre "Desconegut")
         (sala 2)
         (tematica "Religió")
-        (dimensions 1998.15)
+        (dimensions 1998)
         (complexitat "Alta")
         (rellevancia "Mitjana")
     )
-    (Retaule_de_Sant_Cebria
-        of Obres
+    (Obres
+        (nom "Retaule de Sant Cebrià")
         (any_de_creacio 1475)
         (epoca "Edat Moderna")
         (estil "Gòtic")
@@ -227,8 +215,8 @@
         (complexitat "Alta")
         (rellevancia "Baixa")
     )
-    (Mare_de_Deu_de_les_Roques
-        of Obres
+    (Obres
+        (nom "Mare de Déu de les Roques")
         (any_de_creacio 1483)
         (epoca "Edat Moderna")
         (estil "Renaixement")
@@ -239,8 +227,8 @@
         (complexitat "Mitjana")
         (rellevancia "Mitjana")
     )
-    (Sant_Gregori_Papa
-        of Obres
+    (Obres
+        (nom "Sant Gregori Papa")
         (any_de_creacio 1495)
         (epoca "Edat Moderna")
         (estil "Renaixement")
@@ -251,20 +239,20 @@
         (complexitat "Mitjana")
         (rellevancia "Baixa")
     )
-    (La_Mona_Lisa
-        of Obres
+    (Obres
+        (nom "La Mona Lisa")
         (any_de_creacio 1519)
         (epoca "Edat Moderna")
         (estil "Renaixement")
         (autor_quadre "Leonardo da Vinci")
         (sala 2)
         (tematica "Retrat")
-        (dimensions 0.424)
+        (dimensions 424)
         (complexitat "Mitjana")
         (rellevancia "Alta")
     )
-    (Sant_Jordi_matant_el_drac
-        of Obres
+    (Obres
+        (nom "Sant Jordi matant el drac")
         (any_de_creacio 1520)
         (epoca "Edat Moderna")
         (estil "Renaixement")
@@ -275,8 +263,8 @@
         (complexitat "Mitjana")
         (rellevancia "Mitjana")
     )
-    (Les_Noces_de_Cana
-        of Obres
+    (Obres
+        (nom "Les Noces de Canà")
         (any_de_creacio 1550)
         (epoca "Edat Moderna")
         (estil "Renaixement")
@@ -287,8 +275,8 @@
         (complexitat "Alta")
         (rellevancia "Alta")
     )
-    (La_Anunciacion
-        of Obres
+    (Obres
+        (nom "L'Anunciació")
         (any_de_creacio 1576)
         (epoca "Edat Moderna")
         (estil "Renaixement")
@@ -301,8 +289,8 @@
     )
 
     ;; Sala 3 - Barroc primerenc
-    (Arco_de_triunfo
-        of Obres
+    (Obres
+        (nom "Arco de triunfo")
         (any_de_creacio 1607)
         (epoca "Edat Moderna")
         (estil "Barroc")
@@ -313,8 +301,8 @@
         (complexitat "Baixa")
         (rellevancia "Baixa")
     )
-    (Paisaje_con_Psique_y_Jupiter
-        of Obres
+    (Obres
+        (nom "Paisaje_con_Psique_y_Jupiter")
         (any_de_creacio 1610)
         (epoca "Edat Moderna")
         (estil "Barroc")
@@ -325,8 +313,8 @@
         (complexitat "Baixa")
         (rellevancia "Baixa")
     )
-    (Cabeza_de_venado
-        of Obres
+    (Obres
+        (nom "Cabeza_de_venado")
         (any_de_creacio 1626)
         (epoca "Edat Moderna")
         (estil "Barroc")
@@ -337,8 +325,8 @@
         (complexitat "Baixa")
         (rellevancia "Mitjana")
     )
-    (Sibila
-        of Obres
+    (Obres
+        (nom "Sibila")
         (any_de_creacio 1632)
         (epoca "Edat Moderna")
         (estil "Barroc")
@@ -349,8 +337,8 @@
         (complexitat "Mitjana")
         (rellevancia "Baixa")
     )
-    (La_Vista_y_el_Olfato
-        of Obres
+    (Obres
+        (nom "La_Vista_y_el_Olfato")
         (any_de_creacio 1632)
         (epoca "Edat Moderna")
         (estil "Barroc")
@@ -361,8 +349,8 @@
         (complexitat "Alta")
         (rellevancia "Mitjana")
     )
-    (El_embarco_de_santa_Paula_Romana
-        of Obres
+    (Obres
+        (nom "El_embarco_de_santa_Paula_Romana")
         (any_de_creacio 1639)
         (epoca "Edat Moderna")
         (estil "Classicisme")
@@ -373,8 +361,8 @@
         (complexitat "Mitjana")
         (rellevancia "Mitjana")
     )
-    (La_Inmaculada_de_El_Escorial
-        of Obres
+    (Obres
+        (nom "La_Inmaculada_de_El_Escorial")
         (any_de_creacio 1660)
         (epoca "Edat Moderna")
         (estil "Barroc")
@@ -385,8 +373,8 @@
         (complexitat "Mitjana")
         (rellevancia "Alta")
     )
-    (La_puntaire
-        of Obres
+    (Obres
+        (nom "La_puntaire")
         (any_de_creacio 1670)
         (epoca "Edat Moderna")
         (estil "Barroc")
@@ -399,8 +387,8 @@
     )
 
     ;; Sala 4 - Barroc i Rococó
-    (L_astronom
-        of Obres
+    (Obres
+        (nom "L_astronom")
         (any_de_creacio 1668)
         (epoca "Edat Moderna")
         (estil "Barroc")
@@ -411,8 +399,8 @@
         (complexitat "Baixa")
         (rellevancia "Mitjana")
     )
-    (Cofre_de_joies_de_Lluis_XIV
-        of Obres
+    (Obres
+        (nom "Cofre de joies de Lluís XIV")
         (any_de_creacio 1677)
         (epoca "Edat Moderna")
         (estil "Escultura")
@@ -423,8 +411,8 @@
         (complexitat "Alta")
         (rellevancia "Baixa")
     )
-    (Eugenia_Martinez_Vallejo_vestida
-        of Obres
+    (Obres
+        (nom "Eugenia_Martínez_Vallejo vestida de Menina")
         (any_de_creacio 1680)
         (epoca "Edat Moderna")
         (estil "Barroc")
@@ -435,8 +423,8 @@
         (complexitat "Baixa")
         (rellevancia "Mitjana")
     )
-    (Paisaje_con_tormenta
-        of Obres
+    (Obres
+        (nom "Paisaje con tormenta")
         (any_de_creacio 1701)
         (epoca "Edat Moderna")
         (estil "Barroc")
@@ -447,8 +435,8 @@
         (complexitat "Alta")
         (rellevancia "Baixa")
     )
-    (Es_sacrificio_de_Isaac
-        of Obres
+    (Obres
+        (nom "El_sacrificio_de_Isaac")
         (any_de_creacio 1715)
         (epoca "Edat Moderna")
         (estil "Barroc")
@@ -459,8 +447,8 @@
         (complexitat "Mitjana")
         (rellevancia "Baixa")
     )
-    (La_reina_Zenobia_ante_el_emperador_Aureliano
-        of Obres
+    (Obres
+        (nom "La reina Zenobia ante el emperador Aureliano")
         (any_de_creacio 1717)
         (epoca "Edat Moderna")
         (estil "Rococó")
@@ -471,8 +459,8 @@
         (complexitat "Alta")
         (rellevancia "Mitjana")
     )
-    (Retrato_del_conde_Fulvio_Grati
-        of Obres
+    (Obres
+        (nom "Retrato_del_conde_Fulvio_Grati")
         (any_de_creacio 1720)
         (epoca "Edat Moderna")
         (estil "Barroc")
@@ -483,8 +471,8 @@
         (complexitat "Mitjana")
         (rellevancia "Baixa")
     )
-    (Ofrenda_a_Baco
-        of Obres
+    (Obres
+        (nom "Ofrena a Bacus")
         (any_de_creacio 1720)
         (epoca "Edat Moderna")
         (estil "Rococó")
@@ -497,8 +485,8 @@
     )
 
     ;; Sala 5 - Rococó i Neoclassicisme
-    (Retrato_de_Isabel_Farnesio
-        of Obres
+    (Obres
+        (nom "Retrato de Isabel Farnesio")
         (any_de_creacio 1723)
         (epoca "Edat Moderna")
         (estil "Barroc")
@@ -509,20 +497,20 @@
         (complexitat "Mitjana")
         (rellevancia "Mitjana")
     )
-    (La_piscina_probatica
-        of Obres
+    (Obres
+        (nom "La piscina probatica")
         (any_de_creacio 1724)
         (epoca "Edat Moderna")
         (estil "Barroc")
         (autor_quadre "Giovanni Paolo Panini")
         (sala 5)
         (tematica "Religió")
-        (dimensions 7220.05)
+        (dimensions 7220)
         (complexitat "Alta")
         (rellevancia "Baixa")
     )
-    (La_educacion_de_Aquiles
-        of Obres
+    (Obres
+        (nom "La_educacion_de_Aquiles")
         (any_de_creacio 1727)
         (epoca "Edat Moderna")
         (estil "Barroc")
@@ -533,56 +521,56 @@
         (complexitat "Mitjana")
         (rellevancia "Mitjana")
     )
-    (Bodegon_con_gato_y_pescado
-        of Obres
+    (Obres
+        (nom "Bodegon_con_gato_y_pescado")
         (any_de_creacio 1728)
         (epoca "Edat Moderna")
         (estil "Barroc")
         (autor_quadre "Jean Baptiste Siméon Chardin")
         (sala 5)
         (tematica "Bodegó")
-        (dimensions 5008.5)
+        (dimensions 5008)
         (complexitat "Baixa")
         (rellevancia "Baixa")
     )
-    (Concierto_Campestre
-        of Obres
+    (Obres
+        (nom "Concierto_Campestre")
         (any_de_creacio 1734)
         (epoca "Edat Moderna")
         (estil "Rococó")
         (autor_quadre "Jean-Baptiste Pater")
         (sala 5)
         (tematica "Escena de gènere")
-        (dimensions 3630.5)
+        (dimensions 3630)
         (complexitat "Mitjana")
         (rellevancia "Baixa")
     )
-    (Grupo_de_mendigos
-        of Obres
+    (Obres
+        (nom "Grupo_de_mendigos")
         (any_de_creacio 1737)
         (epoca "Edat Moderna")
         (estil "Barroc")
         (autor_quadre "Giacomo Cerutti")
         (sala 5)
         (tematica "Escena de gènere")
-        (dimensions 12397.5)
+        (dimensions 12397)
         (complexitat "Mitjana")
         (rellevancia "Baixa")
     )
-    (Capricho_con_rio_y_puente
-        of Obres
+    (Obres
+        (nom "Capricho_con_rio_y_puente")
         (any_de_creacio 1745)
         (epoca "Edat Moderna")
         (estil "Barroc")
         (autor_quadre "Bernardo Bellotto")
         (sala 5)
         (tematica "Paisatge")
-        (dimensions 3540.5)
+        (dimensions 3540)
         (complexitat "Mitjana")
         (rellevancia "Baixa")
     )
-    (La_expulsion_de_los_mercaderes_del_templo
-        of Obres
+    (Obres
+        (nom "La_expulsion_de_los_mercaderes_del_templo")
         (any_de_creacio 1750)
         (epoca "Edat Moderna")
         (estil "Barroc")
@@ -593,8 +581,8 @@
         (complexitat "Alta")
         (rellevancia "Baixa")
     )
-    (Frances_condesa_de_Dartmouth
-        of Obres
+    (Obres
+        (nom "Frances_condesa_de_Dartmouth")
         (any_de_creacio 1756)
         (epoca "Edat Moderna")
         (estil "Barroc")
@@ -605,20 +593,20 @@
         (complexitat "Baixa")
         (rellevancia "Baixa")
     )
-    (La_apoteosis_de_Hercules
-        of Obres
+    (Obres
+        (nom "La_apoteosis_de_Hercules")
         (any_de_creacio 1765)
         (epoca "Edat Moderna")
         (estil "Rococó")
         (autor_quadre "Giandomenico Tiepolo")
         (sala 5)
         (tematica "Mitologia")
-        (dimensions 8661.15)
+        (dimensions 8661)
         (complexitat "Alta")
         (rellevancia "Baixa")
     )
-    (El_patio_de_la_aduana
-        of Obres
+    (Obres
+        (nom "El_patio_de_la_aduana")
         (any_de_creacio 1775)
         (epoca "Edat Moderna")
         (estil "Barroc")
@@ -629,8 +617,8 @@
         (complexitat "Alta")
         (rellevancia "Baixa")
     )
-    (Paisaje_invernal_con_una_familia_de_campesinos
-        of Obres
+    (Obres
+        (nom "Paisaje invernal con una familia de campesinos")
         (any_de_creacio 1780)
         (epoca "Edat Moderna")
         (estil "Barroc")
@@ -643,8 +631,8 @@
     )
 
     ;; Sala 6 - Neoclassicisme i Romanticisme
-    (La_cita
-        of Obres
+    (Obres
+        (nom "La cita")
         (any_de_creacio 1780)
         (epoca "Edat Moderna")
         (estil "Neoclassicisme")
@@ -655,20 +643,20 @@
         (complexitat "Mitjana")
         (rellevancia "Mitjana")
     )
-    (Riña_de_gatos
-        of Obres
+    (Obres
+        (nom "Riña de gatos")
         (any_de_creacio 1786)
         (epoca "Edat Moderna")
         (estil "Naturalisme")
         (autor_quadre "Francisco de Goya y Lucientes")
         (sala 6)
         (tematica "Animals")
-        (dimensions 11104.25)
+        (dimensions 11104)
         (complexitat "Mitjana")
         (rellevancia "Baixa")
     )
-    (La_familia_de_Carlos_IV
-        of Obres
+    (Obres
+        (nom "La_familia_de_Carlos_IV")
         (any_de_creacio 1800)
         (epoca "Edat Contemporània")
         (estil "Neoclassicisme")
@@ -679,8 +667,8 @@
         (complexitat "Alta")
         (rellevancia "Alta")
     )
-    (Cincinato_abandona_el_arado_para_dictar_leyes_a_Roma
-        of Obres
+    (Obres
+        (nom "Cincinato_abandona_el_arado_para_dictar_leyes_a_Roma")
         (any_de_creacio 1806)
         (epoca "Edat Contemporània")
         (estil "Neoclassicisme")
@@ -691,8 +679,8 @@
         (complexitat "Mitjana")
         (rellevancia "Alta")
     )
-    (La_coronacio_de_Napoleo
-        of Obres
+    (Obres
+        (nom "La coronació de Napoleo")
         (any_de_creacio 1806)
         (epoca "Edat Contemporània")
         (estil "Neoclassicisme")
@@ -703,8 +691,8 @@
         (complexitat "Alta")
         (rellevancia "Alta")
     )
-    (El_Rai_de_la_Medusa
-        of Obres
+    (Obres
+        (nom "El Rai de la Medusa")
         (any_de_creacio 1818)
         (epoca "Edat Contemporània")
         (estil "Romanticisme")
@@ -715,8 +703,8 @@
         (complexitat "Alta")
         (rellevancia "Alta")
     )
-    (La_Llibertat_guiant_el_poble
-        of Obres
+    (Obres
+        (nom "La Llibertat guiant el poble")
         (any_de_creacio 1830)
         (epoca "Edat Contemporània")
         (estil "Romanticisme")
@@ -727,8 +715,8 @@
         (complexitat "Mitjana")
         (rellevancia "Alta")
     )
-    (Amalia_de_Llano_y_Dotres_condesa_de_Vilches
-        of Obres
+    (Obres
+        (nom "Amalia de Llano y Dotres, condesa de Vilches")
         (any_de_creacio 1853)
         (epoca "Edat Contemporània")
         (estil "Romanticisme")
@@ -743,8 +731,8 @@
 
 
     ;; Sala 7 - Paisatges Romàntics i Realistes
-    (Calma_matinal_interior_del_bosc
-        of Obres
+    (Obres
+        (nom "Calma matinal interior del bosc")
         (any_de_creacio 1850)
         (epoca "Edat Contemporània")
         (estil "Romanticisme")
@@ -755,8 +743,8 @@
         (complexitat "Mitjana")
         (rellevancia "Baixa")
     )
-    (Crepuscle
-        of Obres
+    (Obres
+        (nom "Crepuscle")
         (any_de_creacio 1842)
         (epoca "Edat Contemporània")
         (estil "Romanticisme")
@@ -767,8 +755,8 @@
         (complexitat "Mitjana")
         (rellevancia "Baixa")
     )
-    (Inundacions_a_Saint_Cloud
-        of Obres
+    (Obres
+        (nom "Inundacions a Saint Cloud")
         (any_de_creacio 1855)
         (epoca "Edat Contemporània")
         (estil "Romanticisme")
@@ -779,8 +767,8 @@
         (complexitat "Mitjana")
         (rellevancia "Mitjana")
     )
-    (Bosc_de_Fontainebleau_Els_cacadors
-        of Obres
+    (Obres
+        (nom "Bosc de Fontainebleau Els cacadors")
         (any_de_creacio 1855)
         (epoca "Edat Contemporània")
         (estil "Romanticisme")
@@ -793,8 +781,8 @@
     )
 
     ;; Sala 7 - Paisatges Romàntics
-    (Parc_de_Saint_Cloud_en_un_dia_festiu
-        of Obres
+    (Obres
+        (nom "Parc de Saint Cloud en un dia festiu")
         (any_de_creacio 1829)
         (epoca "Edat Contemporània")
         (estil "Romanticisme")
@@ -805,8 +793,8 @@
         (complexitat "Alta")
         (rellevancia "Baixa")
     )
-    (Cabana_normanda_Vell_Trouville
-        of Obres
+    (Obres
+        (nom "Cabana normanda Vell Trouville")
         (any_de_creacio 1861)
         (epoca "Edat Contemporània")
         (estil "Romanticisme")
@@ -817,34 +805,34 @@
         (complexitat "Mitjana")
         (rellevancia "Mitjana")
     )
-    (La_plana_davant_dels_Pirineus
-        of Obres
+    (Obres
+        (nom "La plana davant dels Pirineus")
         (any_de_creacio 1861)
         (epoca "Edat Contemporània")
         (estil "Escola de Barbizon")
         (autor_quadre "Théodore Rousseau")
         (sala 7)
         (tematica "Paisatge")
-        (dimensions 646.25)
+        (dimensions 646)
         (complexitat "Baixa")
         (rellevancia "Baixa")
     )
 
     ;; Sala 8 - Paisatges Realistes i Impressionistes
-    (Robles_junto_al_agua
-        of Obres
+    (Obres
+        (nom "Robles junto al agua")
         (any_de_creacio 1832)
         (epoca "Edat Contemporània")
         (estil "Realisme")
         (autor_quadre "Christian E.B.Morgenstern")
         (sala 8)
         (tematica "Paisatge")
-        (dimensions 7135.5)
+        (dimensions 7135)
         (complexitat "Alta")
         (rellevancia "Baixa")
     )
-    (Vista_del_puerto_de_rotterdam
-        of Obres
+    (Obres
+        (nom "Vista del puerto de Rotterdam")
         (any_de_creacio 1856)
         (epoca "Edat Contemporània")
         (estil "Realisme")
@@ -855,20 +843,20 @@
         (complexitat "Alta")
         (rellevancia "Baixa")
     )
-    (Atardecer_en_la_pradera
-        of Obres
+    (Obres
+        (nom "Atardecer en la pradera")
         (any_de_creacio 1870)
         (epoca "Edat Contemporània")
         (estil "Realisme")
         (autor_quadre "Albert Bierstadt")
         (sala 8)
         (tematica "Paisatge")
-        (dimensions 9999.9)
+        (dimensions 10000)
         (complexitat "Alta")
         (rellevancia "Baixa")
     )
-    (El_bosque_de_Marly
-        of Obres
+    (Obres
+        (nom "El bosque de Marly")
         (any_de_creacio 1871)
         (epoca "Edat Contemporània")
         (estil "Impressionisme")
@@ -879,8 +867,8 @@
         (complexitat "Alta")
         (rellevancia "Baixa")
     )
-    (Jinete_arabe
-        of Obres
+    (Obres
+        (nom "Jinete árabe")
         (any_de_creacio 1854)
         (epoca "Edat Contemporània")
         (estil "Romanticisme")
@@ -893,8 +881,8 @@
     )
 
     ;; Sala 9 - Obres de Josep Bernat Flaugier
-    (Anunciacio
-        of Obres
+    (Obres
+        (nom "Anunciació")
         (any_de_creacio 1800)
         (epoca "Edat Contemporània")
         (estil "Neoclassicisme")
@@ -905,8 +893,8 @@
         (complexitat "Alta")
         (rellevancia "Mitjana")
     )
-    (Seguici_Nupcial_Amb_Himeneu
-        of Obres
+    (Obres
+        (nom "Seguici Nupcial Amb Himeneu")
         (any_de_creacio 1803)
         (epoca "Edat Contemporània")
         (estil "Neoclassicisme")
@@ -917,20 +905,20 @@
         (complexitat "Mitjana")
         (rellevancia "Baixa")
     )
-    (Mort_de_Sant_Josep_Oriol
-        of Obres
+    (Obres
+        (nom "Mort de Sant Josep Oriol")
         (any_de_creacio 1806)
         (epoca "Edat Contemporània")
         (estil "Neoclassicisme")
         (autor_quadre "Josep Bernat Flaugier")
         (sala 9)
         (tematica "Religiosa")
-        (dimensions 263.34)
+        (dimensions 263)
         (complexitat "Alta")
         (rellevancia "Mitjana")
     )
-    (Retrat_del_Rei_Josep_I
-        of Obres
+    (Obres
+        (nom "Retrat del Rei Josep I")
         (any_de_creacio 1809)
         (epoca "Edat Contemporània")
         (estil "Pintura a l'oli")
@@ -941,8 +929,8 @@
         (complexitat "Baixa")
         (rellevancia "Baixa")
     )
-    (Aparicio_de_la_Mare_de_Deu
-        of Obres
+    (Obres
+        (nom "Aparició de la Mare de Déu")
         (any_de_creacio 1812)
         (epoca "Edat Contemporània")
         (estil "Neoclassicisme")
@@ -953,46 +941,46 @@
         (complexitat "Alta")
         (rellevancia "Baixa")
     )
-    (Dos_Frares_i_Grup_de_Gent
-        of Obres
+    (Obres
+        (nom "Dos Frares i Grup de Gent")
         (any_de_creacio 1812)
         (epoca "Edat Contemporània")
         (estil "Dibuix")
         (autor_quadre "Josep Bernat Flaugier")
         (sala 9)
         (tematica "Religiosa")
-        (dimensions 690.8)
+        (dimensions 691)
         (complexitat "Baixa")
         (rellevancia "Baixa")
     )
-    (Sant_Joan_Baptista
-        of Obres
+    (Obres
+        (nom "Sant Joan Baptista")
         (any_de_creacio 1790)
         (epoca "Edat Contemporània")
         (estil "Neoclassicisme")
         (autor_quadre "Josep Bernat Flaugier")
         (sala 9)
         (tematica "Religiosa")
-        (dimensions 1168.75)
+        (dimensions 1168)
         (complexitat "Mitjana")
         (rellevancia "Baixa")
     )
-    (Sagrada_Familia
-        of Obres
+    (Obres
+        (nom "Sagrada Família")
         (any_de_creacio 1812)
         (epoca "Edat Contemporània")
         (estil "Tinta")
         (autor_quadre "Josep Bernat Flaugier")
         (sala 9)
         (tematica "Religiosa")
-        (dimensions 459.34)
+        (dimensions 459)
         (complexitat "Baixa")
         (rellevancia "Baixa")
     )
 
     ;; Sala 10 - Art Modern Català
-    (Autoretrat
-        of Obres
+    (Obres
+        (nom "Autoretrat")
         (any_de_creacio 1802)
         (epoca "Edat Contemporània")
         (estil "Art Modern")
@@ -1003,8 +991,8 @@
         (complexitat "Alta")
         (rellevancia "Mitjana")
     )
-    (Un_Cafe_durant_Carnestoltes
-        of Obres
+    (Obres
+        (nom "Un Cafè durant Carnestoltes")
         (any_de_creacio 1824)
         (epoca "Edat Contemporània")
         (estil "Art Modern")
@@ -1015,8 +1003,8 @@
         (complexitat "Mitjana")
         (rellevancia "Baixa")
     )
-    (Masia_Blanca_de_Bunyola
-        of Obres
+    (Obres
+        (nom "Masia Blanca de Bunyola")
         (any_de_creacio 1902)
         (epoca "Edat Contemporània")
         (estil "Modernisme")
@@ -1027,8 +1015,8 @@
         (complexitat "Mitjana")
         (rellevancia "Alta")
     )
-    (Maquina_de_Llaurar
-        of Obres
+    (Obres
+        (nom "Màquina de Llaurar")
         (any_de_creacio 1953)
         (epoca "Edat Contemporània")
         (estil "Art Modern")
@@ -1041,18 +1029,17 @@
     )
 )
 
-
-(definstances instancies_sales
-    (sala1 of Sala (id 1) (connected-to 2 10))
-    (sala2 of Sala (id 2) (connected-to 1 3))
-    (sala3 of Sala (id 3) (connected-to 2 4))
-    (sala4 of Sala (id 4) (connected-to 3 5))
-    (sala5 of Sala (id 5) (connected-to 4 6))
-    (sala6 of Sala (id 6) (connected-to 5 7))
-    (sala7 of Sala (id 7) (connected-to 6 8))
-    (sala8 of Sala (id 8) (connected-to 7 9))
-    (sala9 of Sala (id 9) (connected-to 8 10))
-    (sala10 of Sala (id 10) (connected-to 9 1))
+(deffacts instancies_sales
+    (Sala (id 1) (connected-to 2 10))
+    (Sala (id 2) (connected-to 1 3))
+    (Sala (id 3) (connected-to 2 4))
+    (Sala (id 4) (connected-to 3 5))
+    (Sala (id 5) (connected-to 4 6))
+    (Sala (id 6) (connected-to 5 7))
+    (Sala (id 7) (connected-to 6 8))
+    (Sala (id 8) (connected-to 7 9))
+    (Sala (id 9) (connected-to 8 10))
+    (Sala (id 10) (connected-to 9 1))
 )
 
 ;;; REGLES
@@ -1218,7 +1205,7 @@
     (declare (salience 1))
     =>
     (printout t "Quin és el teu autor preferit: " crlf)
-    (bind ?autor (read))
+    (bind ?autor (readline))  ; readline per llegir nom i cognom(s)
     (assert (autor-preferit ?autor))
     (printout t "Autor preferit: " ?autor crlf)
 )
@@ -1233,7 +1220,7 @@
     (printout t "Selecciona una opció: " crlf)
     (bind ?grup (read))
     (if (eq ?grup 1) then
-        (assert (coneixement "alt"))
+        (assert (coneixement "Alt"))
         (printout t "Has seleccionat: Alt" crlf)
     )
     (if (eq ?grup 2) then
@@ -1245,6 +1232,7 @@
         (printout t "Has seleccionat: Baix" crlf)
     )
 )
+
 (defrule interes "Pregunta quin interès té el visitant"
     (declare (salience 6))
     =>
@@ -1255,7 +1243,7 @@
     (printout t "Selecciona una opció: " crlf)
     (bind ?grup (read))
     (if (eq ?grup 1) then
-        (assert (interes "alt"))
+        (assert (interes "Alt"))
         (printout t "Has seleccionat: Alt" crlf)
     )
     (if (eq ?grup 2) then
@@ -1268,7 +1256,6 @@
     )
 )
 
-;(defmodule PreguntesGrup)
 (defrule tipgrup "Pregunta el tipus de grup"
     (declare (salience 6))
     (grup "Acompanyat")
@@ -1281,22 +1268,22 @@
     (printout t "Selecciona una opció: " crlf)
     (bind ?grup (read))
     (if (eq ?grup 1) then
-        (assert (tipusgrup "amics"))
+        (assert (tipus-grup "amics"))
         (assert (tipus-visitant "Grasshopper"))
         (printout t "Has seleccionat: amics" crlf)
     )
     (if (eq ?grup 2) then
-        (assert (tipusgrup "familia"))
+        (assert (tipus-grup "familia"))
         (assert (tipus-visitant "Grasshopper"))
         (printout t "Has seleccionat: familia" crlf)
     )
     (if (eq ?grup 3) then
-        (assert (tipusgrup "classe"))
+        (assert (tipus-grup "classe"))
         (assert (tipus-visitant "Ant"))
         (printout t "Has seleccionat: classe" crlf)
     )
     (if (eq ?grup 4) then
-        (assert (tipusgrup "grup turístic"))
+        (assert (tipus-grup "grup turístic"))
         (assert (tipus-visitant "Ant"))
         (printout t "Has seleccionat: grup turístic" crlf)
     )
@@ -1310,24 +1297,24 @@
 
 ;;      Ant      ;;
 
-; ant -> Visita > 2h, Primer com, Interes (Alt) o Coneixement (Alt)
+; ant -> Visita > 2h, Primer cop, Interès (Alt) o Coneixement (Alt)
 (defrule classificar-visitant-ant
-    (declare (salience 0))
+    ; (declare (salience 0))
     (grup "Sol")
     (frequencia-visites "Primer cop")
     (temps-visita ?temps&:(>= ?temps 2))  
     (or 
-        (interes "alt")                  
-        (coneixement "alt"))             
+        (interes "Alt")                  
+        (coneixement "Alt"))             
     =>
     (assert (tipus-visitant "Ant"))
 )
 
 ;;      Butterfly      ;;
 
-; butterfly -> Visita > 2h, Primer com o esporàdic, Interes (mitjà) i Coneixement (Alt o mitja)
+; butterfly -> Visita > 2h, Primer cop o esporàdic, Interes (Mitjà) i Coneixement (Alt o Mitjà)
 (defrule classificar-visitant-butterfly
-    (declare (salience 0))
+    ; (declare (salience 0))
     (grup "Sol")
     (or
         (frequencia-visites "Primer cop")
@@ -1336,16 +1323,16 @@
     (interes "mitjà")  
     (or
         (coneixement "Mitjà")                
-        (coneixement "alt"))             
+        (coneixement "Alt"))             
      =>
     (assert (tipus-visitant "Butterfly"))
 )
 
 ;;      Grasshopper      ;;
 
-; grasshopper -> Visita < 2h, freq o esporàdic, (Interes (mitjà) i Coneixement (baix)) o (Interes (baix) i Coneixement (mitjà))
+; grasshopper -> Visita < 2h, freq o esporàdic, (Interès (mitjà) i Coneixement (baix)) o (Interes (baix) i Coneixement (mitjà))
 (defrule classificar-visitant-grasshopper
-    (declare (salience 0))
+    ; (declare (salience 0))
     (grup "Sol")
     (or
         (frequencia-visites "Freqüent")
@@ -1363,9 +1350,9 @@
 
 ;;      Fish      ;;
 
-; fish -> Visita < 2h, freq o esporàdic, Interes (baix) i Coneixement (baix)
+; fish -> Visita < 2h, freq o esporàdic, Interès (baix) i Coneixement (baix)
 (defrule classificar-visitant-fish
-    (declare (salience 0))
+    ; (declare (salience 0))
     (grup "Sol")
     (or
         (frequencia-visites "Freqüent")
@@ -1377,58 +1364,42 @@
     (assert (tipus-visitant "Fish"))
 )
 
+; Regla per inicialitzar la Ruta segons el tipus de visitant
+(defrule iniciar-ruta
+    (tipus-visitant ?style)
+    =>
+    (printout t "Generant ruta per a un visitant de tipus: " ?style crlf)
+    (assert (Ruta (start-room 1) (end-room 10)))  ; Suposem una sala final predeterminada
+    (assert (current-room 1))
+    (assert (Sala (id 1) (connected-to 2 10)))
+)
 
-;(defmodule CalcularRuta)
-;(reset)
-;(focus PreguntesGenerals PreguntesGrup ClassificacioVisitant CalcularRuta)
-;(run)
-;(facts *)
+(defrule done
+    (current-room ?current)
+    ?sala <- (Sala (id ?current) (connected-to $?next-rooms))
+    =>
+    (printout t "La sala actual és la sala " ?current crlf)
+    (printout t "Les sales següents són: " $?next-rooms crlf)
+)
 
-; Rule to calculate interest in each artwork based on visitor preferences
-; (defrule calculate-artwork-interest
-;     ;(Visitant (autor_pref ?artist) (epoca_pref ?period) (estil_pref ?style) (tematica_pref ?theme))
-;     (Obres (autor_quadre ?artist) (epoca ?period) (estil ?style) (tematica ?theme) (rellevancia ?relevance))
+; Regla per moure’s d’una sala a una altra
+; (defrule seguir-ruta
+;     ?sala <- (Sala (id ?current) (connected-to $?next-rooms))
+;     (current-room ?current)
+;     (Ruta (end-room ?end-room))
+;     (test (not (member$ ?end-room $?next-rooms)))
+;     ?next <- (Sala (id ?next-room&:(member$ ?next-room $?next-rooms)))
 ;     =>
-;     (bind ?match-count 0)
-;     (if (eq ?artist (fact-slot-value ?f2 autor_quadre)) then (bind ?match-count (+ ?match-count 1)))
-;     (if (eq ?period (fact-slot-value ?f2 epoca)) then (bind ?match-count (+ ?match-count 1)))
-;     (if (eq ?style (fact-slot-value ?f2 estil)) then (bind ?match-count (+ ?match-count 1)))
-;     (if (eq ?theme (fact-slot-value ?f2 tematica)) then (bind ?match-count (+ ?match-count 1)))
-;     (bind ?interest (calculate-interest ?relevance ?match-count))
-;     (assert (artwork-interest ?f2 ?interest))
+;     (printout t "Movent-se de la sala " ?current " a la sala " ?next-room crlf)
+;     (retract (current-room ?current))
+;     (assert (current-room ?next-room))
 ; )
 
-; ; Simple pathfinding rule (breadth-first search) - You'll need to refine this
-; (defrule find-path
-;     (start-room ?start)
-;     (end-room ?end)
-;     (not (path ?start ?end)) 
-;     (Sala (id ?start) (connected-to $?neighbors))
+; ; Regla final de ruta per determinar què fer un cop acabada la visita
+; (defrule finalitzar-visita
+;     (current-room ?end-room)
+;     (Ruta (end-room ?end-room))
 ;     =>
-;     (foreach ?neighbor $?neighbors
-;       (assert (path ?start ?neighbor))
-;       (if (eq ?neighbor ?end) then
-;         (printout t "Path found: " ?start " -> " ?end crlf)
-;       else
-;         (assert (start-room ?neighbor))))
-; )
-
-; ; Example rule to select artworks in a room based on interest and visiting style
-; (defrule select-artworks
-;     (path ?current-room ?next-room)
-;     (tipus_visitant ?style)
-;     (artwork-interest ?artwork ?interest)
-;     (Obres (sala ?current-room) (titol ?title)) ; Access the artwork title
-;     =>
-;     ; Logic to select artworks based on interest and style
-;     (printout t "In room " ?current-room ", consider: " ?title " (interest: " ?interest ") " crlf)
-; )
-
-; ; Rule to start the route
-; (defrule start-route
-;     (tipus_visitant ?style)
-;     =>
-;     (printout t "Generating a route for a " ?style " visitor..." crlf)
-;     (assert (start-room 1))  ; Start in room 1
-;     (assert (end-room 1))    ; End in room 1
+;     (printout t "Ruta completa. El visitant ha finalitzat la visita a la sala " ?end-room crlf)
+;     (retract (current-room ?end-room))
 ; )

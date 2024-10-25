@@ -89,11 +89,6 @@
         (type INTEGER))
 )
 
-(deftemplate current-room
-    (slot id
-        (type INTEGER))
-)
-
 ; INSTÀNCIES
 
 (deffacts instancies_obres
@@ -1047,10 +1042,6 @@
     (Sala (id 10) (connected-to 9 1))
 )
 
-(deffacts initial
-    (current-room (id 1))
-)
-
 ;;; REGLES
 ;(defmodule PreguntesGenerals)
 ; Funció de benvinguda i inici del programa
@@ -1229,7 +1220,7 @@
     (printout t "Selecciona una opció: " crlf)
     (bind ?grup (read))
     (if (eq ?grup 1) then
-        (assert (coneixement "alt"))
+        (assert (coneixement "Alt"))
         (printout t "Has seleccionat: Alt" crlf)
     )
     (if (eq ?grup 2) then
@@ -1252,7 +1243,7 @@
     (printout t "Selecciona una opció: " crlf)
     (bind ?grup (read))
     (if (eq ?grup 1) then
-        (assert (interes "alt"))
+        (assert (interes "Alt"))
         (printout t "Has seleccionat: Alt" crlf)
     )
     (if (eq ?grup 2) then
@@ -1306,22 +1297,22 @@
 
 ;;      Ant      ;;
 
-; ant -> Visita > 2h, Primer com, Interes (Alt) o Coneixement (Alt)
+; ant -> Visita > 2h, Primer cop, Interès (Alt) o Coneixement (Alt)
 (defrule classificar-visitant-ant
     ; (declare (salience 0))
     (grup "Sol")
     (frequencia-visites "Primer cop")
     (temps-visita ?temps&:(>= ?temps 2))  
     (or 
-        (interes "alt")                  
-        (coneixement "alt"))             
+        (interes "Alt")                  
+        (coneixement "Alt"))             
     =>
     (assert (tipus-visitant "Ant"))
 )
 
 ;;      Butterfly      ;;
 
-; butterfly -> Visita > 2h, Primer com o esporàdic, Interes (mitjà) i Coneixement (Alt o mitja)
+; butterfly -> Visita > 2h, Primer cop o esporàdic, Interes (Mitjà) i Coneixement (Alt o Mitjà)
 (defrule classificar-visitant-butterfly
     ; (declare (salience 0))
     (grup "Sol")
@@ -1329,17 +1320,17 @@
         (frequencia-visites "Primer cop")
         (frequencia-visites "Esporàdic"))
     (temps-visita ?temps&:(>= ?temps 2)) 
-    (interes "mitjà")  
+    (interes "mitjà")
     (or
         (coneixement "Mitjà")                
-        (coneixement "alt"))             
+        (coneixement "Alt"))             
      =>
     (assert (tipus-visitant "Butterfly"))
 )
 
 ;;      Grasshopper      ;;
 
-; grasshopper -> Visita < 2h, freq o esporàdic, (Interes (mitjà) i Coneixement (baix)) o (Interes (baix) i Coneixement (mitjà))
+; grasshopper -> Visita < 2h, freq o esporàdic, (Interès (mitjà) i Coneixement (baix)) o (Interes (baix) i Coneixement (mitjà))
 (defrule classificar-visitant-grasshopper
     ; (declare (salience 0))
     (grup "Sol")
@@ -1359,7 +1350,7 @@
 
 ;;      Fish      ;;
 
-; fish -> Visita < 2h, freq o esporàdic, Interes (baix) i Coneixement (baix)
+; fish -> Visita < 2h, freq o esporàdic, Interès (baix) i Coneixement (baix)
 (defrule classificar-visitant-fish
     ; (declare (salience 0))
     (grup "Sol")
@@ -1379,39 +1370,27 @@
     =>
     (printout t "Generant ruta per a un visitant de tipus: " ?style crlf)
     (assert (Ruta (start-room 1) (end-room 10)))  ; Suposem una sala final predeterminada
-    (assert (current-room (id 1)))
+    (assert (current-room 1))
 )
 
-; ; Regla per trobar una sala següent segons la connexió amb la sala actual
-; (defrule moure-a-seguent-sala
-;     (Ruta (end-room ?end-room))
-;     (current-room (id ?current))
-;     (Sala (id ?current) (connected-to $?next-rooms))
-;     (test (member$ ?end-room $?next-rooms))
-;     =>
-;     (printout t "Visitant ha arribat a la sala final: " ?end-room crlf)
-;     (retract (current-room (id ?current)))
-;     (assert (current-room (id ?end-room)))
-; )
-
-; ; Regla per moure’s d’una sala a una altra
-; (defrule seguir-ruta
-;     (Ruta (end-room ?end-room))
-;     (current-room (id ?current))
-;     (Sala (id ?current) (connected-to $?next-rooms))
-;     (test (not (member$ ?end-room $?next-rooms)))  ; Encara no estem a la sala final
-;     ?next <- (Sala (id ?next-room&:(member$ ?next-room $?next-rooms)))
-;     =>
-;     (printout t "Movent-se de la sala " ?current " a la sala " ?next-room crlf)
-;     (retract (current-room (id ?current)))
-;     (assert (current-room (id ?next-room)))
-; )
+; Regla per moure’s d’una sala a una altra
+(defrule seguir-ruta
+    ?sala <- (Sala (id ?current) (connected-to $?next-rooms))
+    (current-room ?current)
+    (Ruta (end-room ?end-room))
+    (test (not (member$ ?end-room $?next-rooms)))
+    ?next <- (Sala (id ?next-room&:(member$ ?next-room $?next-rooms)))
+    =>
+    (printout t "Movent-se de la sala " ?current " a la sala " ?next-room crlf)
+    (retract (current-room ?current))
+    (assert (current-room ?next-room))
+)
 
 ; ; Regla final de ruta per determinar què fer un cop acabada la visita
 ; (defrule finalitzar-visita
-;     (current-room (id ?end-room))
+;     (current-room ?end-room)
 ;     (Ruta (end-room ?end-room))
 ;     =>
 ;     (printout t "Ruta completa. El visitant ha finalitzat la visita a la sala " ?end-room crlf)
-;     (retract (current-room (id ?end-room)))
+;     (retract (current-room ?end-room))
 ; )
