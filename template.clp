@@ -9,14 +9,13 @@
 ;;; Translated to CLIPS from ontology ontologia_practica.ttl
 ;;; :Date 11/10/2024 18:04:18
 
-(defmodule MAIN (export ?ALL))
+; (defmodule MAIN (export ?ALL))
 
 (defclass Visitant
     (is-a USER)
     (pattern-match reactive)
-    (multislot Mira_a  ; This is the "mira-a" relationship
-        (type INSTANCE)
-        (allowed-classes Obres)  ; It references instances of the class "Obres"
+    (multislot Mira_a
+        (type STRING)
         (create-accessor read-write))
     (multislot autor_pref
         (type STRING)
@@ -51,20 +50,11 @@
     (slot tematica
         (type STRING))
     (slot dimensions
-        (type NUMBER))
+        (type INTEGER))
     (slot complexitat
         (type STRING))
     (slot rellevancia
         (type STRING))
-)
-
-(deftemplate Sala
-    (slot id
-        (type INTEGER)
-        (create-accessor read-write))
-    (multislot connected-to
-        (type INTEGER)
-        (create-accessor read-write))
 )
 
 (defclass Visitant_acompanyat
@@ -85,10 +75,22 @@
         (create-accessor read-write))
 )
 
+(deftemplate Sala
+    (slot id
+        (type INTEGER))
+    (multislot connected-to
+        (type INTEGER))
+)
+
 (deftemplate Ruta
     (slot start-room
         (type INTEGER))
     (slot end-room
+        (type INTEGER))
+)
+
+(deftemplate current-room
+    (slot id
         (type INTEGER))
 )
 
@@ -128,7 +130,7 @@
         (autor_quadre "Desconegut")
         (sala 1)
         (tematica "Mitologia")
-        (dimensions 688.2)
+        (dimensions 688)
         (complexitat "Baixa")
         (rellevancia "Baixa")
     )
@@ -152,7 +154,7 @@
         (autor_quadre "Agnolo Gaddi")
         (sala 1)
         (tematica "Religió")
-        (dimensions 594.5)
+        (dimensions 594)
         (complexitat "Baixa")
         (rellevancia "Baixa")
     )
@@ -202,7 +204,7 @@
         (autor_quadre "Desconegut")
         (sala 2)
         (tematica "Religió")
-        (dimensions 1998.15)
+        (dimensions 1998)
         (complexitat "Alta")
         (rellevancia "Mitjana")
     )
@@ -250,7 +252,7 @@
         (autor_quadre "Leonardo da Vinci")
         (sala 2)
         (tematica "Retrat")
-        (dimensions 0.424)
+        (dimensions 424)
         (complexitat "Mitjana")
         (rellevancia "Alta")
     )
@@ -508,7 +510,7 @@
         (autor_quadre "Giovanni Paolo Panini")
         (sala 5)
         (tematica "Religió")
-        (dimensions 7220.05)
+        (dimensions 7220)
         (complexitat "Alta")
         (rellevancia "Baixa")
     )
@@ -532,7 +534,7 @@
         (autor_quadre "Jean Baptiste Siméon Chardin")
         (sala 5)
         (tematica "Bodegó")
-        (dimensions 5008.5)
+        (dimensions 5008)
         (complexitat "Baixa")
         (rellevancia "Baixa")
     )
@@ -544,7 +546,7 @@
         (autor_quadre "Jean-Baptiste Pater")
         (sala 5)
         (tematica "Escena de gènere")
-        (dimensions 3630.5)
+        (dimensions 3630)
         (complexitat "Mitjana")
         (rellevancia "Baixa")
     )
@@ -556,7 +558,7 @@
         (autor_quadre "Giacomo Cerutti")
         (sala 5)
         (tematica "Escena de gènere")
-        (dimensions 12397.5)
+        (dimensions 12397)
         (complexitat "Mitjana")
         (rellevancia "Baixa")
     )
@@ -568,7 +570,7 @@
         (autor_quadre "Bernardo Bellotto")
         (sala 5)
         (tematica "Paisatge")
-        (dimensions 3540.5)
+        (dimensions 3540)
         (complexitat "Mitjana")
         (rellevancia "Baixa")
     )
@@ -604,7 +606,7 @@
         (autor_quadre "Giandomenico Tiepolo")
         (sala 5)
         (tematica "Mitologia")
-        (dimensions 8661.15)
+        (dimensions 8661)
         (complexitat "Alta")
         (rellevancia "Baixa")
     )
@@ -621,7 +623,7 @@
         (rellevancia "Baixa")
     )
     (Obres
-        (nom "Paisaje invernal con una familia de campesinos)
+        (nom "Paisaje invernal con una familia de campesinos")
         (any_de_creacio 1780)
         (epoca "Edat Moderna")
         (estil "Barroc")
@@ -654,7 +656,7 @@
         (autor_quadre "Francisco de Goya y Lucientes")
         (sala 6)
         (tematica "Animals")
-        (dimensions 11104.25)
+        (dimensions 11104)
         (complexitat "Mitjana")
         (rellevancia "Baixa")
     )
@@ -816,7 +818,7 @@
         (autor_quadre "Théodore Rousseau")
         (sala 7)
         (tematica "Paisatge")
-        (dimensions 646.25)
+        (dimensions 646)
         (complexitat "Baixa")
         (rellevancia "Baixa")
     )
@@ -830,7 +832,7 @@
         (autor_quadre "Christian E.B.Morgenstern")
         (sala 8)
         (tematica "Paisatge")
-        (dimensions 7135.5)
+        (dimensions 7135)
         (complexitat "Alta")
         (rellevancia "Baixa")
     )
@@ -854,7 +856,7 @@
         (autor_quadre "Albert Bierstadt")
         (sala 8)
         (tematica "Paisatge")
-        (dimensions 9999.9)
+        (dimensions 10000)
         (complexitat "Alta")
         (rellevancia "Baixa")
     )
@@ -916,7 +918,7 @@
         (autor_quadre "Josep Bernat Flaugier")
         (sala 9)
         (tematica "Religiosa")
-        (dimensions 263.34)
+        (dimensions 263)
         (complexitat "Alta")
         (rellevancia "Mitjana")
     )
@@ -952,7 +954,7 @@
         (autor_quadre "Josep Bernat Flaugier")
         (sala 9)
         (tematica "Religiosa")
-        (dimensions 690.8)
+        (dimensions 691)
         (complexitat "Baixa")
         (rellevancia "Baixa")
     )
@@ -964,7 +966,7 @@
         (autor_quadre "Josep Bernat Flaugier")
         (sala 9)
         (tematica "Religiosa")
-        (dimensions 1168.75)
+        (dimensions 1168)
         (complexitat "Mitjana")
         (rellevancia "Baixa")
     )
@@ -976,7 +978,7 @@
         (autor_quadre "Josep Bernat Flaugier")
         (sala 9)
         (tematica "Religiosa")
-        (dimensions 459.34)
+        (dimensions 459)
         (complexitat "Baixa")
         (rellevancia "Baixa")
     )
@@ -1032,7 +1034,6 @@
     )
 )
 
-
 (deffacts instancies_sales
     (Sala (id 1) (connected-to 2 10))
     (Sala (id 2) (connected-to 1 3))
@@ -1044,6 +1045,10 @@
     (Sala (id 8) (connected-to 7 9))
     (Sala (id 9) (connected-to 8 10))
     (Sala (id 10) (connected-to 9 1))
+)
+
+(deffacts initial
+    (current-room (id 1))
 )
 
 ;;; REGLES
@@ -1209,7 +1214,7 @@
     (declare (salience 1))
     =>
     (printout t "Quin és el teu autor preferit: " crlf)
-    (bind ?autor (read))
+    (bind ?autor (readline))  ; readline per llegir nom i cognom(s)
     (assert (autor-preferit ?autor))
     (printout t "Autor preferit: " ?autor crlf)
 )
@@ -1236,6 +1241,7 @@
         (printout t "Has seleccionat: Baix" crlf)
     )
 )
+
 (defrule interes "Pregunta quin interès té el visitant"
     (declare (salience 6))
     =>
@@ -1259,7 +1265,6 @@
     )
 )
 
-;(defmodule PreguntesGrup)
 (defrule tipgrup "Pregunta el tipus de grup"
     (declare (salience 6))
     (grup "Acompanyat")
@@ -1272,22 +1277,22 @@
     (printout t "Selecciona una opció: " crlf)
     (bind ?grup (read))
     (if (eq ?grup 1) then
-        (assert (tipusgrup "amics"))
+        (assert (tipus-grup "amics"))
         (assert (tipus-visitant "Grasshopper"))
         (printout t "Has seleccionat: amics" crlf)
     )
     (if (eq ?grup 2) then
-        (assert (tipusgrup "familia"))
+        (assert (tipus-grup "familia"))
         (assert (tipus-visitant "Grasshopper"))
         (printout t "Has seleccionat: familia" crlf)
     )
     (if (eq ?grup 3) then
-        (assert (tipusgrup "classe"))
+        (assert (tipus-grup "classe"))
         (assert (tipus-visitant "Ant"))
         (printout t "Has seleccionat: classe" crlf)
     )
     (if (eq ?grup 4) then
-        (assert (tipusgrup "grup turístic"))
+        (assert (tipus-grup "grup turístic"))
         (assert (tipus-visitant "Ant"))
         (printout t "Has seleccionat: grup turístic" crlf)
     )
@@ -1303,7 +1308,7 @@
 
 ; ant -> Visita > 2h, Primer com, Interes (Alt) o Coneixement (Alt)
 (defrule classificar-visitant-ant
-    (declare (salience 0))
+    ; (declare (salience 0))
     (grup "Sol")
     (frequencia-visites "Primer cop")
     (temps-visita ?temps&:(>= ?temps 2))  
@@ -1318,7 +1323,7 @@
 
 ; butterfly -> Visita > 2h, Primer com o esporàdic, Interes (mitjà) i Coneixement (Alt o mitja)
 (defrule classificar-visitant-butterfly
-    (declare (salience 0))
+    ; (declare (salience 0))
     (grup "Sol")
     (or
         (frequencia-visites "Primer cop")
@@ -1336,7 +1341,7 @@
 
 ; grasshopper -> Visita < 2h, freq o esporàdic, (Interes (mitjà) i Coneixement (baix)) o (Interes (baix) i Coneixement (mitjà))
 (defrule classificar-visitant-grasshopper
-    (declare (salience 0))
+    ; (declare (salience 0))
     (grup "Sol")
     (or
         (frequencia-visites "Freqüent")
@@ -1356,7 +1361,7 @@
 
 ; fish -> Visita < 2h, freq o esporàdic, Interes (baix) i Coneixement (baix)
 (defrule classificar-visitant-fish
-    (declare (salience 0))
+    ; (declare (salience 0))
     (grup "Sol")
     (or
         (frequencia-visites "Freqüent")
@@ -1370,43 +1375,43 @@
 
 ; Regla per inicialitzar la Ruta segons el tipus de visitant
 (defrule iniciar-ruta
-    (tipus_visitant ?style)
+    (tipus-visitant ?style)
     =>
     (printout t "Generant ruta per a un visitant de tipus: " ?style crlf)
-    (assert (Ruta (start-room 1) (end-room 5)))  ; Suposem una sala final predeterminada
-    (assert (current-room 1))
+    (assert (Ruta (start-room 1) (end-room 10)))  ; Suposem una sala final predeterminada
+    (assert (current-room (id 1)))
 )
 
-; Regla per trobar una sala següent segons la connexió amb la sala actual
-(defrule moure-a-seguent-sala
-    (Ruta (end-room ?end-room))
-    (current-room ?current)
-    (Sala (id ?current) (connected-to $?next-rooms))
-    (test (member$ ?end-room $?next-rooms))
-    =>
-    (printout t "Visitant ha arribat a la sala final: " ?end-room crlf)
-    (retract (current-room ?current))
-    (assert (current-room ?end-room))
-)
+; ; Regla per trobar una sala següent segons la connexió amb la sala actual
+; (defrule moure-a-seguent-sala
+;     (Ruta (end-room ?end-room))
+;     (current-room (id ?current))
+;     (Sala (id ?current) (connected-to $?next-rooms))
+;     (test (member$ ?end-room $?next-rooms))
+;     =>
+;     (printout t "Visitant ha arribat a la sala final: " ?end-room crlf)
+;     (retract (current-room (id ?current)))
+;     (assert (current-room (id ?end-room)))
+; )
 
-; Regla per moure’s d’una sala a una altra
-(defrule seguir-ruta
-    (Ruta (end-room ?end-room))
-    (current-room ?current)
-    (Sala (id ?current) (connected-to $?next-rooms))
-    (test (not (member$ ?end-room $?next-rooms)))  ; Encara no estem a la sala final
-    ?next <- (Sala (id ?next-room&:(member$ ?next-room $?next-rooms)))
-    =>
-    (printout t "Movent-se de la sala " ?current " a la sala " ?next-room crlf)
-    (retract (current-room ?current))
-    (assert (current-room ?next-room))
-)
+; ; Regla per moure’s d’una sala a una altra
+; (defrule seguir-ruta
+;     (Ruta (end-room ?end-room))
+;     (current-room (id ?current))
+;     (Sala (id ?current) (connected-to $?next-rooms))
+;     (test (not (member$ ?end-room $?next-rooms)))  ; Encara no estem a la sala final
+;     ?next <- (Sala (id ?next-room&:(member$ ?next-room $?next-rooms)))
+;     =>
+;     (printout t "Movent-se de la sala " ?current " a la sala " ?next-room crlf)
+;     (retract (current-room (id ?current)))
+;     (assert (current-room (id ?next-room)))
+; )
 
-; Regla final de ruta per determinar què fer un cop acabada la visita
-(defrule finalitzar-visita
-    (current-room ?end-room)
-    (Ruta (end-room ?end-room))
-    =>
-    (printout t "Ruta completa. El visitant ha finalitzat la visita a la sala " ?end-room crlf)
-    (retract (current-room ?end-room))
-)
+; ; Regla final de ruta per determinar què fer un cop acabada la visita
+; (defrule finalitzar-visita
+;     (current-room (id ?end-room))
+;     (Ruta (end-room ?end-room))
+;     =>
+;     (printout t "Ruta completa. El visitant ha finalitzat la visita a la sala " ?end-room crlf)
+;     (retract (current-room (id ?end-room)))
+; )
