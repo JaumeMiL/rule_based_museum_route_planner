@@ -1282,18 +1282,22 @@
     (bind ?grup (read))
     (if (eq ?grup 1) then
         (assert (tipusgrup "amics"))
+        (assert (tipus-visitant "Grasshopper"))
         (printout t "Has seleccionat: amics" crlf)
     )
     (if (eq ?grup 2) then
         (assert (tipusgrup "familia"))
+        (assert (tipus-visitant "Grasshopper"))
         (printout t "Has seleccionat: familia" crlf)
     )
     (if (eq ?grup 3) then
         (assert (tipusgrup "classe"))
+        (assert (tipus-visitant "Ant"))
         (printout t "Has seleccionat: classe" crlf)
     )
     (if (eq ?grup 4) then
         (assert (tipusgrup "grup turístic"))
+        (assert (tipus-visitant "Ant"))
         (printout t "Has seleccionat: grup turístic" crlf)
     )
 )
@@ -1373,12 +1377,6 @@
     (assert (tipus-visitant "Fish"))
 )
 
-(defrule classificar-visitant-grup
-    (declare (salience 0))
-    (grup "Acompanyat")             
-    =>
-    (assert (tipus-visitant "Grup"))
-)
 
 ;(defmodule CalcularRuta)
 ;(reset)
