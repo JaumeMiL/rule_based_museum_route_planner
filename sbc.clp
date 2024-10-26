@@ -1369,6 +1369,7 @@
 )
 
 ;;;     REGLES DE MATCHING DE CUADRES       ;;;
+;;     RESTRICCIO MAXIMA      ;;
 (defrule matchcuadres_restrictiva1
     (declare (salience 0))
 
@@ -1391,11 +1392,12 @@
     (test (eq ?t ?ot))
     =>
     (assert (mirant ?nom))
-    (printout t ?nom " ha fet match!" crlf)
+    (printout t ?nom " ha fet match! Nivell de Restriccio: 0" crlf)
     (modify ?cont (valor (+ ?c 1)))
 )
 
 (defrule NoCuadrosSuficientes_restrictiva1
+    (declare (salience 0))
     ?cont <- (contador (valor ?c)) 
     ?factw <- (weight ?w) 
     ?facttv <- (temps-visita ?tv) 
@@ -1405,6 +1407,124 @@
     (test (< ?c (* (/ (- (* ?tv 3600) ?mdt) ?mt) 100)))
     =>
     (assert (nocuadsuf True))
+)
+
+
+
+;;     RESTRICCIO MAXIMA -1     ;;
+(defrule matchcuadres_restrictiva2
+    (declare (salience -1))
+
+    ;   Agafem Obres com a fets
+    ?obra <- (Obres (nom ?nom) (epoca ?ep) (estil ?es) (autor_quadre ?auq) (tematica ?ot) (rellevancia ?r) (sala ?s))
+    (not (mirant ?nom))
+    ;   Agafem preferencies
+    ?fetep <- (epoca ?e)
+    ?fettem <- (preferencia-tematica ?t)
+    ?fetestil <- (estil ?esv)
+    ?fetaut <- (autor-preferit ?au)
+
+    ;   Agafem Comptador
+    ?cont <- (contador (valor ?c))
+
+    ;   Fem Matching amb print per verificar
+    (test (eq ?e ?ep))
+    (test (eq ?esv ?es))
+    (test (eq ?au ?auq))
+    =>
+    (assert (mirant ?nom))
+    (printout t ?nom " ha fet match! Nivell de Restriccio: -1" crlf)
+    (modify ?cont (valor (+ ?c 1)))
+)
+
+(defrule NoCuadrosSuficientes_restrictiva2
+    (declare (salience -1))
+    ?cont <- (contador (valor ?c)) 
+    ?factw <- (weight ?w) 
+    ?facttv <- (temps-visita ?tv) 
+    ?factmt <- (mean_t ?mt) 
+    ?factmdt <- (mean_d_t ?mdt)
+    
+    (test (< ?c (* (/ (- (* ?tv 3600) ?mdt) ?mt) 100)))
+    =>
+    (assert (nocuadsuf2 True))
+)
+
+
+;;     RESTRICCIO MAXIMA -2     ;;
+(defrule matchcuadres_restrictiva3
+    (declare (salience -2))
+
+    ;   Agafem Obres com a fets
+    ?obra <- (Obres (nom ?nom) (epoca ?ep) (estil ?es) (autor_quadre ?auq) (tematica ?ot) (rellevancia ?r) (sala ?s))
+    (not (mirant ?nom))
+    ;   Agafem preferencies
+    ?fetep <- (epoca ?e)
+    ?fettem <- (preferencia-tematica ?t)
+    ?fetestil <- (estil ?esv)
+    ?fetaut <- (autor-preferit ?au)
+
+    ;   Agafem Comptador
+    ?cont <- (contador (valor ?c))
+
+    ;   Fem Matching amb print per verificar
+    (test (eq ?e ?ep))
+    (test (eq ?esv ?es))
+    =>
+    (assert (mirant ?nom))
+    (printout t ?nom " ha fet match! Nivell de Restriccio: -2" crlf)
+    (modify ?cont (valor (+ ?c 1)))
+)
+
+(defrule NoCuadrosSuficientes_restrictiva3
+    (declare (salience -2))
+    ?cont <- (contador (valor ?c)) 
+    ?factw <- (weight ?w) 
+    ?facttv <- (temps-visita ?tv) 
+    ?factmt <- (mean_t ?mt) 
+    ?factmdt <- (mean_d_t ?mdt)
+    
+    (test (< ?c (* (/ (- (* ?tv 3600) ?mdt) ?mt) 100)))
+    =>
+    (assert (nocuadsuf3 True))
+)
+
+
+;;     RESTRICCIO MAXIMA -3     ;;
+(defrule matchcuadres_restrictiva4
+    (declare (salience -3))
+
+    ;   Agafem Obres com a fets
+    ?obra <- (Obres (nom ?nom) (epoca ?ep) (estil ?es) (autor_quadre ?auq) (tematica ?ot) (rellevancia ?r) (sala ?s))
+    (not (mirant ?nom))
+    ;   Agafem preferencies
+    ?fetep <- (epoca ?e)
+    ?fettem <- (preferencia-tematica ?t)
+    ?fetestil <- (estil ?esv)
+    ?fetaut <- (autor-preferit ?au)
+
+    ;   Agafem Comptador
+    ?cont <- (contador (valor ?c))
+
+    ;   Fem Matching amb print per verificar
+    (test (eq ?e ?ep))
+    =>
+    (assert (mirant ?nom))
+    (printout t ?nom " ha fet match! Nivell de Restriccio: -3" crlf)
+    (modify ?cont (valor (+ ?c 1)))
+)
+
+(defrule NoCuadrosSuficientes_restrictiva4
+    (declare (salience -3))
+    ?cont <- (contador (valor ?c)) 
+    ?factw <- (weight ?w) 
+    ?facttv <- (temps-visita ?tv) 
+    ?factmt <- (mean_t ?mt) 
+    ?factmdt <- (mean_d_t ?mdt)
+    
+    (test (< ?c (* (/ (- (* ?tv 3600) ?mdt) ?mt) 100)))
+    =>
+    (assert (nocuadsuf4 True))
 )
 
 
