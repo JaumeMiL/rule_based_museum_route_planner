@@ -211,6 +211,8 @@
 (defrule matchcuadres_restrictiva2
     (declare (salience -1))
 
+    (nocuadsuf True)
+
     ;   Agafem Obres com a fets
     ?obra <- (Obres (nom ?nom) (epoca ?ep) (estil ?es) (autor_quadre ?auq) (tematica ?ot) (rellevancia ?r) (sala ?s))
     (not (mirant ?nom))
@@ -235,6 +237,8 @@
 
 (defrule NoCuadrosSuficientes_restrictiva2
     (declare (salience -1))
+
+    (nocuadsuf True)
     ?cont <- (contador (valor ?c)) 
     ?factw <- (weight ?w) 
     ?facttv <- (temps-visita ?tv) 
@@ -254,6 +258,8 @@
     ;   Agafem Obres com a fets
     ?obra <- (Obres (nom ?nom) (epoca ?ep) (estil ?es) (autor_quadre ?auq) (tematica ?ot) (rellevancia ?r) (sala ?s))
     (not (mirant ?nom))
+
+    (nocuadsuf2 True)
     ;   Agafem preferencies
     ?fetep <- (epoca ?e)
     ?fettem <- (preferencia-tematica ?t)
@@ -274,6 +280,7 @@
 
 (defrule NoCuadrosSuficientes_restrictiva3
     (declare (salience -2))
+    (nocuadsuf2 True)
     ?cont <- (contador (valor ?c)) 
     ?factw <- (weight ?w) 
     ?facttv <- (temps-visita ?tv) 
@@ -293,6 +300,8 @@
     ;   Agafem Obres com a fets
     ?obra <- (Obres (nom ?nom) (epoca ?ep) (estil ?es) (autor_quadre ?auq) (tematica ?ot) (rellevancia ?r) (sala ?s))
     (not (mirant ?nom))
+
+    (nocuadsuf3 True)
     ;   Agafem preferencies
     ?fetep <- (epoca ?e)
     ?fettem <- (preferencia-tematica ?t)
@@ -312,6 +321,8 @@
 
 (defrule NoCuadrosSuficientes_restrictiva4
     (declare (salience -3))
+
+    (nocuadsuf3 True)
     ?cont <- (contador (valor ?c)) 
     ?factw <- (weight ?w) 
     ?facttv <- (temps-visita ?tv) 
