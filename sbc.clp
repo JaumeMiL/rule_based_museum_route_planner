@@ -55,6 +55,9 @@
         (type STRING))
     (slot rellevancia
         (type STRING))
+    ; (slot visitada
+    ;     (type BOOLEAN)
+    ;     (default FALSE))
 )
 
 (defclass Visitant_acompanyat
@@ -1376,41 +1379,56 @@
 (defrule anar-a-la-sala
     ?sala <- (Sala (id ?current) (connected-to $?next-rooms))
     ?sala-actual <- (current-room ?current)
+    (Ruta (end-room ?end-room))
+    (test (neq ?current ?end-room))
     =>
-    (printout t "La sala actual és la sala " ?current crlf)
-    (printout t "Les sales següents són: " $?next-rooms crlf)
-    (printout t "Selecciona la sala a la que vols anar: " crlf)
-    (bind ?next (read))
-    (if (member$ ?next $?next-rooms)
-        then
-        (retract ?sala-actual)
-        (assert (current-room ?next))
-        (printout t "Movent-se a la sala: " ?next crlf)
-        else
-        (assert (current-room ?current))
-        (printout t "Sala no vàlida. Si us plau, intenta-ho de nou." crlf)
+    (loop-for-count (?i 1 3)  ; 3 intents per seleccionar una sala vàlida
+        (printout t "La sala actual és la sala " ?current crlf)
+        (printout t "Les sales següents són: " $?next-rooms crlf)
+        (printout t "Selecciona la sala a la que vols anar: " crlf)
+        (bind ?next (read))
+        (if (member$ ?next $?next-rooms)
+            then
+            (retract ?sala-actual)
+            (assert (current-room ?next))
+            (printout t "Movent-se a la sala: " ?next crlf)
+            (return)  ; Atura el loop si la sala és vàlida
+            else
+            (printout t "Sala no vàlida. Si us plau, intenta-ho de nou." crlf)
+        )
     )
 )
 
-
-; Regla per moure’s d’una sala a una altra
-; (defrule seguir-ruta
-;     ?sala <- (Sala (id ?current) (connected-to $?next-rooms))
+; (defrule obres-vistes-de-sala
 ;     (current-room ?current)
-;     (Ruta (end-room ?end-room))
-;     (test (not (member$ ?end-room $?next-rooms)))
-;     ?next <- (Sala (id ?next-room&:(member$ ?next-room $?next-rooms)))
+;     (Obres (sala ?current) (nom ?obra))
 ;     =>
-;     (printout t "Movent-se de la sala " ?current " a la sala " ?next-room crlf)
-;     (retract (current-room ?current))
-;     (assert (current-room ?next-room))
+;     (modify ?obra (visitada TRUE))
 ; )
 
-; ; Regla final de ruta per determinar què fer un cop acabada la visita
-; (defrule finalitzar-visita
-;     (current-room ?end-room)
-;     (Ruta (end-room ?end-room))
+; Regla final de ruta per determinar què fer un cop acabada la visita
+(defrule finalitzar-visita
+    (current-room ?end-room)
+    (Ruta (end-room ?end-room))
+    =>
+    (printout t "Ruta completa. El visitant ha finalitzat la visita a la sala " ?end-room crlf)
+    (assert (visita-acabada))
+)
+
+; ; Print quines obres s'han visitat a cada sala
+; (defrule imprimir-obres-visitades
+;     (visita-acabada)  ; Aquest fet indica que la visita ha finalitzat
 ;     =>
-;     (printout t "Ruta completa. El visitant ha finalitzat la visita a la sala " ?end-room crlf)
-;     (retract (current-room ?end-room))
+;     (printout t "Obres visitades:" crlf)
+;     ; Iterem per les sales i les obres d'aquelles sales
+;     (do-for-all-facts (?sala Sala)
+;         (printout t "Sala " (fact-slot-value ?sala id) ":" crlf)
+;         (do-for-all-facts (?obra Obres)
+;             (if (and (eq (fact-slot-value ?obra sala) (fact-slot-value ?sala id))
+;                      (fact-slot-value ?obra visitada))
+;                 then
+;                 (printout t " - " (fact-slot-value ?obra nom) crlf)
+;             )
+;         )
+;     )
 ; )
