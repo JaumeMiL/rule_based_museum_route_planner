@@ -98,14 +98,15 @@
 )
 
 ; INSTÀNCIES
-
+; temàtica Història (7), Mitologia (8), Religió (21), Retrat (12), Paisatge (14), Altres (12)
+; estil Renaixement (7), Barroc (27), Neoclassicisme (11), Romanticisme (11), Altres (15)
 (deffacts instancies_obres
     ;; Sala 1 - Època Antiga i Medieval
     (Obres 
         (nom "Codi d'Hammurabi")
         (any_de_creacio -1792)
         (epoca "Antiga")
-        (estil "Escultura")
+        (estil "Altres")
         (autor_quadre "Desconegut")
         (sala 1)
         (tematica "Història")
@@ -117,7 +118,7 @@
         (nom "Lamassu")
         (any_de_creacio -720)
         (epoca "Antiga")
-        (estil "Escultura")
+        (estil "Altres")
         (autor_quadre "Desconegut")
         (sala 1)
         (tematica "Mitologia")
@@ -129,7 +130,7 @@
         (nom "Tique de Constantinoble")
         (any_de_creacio 649)
         (epoca "Medieval")
-        (estil "Medieval")
+         (estil "Altres")
         (autor_quadre "Desconegut")
         (sala 1)
         (tematica "Mitologia")
@@ -141,7 +142,7 @@
         (nom "Pintures Murals Conquesta Mallorca")
         (any_de_creacio 1288)
         (epoca "Medieval")
-        (estil "Medieval")
+        (estil "Altres")
         (autor_quadre "Desconegut")
         (sala 1)
         (tematica "Història")
@@ -153,7 +154,7 @@
         (nom "La crucifixió")
         (any_de_creacio 1320)
         (epoca "Medieval")
-        (estil "Medieval")
+        (estil "Altres")
         (autor_quadre "Agnolo Gaddi")
         (sala 1)
         (tematica "Religió")
@@ -165,7 +166,7 @@
         (nom "Sant Miquel 1450")
         (any_de_creacio 1450)
         (epoca "Medieval")
-        (estil "Medieval")
+        (estil "Altres")
         (autor_quadre "Jaume Huguet")
         (sala 1)
         (tematica "Religió")
@@ -177,7 +178,7 @@
         (nom "Sant Miquel 1455")
         (any_de_creacio 1455)
         (epoca "Medieval")
-        (estil "Medieval")
+        (estil "Altres")
         (autor_quadre "Jaume Huguet")
         (sala 1)
         (tematica "Religió")
@@ -189,7 +190,7 @@
         (nom "Sant Agustí")
         (any_de_creacio 1463)
         (epoca "Medieval")
-        (estil "Medieval")
+        (estil "Altres")
         (autor_quadre "Jaume Huguet")
         (sala 1)
         (tematica "Religió")
@@ -215,7 +216,7 @@
         (nom "Retaule de Sant Cebrià")
         (any_de_creacio 1475)
         (epoca "Edat Moderna")
-        (estil "Medieval")
+        (estil "Altres")
         (autor_quadre "Jaume Huguet")
         (sala 2)
         (tematica "Religió")
@@ -328,7 +329,7 @@
         (estil "Barroc")
         (autor_quadre "Diego Rodríguez de Silva y Velázquez")
         (sala 3)
-        (tematica "Animals")
+        (tematica " Altres")
         (dimensions 3432)
         (complexitat "Baixa")
         (rellevancia "Mitjana")
@@ -411,7 +412,7 @@
         (nom "Cofre de joies de Lluís XIV")
         (any_de_creacio 1677)
         (epoca "Edat Moderna")
-        (estil "Escultura")
+         (estil "Altres")
         (autor_quadre "Jakob Blanck")
         (sala 4)
         (tematica "Altres")
@@ -655,10 +656,10 @@
         (nom "Riña de gatos")
         (any_de_creacio 1786)
         (epoca "Edat Moderna")
-        (estil "Realisme")
+         (estil "Altres")
         (autor_quadre "Francisco de Goya y Lucientes")
         (sala 6)
-        (tematica "Animals")
+        (tematica " Altres")
         (dimensions 11104)
         (complexitat "Mitjana")
         (rellevancia "Baixa")
@@ -827,7 +828,7 @@
         (nom "Robles junto al agua")
         (any_de_creacio 1832)
         (epoca "Edat Contemporània")
-        (estil "Realisme")
+         (estil "Altres")
         (autor_quadre "Christian E.B.Morgenstern")
         (sala 8)
         (tematica "Paisatge")
@@ -839,7 +840,7 @@
         (nom "Vista del puerto de Rotterdam")
         (any_de_creacio 1856)
         (epoca "Edat Contemporània")
-        (estil "Realisme")
+         (estil "Altres")
         (autor_quadre "Johan Barthold Jongkind")
         (sala 8)
         (tematica "Paisatge")
@@ -851,7 +852,7 @@
         (nom "Atardecer en la pradera")
         (any_de_creacio 1870)
         (epoca "Edat Contemporània")
-        (estil "Realisme")
+        (estil "Altres")
         (autor_quadre "Albert Bierstadt")
         (sala 8)
         (tematica "Paisatge")
@@ -863,7 +864,7 @@
         (nom "El bosque de Marly")
         (any_de_creacio 1871)
         (epoca "Edat Contemporània")
-        (estil "Realisme")
+        (estil "Altres")
         (autor_quadre "Camille Pissarro")
         (sala 8)
         (tematica "Paisatge")
@@ -1008,16 +1009,16 @@
         (rellevancia "Baixa")
     )
     (Obres
-    (nom "Masia Blanca de Bunyola")
-    (any_de_creacio 1902)
-    (epoca "Edat Contemporània")
-    (estil "Art Modern")
-    (autor_quadre "Santiago Rusiñol")
-    (sala 10)
-    (tematica "Paisatge")
-    (dimensions 5376)
-    (complexitat "Mitjana")
-    (rellevancia "Alta")
+        (nom "Masia Blanca de Bunyola")
+        (any_de_creacio 1902)
+        (epoca "Edat Contemporània")
+        (estil "Art Modern")
+        (autor_quadre "Santiago Rusiñol")
+        (sala 10)
+        (tematica "Paisatge")
+        (dimensions 5376)
+        (complexitat "Mitjana")
+        (rellevancia "Alta")
     )
     (Obres
         (nom "Màquina de Llaurar")
@@ -1034,16 +1035,17 @@
 )
 
 (deffacts instancies_sales
-    (Sala (id 1) (connected-to 2 10))
-    (Sala (id 2) (connected-to 1 3))
-    (Sala (id 3) (connected-to 2 4))
-    (Sala (id 4) (connected-to 3 5))
-    (Sala (id 5) (connected-to 4 6))
-    (Sala (id 6) (connected-to 5 7))
-    (Sala (id 7) (connected-to 6 8))
-    (Sala (id 8) (connected-to 7 9))
-    (Sala (id 9) (connected-to 8 10))
-    (Sala (id 10) (connected-to 9 1))
+    (Sala (id 0) (connected-to 1))
+    (Sala (id 1) (connected-to 2))
+    (Sala (id 2) (connected-to 3))
+    (Sala (id 3) (connected-to 4))
+    (Sala (id 4) (connected-to 5))
+    (Sala (id 5) (connected-to 6 7))
+    (Sala (id 6) (connected-to 5))
+    (Sala (id 7) (connected-to 8))
+    (Sala (id 8) (connected-to 9))
+    (Sala (id 9) (connected-to 10))
+    (Sala (id 10) (connected-to 1))
 )
 
 ;;; REGLES
@@ -1085,35 +1087,35 @@
     (declare (salience 20))
     =>
     (printout t "Quina és la teva època artística preferida?" crlf)
-    (printout t "1. Medieval" crlf)
-    (printout t "2. Renaixement" crlf)
-    (printout t "3. Barroc" crlf)
-    (printout t "4. Edat contemporània" crlf)
-    (printout t "5. No tinc una preferència en quant a època artística" crlf)
+    (printout t "1. Antiga" crlf)
+    (printout t "2. Medieval" crlf)
+    (printout t "3. Edat Moderna" crlf)
+    (printout t "4. Edat Contemporània" crlf)
+    ; (printout t "5. No tinc una preferència en quant a època artística" crlf)
     (printout t "Selecciona una o més opcions (per ex: 1 3 o 24): " crlf)
     (bind ?opc (readline))  ; Llegim la cadena d'opcions
 
     ; Verifiquem cada opció utilitzant str-index
     (if (integerp (str-index "1" ?opc)) then
+        (assert (preferencia-epoca "Antiga"))
+        (printout t "Has seleccionat: Antiga" crlf)
+    )
+    (if (integerp (str-index "2" ?opc)) then
         (assert (preferencia-epoca "Medieval"))
         (printout t "Has seleccionat: Medieval" crlf)
     )
-    (if (integerp (str-index "2" ?opc)) then
-        (assert (preferencia-epoca "Renaixement"))
-        (printout t "Has seleccionat: Renaixement" crlf)
-    )
     (if (integerp (str-index "3" ?opc)) then
-        (assert (preferencia-epoca "Barroc"))
+        (assert (preferencia-epoca "Edat Moderna"))
         (printout t "Has seleccionat: Barroc" crlf)
     )
     (if (integerp (str-index "4" ?opc)) then
-        (assert (preferencia-epoca "Edat contemporània"))
-        (printout t "Has seleccionat: Edat contemporània" crlf)
+        (assert (preferencia-epoca "Edat Contemporània"))
+        (printout t "Has seleccionat: Edat Contemporània" crlf)
     )
-    (if (integerp (str-index "5" ?opc)) then
-        (assert (preferencia-epoca "ND")) ; ND = Not Defined
-        (printout t "Has seleccionat: No tinc una preferència en quant a època artística" crlf)
-    )
+    ; (if (integerp (str-index "5" ?opc)) then
+    ;     (assert (preferencia-epoca "ND")) ; ND = Not Defined
+    ;     (printout t "Has seleccionat: No tinc una preferència en quant a època artística" crlf)
+    ; )
 )
 ; Segona pregunta sobre la durada de la visita
 (defrule preguntarDuracio "Pregunta sobre la durada de la visita"
@@ -1160,7 +1162,9 @@
     (printout t "2. Mitologia" crlf)
     (printout t "3. Paisatge" crlf)
     (printout t "4. Retrats" crlf)
-    (printout t "5. No tinc una preferència en quant a temàtica" crlf)
+    (printout t "5. Història" crlf)
+    (printout t "6. Altres" crlf)
+    (printout t "7. No tinc una preferència en quant a temàtica" crlf)
     (printout t "Selecciona una o més opcions (per ex: 1 3 o 24): " crlf)
     (bind ?opc (readline))
 
@@ -1182,26 +1186,50 @@
         (printout t "Has seleccionat: Retrats" crlf)
     )
     (if (integerp (str-index "5" ?opc)) then
+        (assert (preferencia-tematica "Història"))
+        (printout t "Has seleccionat: Història" crlf)
+    )
+    (if (integerp (str-index "6" ?opc)) then
+        (assert (preferencia-tematica "Altres"))
+        (printout t "Has seleccionat: Altres" crlf)
+    )
+    (if (integerp (str-index "7" ?opc)) then
         (assert (preferencia-tematica "ND")) ; ND = Not Defined
         (printout t "Has seleccionat: No tinc una preferència en quant a temàtica" crlf)
     )
 )
 
+; Pregunta sobre l'estil preferit amb seleccions múltiples
 (defrule estil "Pregunta quin estil prefereix el visitant"
     (declare (salience 15))
     =>
-    (printout t "Què estil prefereixes?" crlf)
+    (printout t "Quin estil prefereixes?" crlf)
     (printout t "1. neoclassicisme" crlf)
-    (printout t "2. cubisme" crlf)
-    (printout t "Selecciona una opció: " crlf)
-    (bind ?groneixementup (read))
-    (if (eq ?groneixementup 1) then
-        (assert (estil "neoclassicisme"))
+    (printout t "2. barroc" crlf)
+    (printout t "3. romanticisme" crlf)
+    (printout t "4. renaixement" crlf)
+    (printout t "5. altres" crlf)
+    (printout t "Selecciona una o més opcions: " crlf)
+    (bind ?opc (readline))
+    (if (integerp (str-index "1" ?opc)) then
+        (assert (estil "Neoclassicisme"))
         (printout t "Has seleccionat: neoclassicisme" crlf)
     )
-    (if (eq ?groneixementup 2) then
-        (assert (estil "cubisme"))
-        (printout t "Has seleccionat: cubisme" crlf)
+    (if (integerp (str-index "2" ?opc)) then
+        (assert (estil "Barroc"))
+        (printout t "Has seleccionat: barroc" crlf)
+    )
+    (if (integerp (str-index "3" ?opc)) then
+        (assert (estil "Romanticisme"))
+        (printout t "Has seleccionat: romanticisme" crlf)
+    )
+    (if (integerp (str-index "4" ?opc)) then
+        (assert (estil "Renaixement"))
+        (printout t "Has seleccionat: renaixement" crlf)
+    )
+    (if (integerp (str-index "5" ?opc)) then
+        (assert (estil "Altres"))
+        (printout t "Has seleccionat: altres" crlf)
     )
 )
 
@@ -1214,10 +1242,10 @@
     (printout t "Autor preferit: " ?autor crlf)
 )
 
-(defrule c_art "Pregunta quin coneixement d'art té  el visitant"
+(defrule c_art "Pregunta quin coneixement d'art té el visitant"
     (declare (salience 14))
     =>
-    (printout t "Què coneixement d'art tens?" crlf)
+    (printout t "Quin nivell de coneixement d'art tens?" crlf)
     (printout t "1. Alt" crlf)
     (printout t "2. Mitjà" crlf)
     (printout t "3. Baix" crlf)
@@ -1240,23 +1268,23 @@
 (defrule interes "Pregunta quin interès té el visitant"
     (declare (salience 6))
     =>
-    (printout t "Quin interès tens sobre l'exposat?" crlf)
-    (printout t "1. Alt" crlf)
-    (printout t "2. Mitjà" crlf)
-    (printout t "3. Baix" crlf)
+    (printout t "Com d'interessat/da estàs per l'exposició?" crlf)
+    (printout t "1. Molt" crlf)
+    (printout t "2. Normal" crlf)
+    (printout t "3. Poc" crlf)
     (printout t "Selecciona una opció: " crlf)
     (bind ?grup (read))
     (if (eq ?grup 1) then
         (assert (interes "Alt"))
-        (printout t "Has seleccionat: Alt" crlf)
+        (printout t "Has seleccionat: Molt" crlf)
     )
     (if (eq ?grup 2) then
         (assert (interes "Mitjà"))
-        (printout t "Has seleccionat: Mitjà" crlf)
+        (printout t "Has seleccionat: Normal" crlf)
     )
     (if (eq ?grup 3) then
         (assert (interes "Baix"))
-        (printout t "Has seleccionat: Baix" crlf)
+        (printout t "Has seleccionat: Poc" crlf)
     )
 )
 
@@ -1266,7 +1294,7 @@
     =>
     (printout t "Amb qui vens?" crlf)
     (printout t "1. amics" crlf)
-    (printout t "2. familia" crlf)
+    (printout t "2. família" crlf)
     (printout t "3. classe" crlf)
     (printout t "4. grup turístic" crlf)
     (printout t "Selecciona una opció: " crlf)
@@ -1295,7 +1323,6 @@
 
 ;(any-factp ((?f grup)) (eq ?f:implied (create$ "Sol")))        --> mira si existeix el fact (grup "Sol")         NOMES LINEA DE COMANDES!!
 ;(any-factp ((?f grup)) (eq ?f:implied (create$ "Acompanyat"))) --> mira si existeix el fact (grup "Acompanyat")  NOMES LINEA DE COMANDES!!
-;(defmodule ClassificacioVisitant)
 
 ;;;     Clasificacció de Visitant individual     ;;;
 
@@ -1556,22 +1583,26 @@
     (Ruta (end-room ?end-room))
     (test (neq ?current ?end-room))
     =>
-    (loop-for-count (?i 1 3)  ; 3 intents per seleccionar una sala vàlida
+    (if (= (length$ ?next-rooms) 1)
+        then
+        ; Si només hi ha una opció, la seleccionem automàticament
+        (bind ?next (nth$ 1 ?next-rooms))
+        else
+        ; Si hi ha múltiples opcions, demanem a l'usuari que triï
         (printout t "La sala actual és la sala " ?current crlf)
-        (printout t "Les sales següents són: " $?next-rooms crlf)
+        (printout t "Les sales següents són: " ?next-rooms crlf)
         (printout t "Selecciona la sala a la que vols anar: " crlf)
         (bind ?next (read))
-        (if (member$ ?next $?next-rooms)
-            then
-            (retract ?sala-actual)
-            (assert (current-room ?next))
-            (assert (nova-sala-entrada ?next))  ; Afegim un fet per indicar l'entrada a una nova sala
-            (printout t "Movent-se a la sala: " ?next crlf)
-            (return)  ; Atura el loop si la sala és vàlida
-            else
-            (printout t "Sala no vàlida. Si us plau, intenta-ho de nou." crlf)
+        (while (not (member$ ?next ?next-rooms))
+            (printout t "Sala no vàlida. Si us plau, tria una de les opcions disponibles: " ?next-rooms crlf)
+            (bind ?next (read))
         )
     )
+
+    (retract ?sala-actual)
+    (assert (current-room ?next))
+    (assert (nova-sala-entrada ?next))
+    (printout t "Movent-se a la sala: " ?next crlf)
 )
 
 (defrule processar-obres-sala
@@ -1586,26 +1617,25 @@
     ?obra <- (Obres (nom ?nom) 
                     (epoca ?ep) 
                     (estil ?es) 
-                    (sala ?sala-id) 
+                    (sala ?sala-id)
                     (visitada FALSE))
-    (epoca ?epoca-pref)  ; Preferència d'època del visitant
-    (estil ?estil-pref)  ; Preferència d'estil del visitant
     =>
     (retract ?proc)
     
     ; Comprovem si l'època i l'estil coincideixen
-    (if (and (eq ?ep ?epoca-pref) 
-             (eq ?es ?estil-pref))
-        then
-        (modify ?obra (visitada TRUE))
-        (printout t "L'obra '" ?nom "' a la sala " ?sala-id " ha estat marcada com a visitada. " 
-                    "Època: " ?ep ", Estil: " ?es crlf)
-        else
-        (printout t "L'obra '" ?nom "' no coincideix amb les preferències del visitant. "
-                    "Època: " ?ep ", Estil: " ?es crlf)
-    )
+    (modify ?obra (visitada TRUE))
+    (printout t "L'obra '" ?nom "' a la sala " ?sala-id " ha estat marcada com a visitada. " crlf)
     
     (assert (processar-obres ?sala-id))
+    (printout t "Generat fet (processar-obres " ?sala-id ")" crlf)
+)
+
+(defrule verificar-obres-sala
+    (processar-obres ?sala-id)
+    (Obres (sala ?sala-id) (nom ?nom) (epoca ?ep) (estil ?es) (tematica ?tem) (visitada ?vis))
+    =>
+    (printout t "Obra a la sala " ?sala-id ": " ?nom 
+              " (Època: " ?ep ", Estil: " ?es ", Temàtica: " ?tem ", Visitada: " ?vis ")" crlf)
 )
 
 (defrule netejar-processar-obres
@@ -1613,6 +1643,7 @@
     (not (Obres (sala ?sala-id) (visitada FALSE)))
     =>
     (retract ?proc)
+    (printout t "S'han processat totes les obres de la sala " ?sala-id crlf)
 )
 
 (defrule finalitzar-visita
@@ -1630,13 +1661,14 @@
    =>
    (printout t "Obres visitades:" crlf)
    (do-for-all-facts ((?sala Sala))
-      (printout t "Sala " ?sala:id ":" crlf)
-      (do-for-all-facts ((?obra Obres))
-         (if (and (eq ?obra:sala ?sala:id)
-                  (eq ?obra:visitada TRUE))
-            then
-            (printout t " - " ?obra:nom crlf)
-         )
-      )
+      if (neq ?sala:id 0) then
+        (printout t "Sala " ?sala:id ":" crlf)
+        (do-for-all-facts ((?obra Obres))
+            (if (and (eq ?obra:sala ?sala:id)
+                    (eq ?obra:visitada TRUE))
+                then
+                (printout t " - " ?obra:nom crlf)
+            )
+        )
    )
 )
