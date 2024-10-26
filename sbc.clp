@@ -55,9 +55,10 @@
         (type STRING))
     (slot rellevancia
         (type STRING))
-    ; (slot visitada
-    ;     (type BOOLEAN)
-    ;     (default FALSE))
+    (slot visitada
+        (type SYMBOL)
+        (allowed-symbols TRUE FALSE)
+        (default FALSE))
 )
 
 (deftemplate contador
@@ -1369,7 +1370,7 @@
 
 ;;;     REGLES DE MATCHING DE CUADRES       ;;;
 ;;     RESTRICCIO MAXIMA      ;;
-(defrule matchcuadres_restrictiva1
+(defrule matchquadres_restrictiva1
     (declare (salience 0))
 
     ;   Agafem Obres com a fets
@@ -1411,7 +1412,7 @@
 
 
 ;;     RESTRICCIO MAXIMA -1     ;;
-(defrule matchcuadres_restrictiva2
+(defrule matchquadres_restrictiva2
     (declare (salience -1))
 
     (nocuadsuf True)
@@ -1456,7 +1457,7 @@
 
 
 ;;     RESTRICCIO MAXIMA -2     ;;
-(defrule matchcuadres_restrictiva3
+(defrule matchquadres_restrictiva3
     (declare (salience -2))
 
     ;   Agafem Obres com a fets
@@ -1499,7 +1500,7 @@
 
 
 ;;     RESTRICCIO MAXIMA -3     ;;
-(defrule matchcuadres_restrictiva4
+(defrule matchquadres_restrictiva4
     (declare (salience -3))
 
     ;   Agafem Obres com a fets
@@ -1564,6 +1565,7 @@
             then
             (retract ?sala-actual)
             (assert (current-room ?next))
+            (assert (nova-sala-entrada ?next))  ; Afegim un fet per indicar l'entrada a una nova sala
             (printout t "Movent-se a la sala: " ?next crlf)
             (return)  ; Atura el loop si la sala és vàlida
             else
@@ -1572,36 +1574,69 @@
     )
 )
 
-; (defrule obres-vistes-de-sala
-;     (current-room ?current)
-;     (Obres (sala ?current) (nom ?obra))
-;     =>
-;     (modify ?obra (visitada TRUE))
-; )
+(defrule processar-obres-sala
+    ?nova-sala <- (nova-sala-entrada ?sala-id)
+    =>
+    (retract ?nova-sala)
+    (assert (processar-obres ?sala-id))
+)
 
-; Regla final de ruta per determinar què fer un cop acabada la visita
+(defrule obres-vistes-de-sala
+    ?proc <- (processar-obres ?sala-id)
+    ?obra <- (Obres (nom ?nom) 
+                    (epoca ?ep) 
+                    (estil ?es) 
+                    (sala ?sala-id) 
+                    (visitada FALSE))
+    (epoca ?epoca-pref)  ; Preferència d'època del visitant
+    (estil ?estil-pref)  ; Preferència d'estil del visitant
+    =>
+    (retract ?proc)
+    
+    ; Comprovem si l'època i l'estil coincideixen
+    (if (and (eq ?ep ?epoca-pref) 
+             (eq ?es ?estil-pref))
+        then
+        (modify ?obra (visitada TRUE))
+        (printout t "L'obra '" ?nom "' a la sala " ?sala-id " ha estat marcada com a visitada. " 
+                    "Època: " ?ep ", Estil: " ?es crlf)
+        else
+        (printout t "L'obra '" ?nom "' no coincideix amb les preferències del visitant. "
+                    "Època: " ?ep ", Estil: " ?es crlf)
+    )
+    
+    (assert (processar-obres ?sala-id))
+)
+
+(defrule netejar-processar-obres
+    ?proc <- (processar-obres ?sala-id)
+    (not (Obres (sala ?sala-id) (visitada FALSE)))
+    =>
+    (retract ?proc)
+)
+
 (defrule finalitzar-visita
-    (current-room ?end-room)
+    ?current-room <- (current-room ?end-room)
     (Ruta (end-room ?end-room))
     =>
+    (assert (processar-obres ?end-room))  ; Processem les obres de l'última sala
     (printout t "Ruta completa. El visitant ha finalitzat la visita a la sala " ?end-room crlf)
     (assert (visita-acabada))
 )
 
-; ; Print quines obres s'han visitat a cada sala
-; (defrule imprimir-obres-visitades
-;     (visita-acabada)  ; Aquest fet indica que la visita ha finalitzat
-;     =>
-;     (printout t "Obres visitades:" crlf)
-;     ; Iterem per les sales i les obres d'aquelles sales
-;     (do-for-all-facts (?sala Sala)
-;         (printout t "Sala " (fact-slot-value ?sala id) ":" crlf)
-;         (do-for-all-facts (?obra Obres)
-;             (if (and (eq (fact-slot-value ?obra sala) (fact-slot-value ?sala id))
-;                      (fact-slot-value ?obra visitada))
-;                 then
-;                 (printout t " - " (fact-slot-value ?obra nom) crlf)
-;             )
-;         )
-;     )
-; )
+; Print quines obres s'han visitat a cada sala
+(defrule imprimir-obres-visitades
+   (visita-acabada)
+   =>
+   (printout t "Obres visitades:" crlf)
+   (do-for-all-facts ((?sala Sala))
+      (printout t "Sala " ?sala:id ":" crlf)
+      (do-for-all-facts ((?obra Obres))
+         (if (and (eq ?obra:sala ?sala:id)
+                  (eq ?obra:visitada TRUE))
+            then
+            (printout t " - " ?obra:nom crlf)
+         )
+      )
+   )
+)
