@@ -60,6 +60,10 @@
     ;     (default FALSE))
 )
 
+(deftemplate contador
+    (slot valor (type INTEGER))
+)
+
 (defclass Visitant_acompanyat
     (is-a Visitant)
     (role concrete)
@@ -103,7 +107,7 @@
         (estil "Escultura")
         (autor_quadre "Desconegut")
         (sala 1)
-        (tematica "Legal")
+        (tematica "Història")
         (dimensions 17775)
         (complexitat "Mitjana")
         (rellevancia "Alta")
@@ -124,7 +128,7 @@
         (nom "Tique de Constantinoble")
         (any_de_creacio 649)
         (epoca "Medieval")
-        (estil "Bizantí")
+        (estil "Medieval")
         (autor_quadre "Desconegut")
         (sala 1)
         (tematica "Mitologia")
@@ -136,7 +140,7 @@
         (nom "Pintures Murals Conquesta Mallorca")
         (any_de_creacio 1288)
         (epoca "Medieval")
-        (estil "Gòtic")
+        (estil "Medieval")
         (autor_quadre "Desconegut")
         (sala 1)
         (tematica "Història")
@@ -148,7 +152,7 @@
         (nom "La crucifixió")
         (any_de_creacio 1320)
         (epoca "Medieval")
-        (estil "Gòtic")
+        (estil "Medieval")
         (autor_quadre "Agnolo Gaddi")
         (sala 1)
         (tematica "Religió")
@@ -160,7 +164,7 @@
         (nom "Sant Miquel 1450")
         (any_de_creacio 1450)
         (epoca "Medieval")
-        (estil "Gòtic")
+        (estil "Medieval")
         (autor_quadre "Jaume Huguet")
         (sala 1)
         (tematica "Religió")
@@ -172,7 +176,7 @@
         (nom "Sant Miquel 1455")
         (any_de_creacio 1455)
         (epoca "Medieval")
-        (estil "Gòtic")
+        (estil "Medieval")
         (autor_quadre "Jaume Huguet")
         (sala 1)
         (tematica "Religió")
@@ -184,7 +188,7 @@
         (nom "Sant Agustí")
         (any_de_creacio 1463)
         (epoca "Medieval")
-        (estil "Gòtic")
+        (estil "Medieval")
         (autor_quadre "Jaume Huguet")
         (sala 1)
         (tematica "Religió")
@@ -210,7 +214,7 @@
         (nom "Retaule de Sant Cebrià")
         (any_de_creacio 1475)
         (epoca "Edat Moderna")
-        (estil "Gòtic")
+        (estil "Medieval")
         (autor_quadre "Jaume Huguet")
         (sala 2)
         (tematica "Religió")
@@ -299,7 +303,7 @@
         (estil "Barroc")
         (autor_quadre "Domenichino")
         (sala 3)
-        (tematica "Arquitectura")
+        (tematica "Altres")
         (dimensions 4200)
         (complexitat "Baixa")
         (rellevancia "Baixa")
@@ -311,7 +315,7 @@
         (estil "Barroc")
         (autor_quadre "Pedro Pablo Rubens")
         (sala 3)
-        (tematica "Arquitectura")
+        (tematica "Mitologia")
         (dimensions 12255)
         (complexitat "Baixa")
         (rellevancia "Baixa")
@@ -347,7 +351,7 @@
         (estil "Barroc")
         (autor_quadre "Jan Brueghel 'el Vell'")
         (sala 3)
-        (tematica "Al·legoria")
+        (tematica "Altres")
         (dimensions 46464)
         (complexitat "Alta")
         (rellevancia "Mitjana")
@@ -356,7 +360,7 @@
         (nom "El embarco de santa Paula Romana")
         (any_de_creacio 1639)
         (epoca "Edat Moderna")
-        (estil "Classicisme")
+        (estil "Barroc")
         (autor_quadre "Claudio de Lorena")
         (sala 3)
         (tematica "Religió")
@@ -409,7 +413,7 @@
         (estil "Escultura")
         (autor_quadre "Jakob Blanck")
         (sala 4)
-        (tematica "Monarquia")
+        (tematica "Altres")
         (dimensions 1197)
         (complexitat "Alta")
         (rellevancia "Baixa")
@@ -454,7 +458,7 @@
         (nom "La reina Zenobia ante el emperador Aureliano")
         (any_de_creacio 1717)
         (epoca "Edat Moderna")
-        (estil "Rococó")
+        (estil "Barroc")
         (autor_quadre "Giambattista Tiepolo")
         (sala 4)
         (tematica "Història")
@@ -478,7 +482,7 @@
         (nom "Ofrena a Bacus")
         (any_de_creacio 1720)
         (epoca "Edat Moderna")
-        (estil "Rococó")
+        (estil "Barroc")
         (autor_quadre "Michel-Ange Houasse")
         (sala 4)
         (tematica "Mitologia")
@@ -487,7 +491,7 @@
         (rellevancia "Mitjana")
     )
 
-    ;; Sala 5 - Rococó i Neoclassicisme
+    ;; Sala 5 - Barroc i Neoclassicisme
     (Obres
         (nom "Retrato de Isabel Farnesio")
         (any_de_creacio 1723)
@@ -519,7 +523,7 @@
         (estil "Barroc")
         (autor_quadre "Sebastiano Conca")
         (sala 5)
-        (tematica "Paisatge")
+        (tematica "Mitologia")
         (dimensions 4366)
         (complexitat "Mitjana")
         (rellevancia "Mitjana")
@@ -531,19 +535,19 @@
         (estil "Barroc")
         (autor_quadre "Jean Baptiste Siméon Chardin")
         (sala 5)
-        (tematica "Bodegó")
+        (tematica "Altres")
         (dimensions 5008)
         (complexitat "Baixa")
         (rellevancia "Baixa")
     )
     (Obres
-        (nom "Concierto_Campestre")
+        (nom "Concierto Campestre")
         (any_de_creacio 1734)
         (epoca "Edat Moderna")
-        (estil "Rococó")
+        (estil "Barroc")
         (autor_quadre "Jean-Baptiste Pater")
         (sala 5)
-        (tematica "Escena de gènere")
+        (tematica "Altres")
         (dimensions 3630)
         (complexitat "Mitjana")
         (rellevancia "Baixa")
@@ -555,7 +559,7 @@
         (estil "Barroc")
         (autor_quadre "Giacomo Cerutti")
         (sala 5)
-        (tematica "Escena de gènere")
+        (tematica "Altres")
         (dimensions 12397)
         (complexitat "Mitjana")
         (rellevancia "Baixa")
@@ -600,7 +604,7 @@
         (nom "La apoteosis de Hercules")
         (any_de_creacio 1765)
         (epoca "Edat Moderna")
-        (estil "Rococó")
+        (estil "Barroc")
         (autor_quadre "Giandomenico Tiepolo")
         (sala 5)
         (tematica "Mitologia")
@@ -615,7 +619,7 @@
         (estil "Barroc")
         (autor_quadre "Nicolas-Bernard Lépicié")
         (sala 5)
-        (tematica "Escena de gènere")
+        (tematica "Altres")
         (dimensions 16072)
         (complexitat "Alta")
         (rellevancia "Baixa")
@@ -627,7 +631,7 @@
         (estil "Barroc")
         (autor_quadre "Francesco Foschi")
         (sala 5)
-        (tematica "Escena de gènere")
+        (tematica "Altres")
         (dimensions 2976)
         (complexitat "Alta")
         (rellevancia "Baixa")
@@ -650,7 +654,7 @@
         (nom "Riña de gatos")
         (any_de_creacio 1786)
         (epoca "Edat Moderna")
-        (estil "Naturalisme")
+        (estil "Realisme")
         (autor_quadre "Francisco de Goya y Lucientes")
         (sala 6)
         (tematica "Animals")
@@ -689,7 +693,7 @@
         (estil "Neoclassicisme")
         (autor_quadre "Jacques-Louis David")
         (sala 6)
-        (tematica "Esdeveniment històric")
+        (tematica "Història")
         (dimensions 607659)
         (complexitat "Alta")
         (rellevancia "Alta")
@@ -701,7 +705,7 @@
         (estil "Romanticisme")
         (autor_quadre "Théodore Géricault")
         (sala 6)
-        (tematica "Esdeveniment històric")
+        (tematica "Història")
         (dimensions 351556)
         (complexitat "Alta")
         (rellevancia "Alta")
@@ -713,7 +717,7 @@
         (estil "Romanticisme")
         (autor_quadre "Eugène Delacroix")
         (sala 6)
-        (tematica "Revolucionària")
+        (tematica "Història")
         (dimensions 84500)
         (complexitat "Mitjana")
         (rellevancia "Alta")
@@ -730,8 +734,6 @@
         (complexitat "Mitjana")
         (rellevancia "Mitjana")
     )
-
-
 
     ;; Sala 7 - Paisatges Romàntics i Realistes
     (Obres
@@ -782,8 +784,6 @@
         (complexitat "Mitjana")
         (rellevancia "Baixa")
     )
-
-    ;; Sala 7 - Paisatges Romàntics
     (Obres
         (nom "Parc de Saint Cloud en un dia festiu")
         (any_de_creacio 1829)
@@ -803,7 +803,7 @@
         (estil "Romanticisme")
         (autor_quadre "Paul Huet")
         (sala 7)
-        (tematica "Vida quotidiana")
+        (tematica "Altres")
         (dimensions 4988)
         (complexitat "Mitjana")
         (rellevancia "Mitjana")
@@ -812,7 +812,7 @@
         (nom "La plana davant dels Pirineus")
         (any_de_creacio 1861)
         (epoca "Edat Contemporània")
-        (estil "Escola de Barbizon")
+        (estil "Romanticisme")
         (autor_quadre "Théodore Rousseau")
         (sala 7)
         (tematica "Paisatge")
@@ -862,7 +862,7 @@
         (nom "El bosque de Marly")
         (any_de_creacio 1871)
         (epoca "Edat Contemporània")
-        (estil "Impressionisme")
+        (estil "Realisme")
         (autor_quadre "Camille Pissarro")
         (sala 8)
         (tematica "Paisatge")
@@ -877,7 +877,7 @@
         (estil "Romanticisme")
         (autor_quadre "Desconegut")
         (sala 8)
-        (tematica "Paisatge")
+        (tematica "Altres")
         (dimensions 2408)
         (complexitat "Mitjana")
         (rellevancia "Baixa")
@@ -891,7 +891,7 @@
         (estil "Neoclassicisme")
         (autor_quadre "Josep Bernat Flaugier")
         (sala 9)
-        (tematica "Religiosa")
+        (tematica "Religió")
         (dimensions 12615)
         (complexitat "Alta")
         (rellevancia "Mitjana")
@@ -903,7 +903,7 @@
         (estil "Neoclassicisme")
         (autor_quadre "Josep Bernat Flaugier")
         (sala 9)
-        (tematica "Mitològica")
+        (tematica "Mitologia")
         (dimensions 4017)
         (complexitat "Mitjana")
         (rellevancia "Baixa")
@@ -915,7 +915,7 @@
         (estil "Neoclassicisme")
         (autor_quadre "Josep Bernat Flaugier")
         (sala 9)
-        (tematica "Religiosa")
+        (tematica "Religió")
         (dimensions 263)
         (complexitat "Alta")
         (rellevancia "Mitjana")
@@ -924,7 +924,7 @@
         (nom "Retrat del Rei Josep I")
         (any_de_creacio 1809)
         (epoca "Edat Contemporània")
-        (estil "Pintura a l'oli")
+        (estil "Neoclassicisme")
         (autor_quadre "Josep Bernat Flaugier")
         (sala 9)
         (tematica "Retrat")
@@ -939,7 +939,7 @@
         (estil "Neoclassicisme")
         (autor_quadre "Josep Bernat Flaugier")
         (sala 9)
-        (tematica "Religiosa")
+        (tematica "Religió")
         (dimensions 2928)
         (complexitat "Alta")
         (rellevancia "Baixa")
@@ -948,10 +948,10 @@
         (nom "Dos Frares i Grup de Gent")
         (any_de_creacio 1812)
         (epoca "Edat Contemporània")
-        (estil "Dibuix")
+        (estil "Art Modern")
         (autor_quadre "Josep Bernat Flaugier")
         (sala 9)
-        (tematica "Religiosa")
+        (tematica "Religió")
         (dimensions 691)
         (complexitat "Baixa")
         (rellevancia "Baixa")
@@ -963,7 +963,7 @@
         (estil "Neoclassicisme")
         (autor_quadre "Josep Bernat Flaugier")
         (sala 9)
-        (tematica "Religiosa")
+        (tematica "Religió")
         (dimensions 1168)
         (complexitat "Mitjana")
         (rellevancia "Baixa")
@@ -972,10 +972,10 @@
         (nom "Sagrada Família")
         (any_de_creacio 1812)
         (epoca "Edat Contemporània")
-        (estil "Tinta")
+        (estil "Art Modern")
         (autor_quadre "Josep Bernat Flaugier")
         (sala 9)
-        (tematica "Religiosa")
+        (tematica "Religió")
         (dimensions 459)
         (complexitat "Baixa")
         (rellevancia "Baixa")
@@ -989,7 +989,7 @@
         (estil "Art Modern")
         (autor_quadre "Salvador Mayol")
         (sala 10)
-        (tematica "Autoretrat")
+        (tematica "Retrat")
         (dimensions 3220)
         (complexitat "Alta")
         (rellevancia "Mitjana")
@@ -1001,22 +1001,22 @@
         (estil "Art Modern")
         (autor_quadre "Salvador Mayol")
         (sala 10)
-        (tematica "Vida quotidiana")
+        (tematica "Altres")
         (dimensions 19608)
         (complexitat "Mitjana")
         (rellevancia "Baixa")
     )
     (Obres
-        (nom "Masia Blanca de Bunyola")
-        (any_de_creacio 1902)
-        (epoca "Edat Contemporània")
-        (estil "Modernisme")
-        (autor_quadre "Santiago Rusiñol")
-        (sala 10)
-        (tematica "Paisatge")
-        (dimensions 5376)
-        (complexitat "Mitjana")
-        (rellevancia "Alta")
+    (nom "Masia Blanca de Bunyola")
+    (any_de_creacio 1902)
+    (epoca "Edat Contemporània")
+    (estil "Art Modern")
+    (autor_quadre "Santiago Rusiñol")
+    (sala 10)
+    (tematica "Paisatge")
+    (dimensions 5376)
+    (complexitat "Mitjana")
+    (rellevancia "Alta")
     )
     (Obres
         (nom "Màquina de Llaurar")
@@ -1025,7 +1025,7 @@
         (estil "Art Modern")
         (autor_quadre "Desconegut")
         (sala 10)
-        (tematica "Conceptual")
+        (tematica "Altres")
         (dimensions 1280)
         (complexitat "Baixa")
         (rellevancia "Baixa")
@@ -1366,6 +1366,166 @@
     =>
     (assert (tipus-visitant "Fish"))
 )
+
+;;;     REGLES DE MATCHING DE CUADRES       ;;;
+;;     RESTRICCIO MAXIMA      ;;
+(defrule matchcuadres_restrictiva1
+    (declare (salience 0))
+
+    ;   Agafem Obres com a fets
+    ?obra <- (Obres (nom ?nom) (epoca ?ep) (estil ?es) (autor_quadre ?auq) (tematica ?ot) (rellevancia ?r) (sala ?s))
+    (not (mirant ?nom))
+    ;   Agafem preferencies
+    ?fetep <- (epoca ?e)
+    ?fettem <- (preferencia-tematica ?t)
+    ?fetestil <- (estil ?esv)
+    ?fetaut <- (autor-preferit ?au)
+
+    ;   Agafem Comptador
+    ?cont <- (contador (valor ?c))
+
+    ;   Fem Matching amb print per verificar
+    (test (eq ?e ?ep))
+    (test (eq ?esv ?es))
+    (test (eq ?au ?auq))
+    (test (eq ?t ?ot))
+    =>
+    (assert (mirant ?nom))
+    (printout t ?nom " ha fet match! Nivell de Restriccio: 0" crlf)
+    (modify ?cont (valor (+ ?c 1)))
+)
+
+(defrule NoCuadrosSuficientes_restrictiva1
+    (declare (salience 0))
+    ?cont <- (contador (valor ?c)) 
+    ?factw <- (weight ?w) 
+    ?facttv <- (temps-visita ?tv) 
+    ?factmt <- (mean_t ?mt) 
+    ?factmdt <- (mean_d_t ?mdt)
+    
+    (test (< ?c (* (/ (- (* ?tv 3600) ?mdt) ?mt) 100)))
+    =>
+    (assert (nocuadsuf True))
+)
+
+
+
+;;     RESTRICCIO MAXIMA -1     ;;
+(defrule matchcuadres_restrictiva2
+    (declare (salience -1))
+
+    ;   Agafem Obres com a fets
+    ?obra <- (Obres (nom ?nom) (epoca ?ep) (estil ?es) (autor_quadre ?auq) (tematica ?ot) (rellevancia ?r) (sala ?s))
+    (not (mirant ?nom))
+    ;   Agafem preferencies
+    ?fetep <- (epoca ?e)
+    ?fettem <- (preferencia-tematica ?t)
+    ?fetestil <- (estil ?esv)
+    ?fetaut <- (autor-preferit ?au)
+
+    ;   Agafem Comptador
+    ?cont <- (contador (valor ?c))
+
+    ;   Fem Matching amb print per verificar
+    (test (eq ?e ?ep))
+    (test (eq ?esv ?es))
+    (test (eq ?au ?auq))
+    =>
+    (assert (mirant ?nom))
+    (printout t ?nom " ha fet match! Nivell de Restriccio: -1" crlf)
+    (modify ?cont (valor (+ ?c 1)))
+)
+
+(defrule NoCuadrosSuficientes_restrictiva2
+    (declare (salience -1))
+    ?cont <- (contador (valor ?c)) 
+    ?factw <- (weight ?w) 
+    ?facttv <- (temps-visita ?tv) 
+    ?factmt <- (mean_t ?mt) 
+    ?factmdt <- (mean_d_t ?mdt)
+    
+    (test (< ?c (* (/ (- (* ?tv 3600) ?mdt) ?mt) 100)))
+    =>
+    (assert (nocuadsuf2 True))
+)
+
+
+;;     RESTRICCIO MAXIMA -2     ;;
+(defrule matchcuadres_restrictiva3
+    (declare (salience -2))
+
+    ;   Agafem Obres com a fets
+    ?obra <- (Obres (nom ?nom) (epoca ?ep) (estil ?es) (autor_quadre ?auq) (tematica ?ot) (rellevancia ?r) (sala ?s))
+    (not (mirant ?nom))
+    ;   Agafem preferencies
+    ?fetep <- (epoca ?e)
+    ?fettem <- (preferencia-tematica ?t)
+    ?fetestil <- (estil ?esv)
+    ?fetaut <- (autor-preferit ?au)
+
+    ;   Agafem Comptador
+    ?cont <- (contador (valor ?c))
+
+    ;   Fem Matching amb print per verificar
+    (test (eq ?e ?ep))
+    (test (eq ?esv ?es))
+    =>
+    (assert (mirant ?nom))
+    (printout t ?nom " ha fet match! Nivell de Restriccio: -2" crlf)
+    (modify ?cont (valor (+ ?c 1)))
+)
+
+(defrule NoCuadrosSuficientes_restrictiva3
+    (declare (salience -2))
+    ?cont <- (contador (valor ?c)) 
+    ?factw <- (weight ?w) 
+    ?facttv <- (temps-visita ?tv) 
+    ?factmt <- (mean_t ?mt) 
+    ?factmdt <- (mean_d_t ?mdt)
+    
+    (test (< ?c (* (/ (- (* ?tv 3600) ?mdt) ?mt) 100)))
+    =>
+    (assert (nocuadsuf3 True))
+)
+
+
+;;     RESTRICCIO MAXIMA -3     ;;
+(defrule matchcuadres_restrictiva4
+    (declare (salience -3))
+
+    ;   Agafem Obres com a fets
+    ?obra <- (Obres (nom ?nom) (epoca ?ep) (estil ?es) (autor_quadre ?auq) (tematica ?ot) (rellevancia ?r) (sala ?s))
+    (not (mirant ?nom))
+    ;   Agafem preferencies
+    ?fetep <- (epoca ?e)
+    ?fettem <- (preferencia-tematica ?t)
+    ?fetestil <- (estil ?esv)
+    ?fetaut <- (autor-preferit ?au)
+
+    ;   Agafem Comptador
+    ?cont <- (contador (valor ?c))
+
+    ;   Fem Matching amb print per verificar
+    (test (eq ?e ?ep))
+    =>
+    (assert (mirant ?nom))
+    (printout t ?nom " ha fet match! Nivell de Restriccio: -3" crlf)
+    (modify ?cont (valor (+ ?c 1)))
+)
+
+(defrule NoCuadrosSuficientes_restrictiva4
+    (declare (salience -3))
+    ?cont <- (contador (valor ?c)) 
+    ?factw <- (weight ?w) 
+    ?facttv <- (temps-visita ?tv) 
+    ?factmt <- (mean_t ?mt) 
+    ?factmdt <- (mean_d_t ?mdt)
+    
+    (test (< ?c (* (/ (- (* ?tv 3600) ?mdt) ?mt) 100)))
+    =>
+    (assert (nocuadsuf4 True))
+)
+
 
 ; Regla per inicialitzar la Ruta segons el tipus de visitant
 (defrule iniciar-ruta
