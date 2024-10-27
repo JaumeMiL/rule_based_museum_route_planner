@@ -1638,14 +1638,6 @@
               " (Època: " ?ep ", Estil: " ?es ", Temàtica: " ?tem ", Visitada: " ?vis ")" crlf)
 )
 
-(defrule netejar-processar-obres
-    ?proc <- (processar-obres ?sala-id)
-    (not (Obres (sala ?sala-id) (visitada FALSE)))
-    =>
-    (retract ?proc)
-    (printout t "S'han processat totes les obres de la sala " ?sala-id crlf)
-)
-
 (defrule finalitzar-visita
     ?current-room <- (current-room ?end-room)
     (Ruta (end-room ?end-room))
