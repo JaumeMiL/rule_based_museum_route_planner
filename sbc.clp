@@ -1153,7 +1153,6 @@
     )
 )
 
-; Pregunta sobre la temàtica preferida amb seleccions múltiples
 (defrule preguntarTematica "Pregunta sobre la temàtica preferida"
     (declare (salience 16))
     =>
@@ -1161,11 +1160,11 @@
     (printout t "1. Religió" crlf)
     (printout t "2. Mitologia" crlf)
     (printout t "3. Paisatge" crlf)
-    (printout t "4. Retrats" crlf)
+    (printout t "4. Retrat" crlf)
     (printout t "5. Història" crlf)
     (printout t "6. Altres" crlf)
     (printout t "7. No tinc una preferència en quant a temàtica" crlf)
-    (printout t "Selecciona una o més opcions (per ex: 1 3 o 24): " crlf)
+    (printout t "Selecciona una o més opcions (per ex: 1 3 o 2 4): " crlf)
     (bind ?opc (readline))
 
     ; Verifiquem cada opció utilitzant str-index i integerp
@@ -1182,8 +1181,8 @@
         (printout t "Has seleccionat: Paisatge" crlf)
     )
     (if (integerp (str-index "4" ?opc)) then
-        (assert (preferencia-tematica "Retrats"))
-        (printout t "Has seleccionat: Retrats" crlf)
+        (assert (preferencia-tematica "Retrat"))
+        (printout t "Has seleccionat: Retrat" crlf)
     )
     (if (integerp (str-index "5" ?opc)) then
         (assert (preferencia-tematica "Història"))
@@ -1194,42 +1193,47 @@
         (printout t "Has seleccionat: Altres" crlf)
     )
     (if (integerp (str-index "7" ?opc)) then
-        (assert (preferencia-tematica "ND")) ; ND = Not Defined
+        (assert (preferencia-tematica "ND")) ; ND = No Definida
         (printout t "Has seleccionat: No tinc una preferència en quant a temàtica" crlf)
     )
 )
 
-; Pregunta sobre l'estil preferit amb seleccions múltiples
 (defrule estil "Pregunta quin estil prefereix el visitant"
     (declare (salience 15))
     =>
     (printout t "Quin estil prefereixes?" crlf)
-    (printout t "1. neoclassicisme" crlf)
-    (printout t "2. barroc" crlf)
-    (printout t "3. romanticisme" crlf)
-    (printout t "4. renaixement" crlf)
-    (printout t "5. altres" crlf)
+    (printout t "1. Renaixement" crlf)
+    (printout t "2. Barroc" crlf)
+    (printout t "3. Neoclassicisme" crlf)
+    (printout t "4. Romanticisme" crlf)
+    (printout t "5. Art Modern" crlf)
+    (printout t "6. Altres" crlf)
     (printout t "Selecciona una o més opcions: " crlf)
     (bind ?opc (readline))
+
     (if (integerp (str-index "1" ?opc)) then
-        (assert (estil "Neoclassicisme"))
-        (printout t "Has seleccionat: neoclassicisme" crlf)
+        (assert (estil "Renaixement"))
+        (printout t "Has seleccionat: Renaixement" crlf)
     )
     (if (integerp (str-index "2" ?opc)) then
         (assert (estil "Barroc"))
-        (printout t "Has seleccionat: barroc" crlf)
+        (printout t "Has seleccionat: Barroc" crlf)
     )
     (if (integerp (str-index "3" ?opc)) then
-        (assert (estil "Romanticisme"))
-        (printout t "Has seleccionat: romanticisme" crlf)
+        (assert (estil "Neoclassicisme"))
+        (printout t "Has seleccionat: Neoclassicisme" crlf)
     )
     (if (integerp (str-index "4" ?opc)) then
-        (assert (estil "Renaixement"))
-        (printout t "Has seleccionat: renaixement" crlf)
+        (assert (estil "Romanticisme"))
+        (printout t "Has seleccionat: Romanticisme" crlf)
     )
     (if (integerp (str-index "5" ?opc)) then
+        (assert (estil "Art Modern"))
+        (printout t "Has seleccionat: Art Modern" crlf)
+    )
+    (if (integerp (str-index "6" ?opc)) then
         (assert (estil "Altres"))
-        (printout t "Has seleccionat: altres" crlf)
+        (printout t "Has seleccionat: Altres" crlf)
     )
 )
 
