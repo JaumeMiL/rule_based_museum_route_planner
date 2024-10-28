@@ -59,6 +59,9 @@
         (type SYMBOL)
         (allowed-symbols TRUE FALSE)
         (default FALSE))
+    (slot restriccio
+        (type INTEGER)
+        (default 0))
 )
 
 (deftemplate comptador
@@ -88,6 +91,10 @@
         (type INTEGER))
     (multislot connected-to
         (type INTEGER))
+    (slot visitada
+        (type SYMBOL)
+        (allowed-symbols TRUE FALSE)
+        (default FALSE))
 )
 
 (deftemplate Ruta
@@ -1036,7 +1043,7 @@
 )
 
 (deffacts instancies_sales
-    (Sala (id 0) (connected-to 1))
+    (Sala (id 0))
     (Sala (id 1) (connected-to 2))
     (Sala (id 2) (connected-to 3))
     (Sala (id 3) (connected-to 4))
@@ -1046,7 +1053,7 @@
     (Sala (id 7) (connected-to 8))
     (Sala (id 8) (connected-to 9))
     (Sala (id 9) (connected-to 10))
-    (Sala (id 10) (connected-to 1))
+    (Sala (id 10) (connected-to 0))
 )
 
 ;;; REGLES
@@ -1400,36 +1407,47 @@
     (assert (tipus-visitant "Fish"))
 )
 
-;;;     REGLES DE MATCHING DE CUADRES       ;;;
+;;;     REGLES DE MATCHING DE QUADRES       ;;;
 ;;     RESTRICCIO MAXIMA      ;;
+(defrule debug-facts
+    ?proc <- (processar-obres ?sala-id)
+    =>
+    (printout t "=== DEBUG: Fets actuals ===" crlf)
+    (facts)
+    (printout t "=========================" crlf)
+)
+
 (defrule matchquadres_restrictiva1
-    (declare (salience 5))
+    ?process <- (processar-obres ?s)
 
     ;   Agafem Obres com a fets
-    ?obra <- (Obres (nom ?nom) (epoca ?ep) (estil ?es) (autor_quadre ?auq) (tematica ?ot) (rellevancia ?r) (sala ?s))
-    (not (mirant ?nom))
-    ;   Agafem preferències
-    ?fetep <- (preferencia-epoca ?e)
-    ?fettem <- (preferencia-tematica ?t)
-    ?fetestil <- (estil ?esv)
-    ?fetaut <- (autor-preferit ?au)
+    ?obra <- (Obres (nom ?nom)
+                    (epoca ?ep) 
+                    (estil ?es) 
+                    (autor_quadre ?auq) 
+                    (tematica ?ot) 
+                    (rellevancia ?r) 
+                    (sala ?s) 
+                    (visitada FALSE))
 
-    ;   Agafem Comptador
+    ; Coincideixen l'època, l'estil, el tema i l'autor
+    (preferencia-epoca ?e&:(eq ?e ?ep))
+    (estil ?esv&:(eq ?esv ?es))
+    (preferencia-tematica ?t&:(eq ?t ?ot))
+    (autor-preferit ?au&:(eq ?au ?auq))
+
+    ; Comptador és 0
     ?cont <- (comptador (valor ?c))
-
-    ; Fem Matching amb print per verificar
-    (test (eq ?e ?ep))
-    (test (eq ?esv ?es))
-    (test (eq ?au ?auq))
-    (test (eq ?t ?ot))
+    (test (eq ?c 0))
     =>
-    (assert (mirant ?nom))
     (printout t ?nom " ha fet match! Nivell de Restriccio: 0" crlf)
     (modify ?cont (valor (+ ?c 1)))
+    (modify ?obra (visitada TRUE) (restriccio 1))
+    (retract ?process)
+    (assert (processar-obres ?s))
 )
 
 (defrule NoCuadrosSuficientes_restrictiva1
-    (declare (salience 5))
     ?cont <- (comptador (valor ?c)) 
     ?factw <- (weight ?w) 
     ?facttv <- (temps-visita ?tv) 
@@ -1441,40 +1459,28 @@
     (assert (nocuadsuf True))
 )
 
-
-
 ;;     RESTRICCIO MAXIMA -1     ;;
 (defrule matchquadres_restrictiva2
-    (declare (salience 4))
-
     (nocuadsuf True)
 
     ;   Agafem Obres com a fets
-    ?obra <- (Obres (nom ?nom) (epoca ?ep) (estil ?es) (autor_quadre ?auq) (tematica ?ot) (rellevancia ?r) (sala ?s))
-    (not (mirant ?nom))
-    
-    ;   Agafem preferencies
-    ?fetep <- (preferencia-epoca ?e)
-    ?fettem <- (preferencia-tematica ?t)
-    ?fetestil <- (estil ?esv)
-    ?fetaut <- (autor-preferit ?au)
+    ?obra <- (Obres (nom ?nom) (epoca ?ep) (estil ?es) (autor_quadre ?auq) (tematica ?ot) (rellevancia ?r) (sala ?s) (visitada FALSE))
+
+    ; Coincideixen l'època, l'estil i el tema
+    (preferencia-epoca ?e&:(eq ?e ?ep))
+    (estil ?esv&:(eq ?esv ?es))
+    (preferencia-tematica ?t&:(eq ?t ?ot))
 
     ;   Agafem Comptador
     ?cont <- (comptador (valor ?c))
-
-    ;   Fem Matching amb print per verificar
-    (test (eq ?e ?ep))
-    (test (eq ?esv ?es))
-    (test (eq ?au ?auq))
+    (test (eq ?c 1))
     =>
-    (assert (mirant ?nom))
     (printout t ?nom " ha fet match! Nivell de Restriccio: -1" crlf)
     (modify ?cont (valor (+ ?c 1)))
+    (modify ?obra (restriccio ?cont) (visitada TRUE))
 )
 
 (defrule NoCuadrosSuficientes_restrictiva2
-    (declare (salience 4))
-
     (nocuadsuf True)
     ?cont <- (comptador (valor ?c)) 
     ?factw <- (weight ?w) 
@@ -1490,34 +1496,24 @@
 
 ;;     RESTRICCIO MAXIMA -2     ;;
 (defrule matchquadres_restrictiva3
-    (declare (salience 3))
-
-    ;   Agafem Obres com a fets
-    ?obra <- (Obres (nom ?nom) (epoca ?ep) (estil ?es) (autor_quadre ?auq) (tematica ?ot) (rellevancia ?r) (sala ?s))
-    (not (mirant ?nom))
+    ; Agafem Obres com a fets
+    ?obra <- (Obres (nom ?nom) (epoca ?ep) (estil ?es) (autor_quadre ?auq) (tematica ?ot) (rellevancia ?r) (sala ?s) (visitada FALSE))
 
     (nocuadsuf2 True)
-    ;   Agafem preferencies
-    ?fetep <- (preferencia-epoca ?e)
-    ?fettem <- (preferencia-tematica ?t)
-    ?fetestil <- (estil ?esv)
-    ?fetaut <- (autor-preferit ?au)
+    ; Coincideixen l'època i l'estil
+    (preferencia-epoca ?e&:(eq ?e ?ep))
+    (estil ?esv&:(eq ?esv ?es))
 
-    ;   Agafem Comptador
+    ; Agafem Comptador
     ?cont <- (comptador (valor ?c))
-
-    ;   Fem Matching amb print per verificar
-    (test (eq ?e ?ep))
-    (test (eq ?esv ?es))
+    (test (eq ?c 2))
     =>
-    (assert (mirant ?nom))
     (printout t ?nom " ha fet match! Nivell de Restriccio: -2" crlf)
     (modify ?cont (valor (+ ?c 1)))
+    (modify ?obra (restriccio ?cont) (visitada TRUE))
 )
 
 (defrule NoCuadrosSuficientes_restrictiva3
-    (declare (salience 3))
-
     (nocuadsuf2 True)
     ?cont <- (comptador (valor ?c)) 
     ?factw <- (weight ?w) 
@@ -1533,123 +1529,107 @@
 
 ;;     RESTRICCIO MAXIMA -3     ;;
 (defrule matchquadres_restrictiva4
-    (declare (salience 2))
-
     ;   Agafem Obres com a fets
-    ?obra <- (Obres (nom ?nom) (epoca ?ep) (estil ?es) (autor_quadre ?auq) (tematica ?ot) (rellevancia ?r) (sala ?s))
-    (not (mirant ?nom))
+    ?obra <- (Obres (nom ?nom) (epoca ?ep) (estil ?es) (autor_quadre ?auq) (tematica ?ot) (rellevancia ?r) (sala ?s) (visitada FALSE))
 
     (nocuadsuf3 True)
-    ;   Agafem preferencies
-    ?fetep <- (preferencia-epoca ?e)
-    ?fettem <- (preferencia-tematica ?t)
-    ?fetestil <- (estil ?esv)
-    ?fetaut <- (autor-preferit ?au)
+    ; Coincideix l'època
+    (preferencia-epoca ?e&:(eq ?e ?ep))
 
     ;   Agafem Comptador
     ?cont <- (comptador (valor ?c))
-
-    ;   Fem Matching amb print per verificar
-    (test (eq ?e ?ep))
+    (test (eq ?c 3))
     =>
-    (assert (mirant ?nom))
     (printout t ?nom " ha fet match! Nivell de Restriccio: -3" crlf)
     (modify ?cont (valor (+ ?c 1)))
+    (modify ?obra (restriccio ?cont) (visitada TRUE))
 )
 
 (defrule NoCuadrosSuficientes_restrictiva4
-    (declare (salience 2))
-
     (nocuadsuf3 True)
     ?cont <- (comptador (valor ?c)) 
     ?factw <- (weight ?w) 
     ?facttv <- (temps-visita ?tv) 
     ?factmt <- (mean_t ?mt) 
     ?factmdt <- (mean_d_t ?mdt)
-    
+
     (test (< ?c (* (/ (- (* ?tv 3600) ?mdt) ?mt) 100)))
     =>
+    (printout t "Nocuadsuf4 (sembla inútil la veritat)" crlf)
     (assert (nocuadsuf4 True))
 )
 
-
 ; Regla per inicialitzar la Ruta segons el tipus de visitant
 (defrule iniciar-ruta
-    (declare (salience -4))
     (tipus-visitant ?style)
     =>
     (printout t "Generant ruta per a un visitant de tipus: " ?style crlf)
-    (assert (Ruta (start-room 1) (end-room 10)))  ; Suposem una sala final predeterminada
+    (assert (Ruta (start-room 1) (end-room 0)))  ; Suposem una sala final predeterminada
     (assert (current-room 1))
 )
 
 (defrule anar-a-la-sala
-    (declare (salience -4))
-    ?sala <- (Sala (id ?current) (connected-to $?next-rooms))
+    ?sala <- (Sala (id ?current) (connected-to $?next-rooms) (visitada FALSE))
     ?sala-actual <- (current-room ?current)
     (Ruta (end-room ?end-room))
     (test (neq ?current ?end-room))
     =>
-    (if (= (length$ ?next-rooms) 1)
-        then
-        ; Si només hi ha una opció, la seleccionem automàticament
-        (bind ?next (nth$ 1 ?next-rooms))
-        else
-        ; Si hi ha múltiples opcions, demanem a l'usuari que triï
-        (printout t "La sala actual és la sala " ?current crlf)
-        (printout t "Les sales següents són: " ?next-rooms crlf)
-        (printout t "Selecciona la sala a la que vols anar: " crlf)
-        (bind ?next (read))
-        (while (not (member$ ?next ?next-rooms))
-            (printout t "Sala no vàlida. Si us plau, tria una de les opcions disponibles: " ?next-rooms crlf)
-            (bind ?next (read))
+    ; Filtrem només les sales no visitades
+    (bind ?sales-disponibles (create$))
+    (foreach ?next ?next-rooms
+        (do-for-fact ((?s Sala)) (eq ?s:id ?next)
+            (if (eq ?s:visitada FALSE)
+                then
+                (bind ?sales-disponibles (create$ ?sales-disponibles ?next))
+            )
         )
     )
-
-    (retract ?sala-actual)
-    (assert (current-room ?next))
-    (assert (nova-sala-entrada ?next))
-    (printout t "Movent-se a la sala: " ?next crlf)
-)
-
-(defrule processar-obres-sala
-    (declare (salience -4))
-    ?nova-sala <- (nova-sala-entrada ?sala-id)
-    =>
-    (retract ?nova-sala)
-    (assert (processar-obres ?sala-id))
-)
-
-(defrule obres-vistes-de-sala
-    (declare (salience -4))
-    ?proc <- (processar-obres ?sala-id)
-    ?obra <- (Obres (nom ?nom) 
-                    (epoca ?ep) 
-                    (estil ?es) 
-                    (sala ?sala-id)
-                    (visitada FALSE))
-    =>
-    (retract ?proc)
     
-    ; Comprovem si l'època i l'estil coincideixen
-    (modify ?obra (visitada TRUE))
-    (printout t "L'obra '" ?nom "' a la sala " ?sala-id " ha estat marcada com a visitada. " crlf)
-    
-    (assert (processar-obres ?sala-id))
-    (printout t "Generat fet (processar-obres " ?sala-id ")" crlf)
+    (if (= (length$ ?sales-disponibles) 0)
+        then
+        (printout t "No hi ha més sales disponibles per visitar." crlf)
+        (assert (current-room ?end-room))  ; Anem directament a la sala final
+        else
+        (if (= (length$ ?sales-disponibles) 1)
+            then
+            ; Si només hi ha una opció, la seleccionem automàticament
+            (bind ?next (nth$ 1 ?sales-disponibles))
+            else
+            ; Si hi ha múltiples opcions, demanem a l'usuari que triï
+            (printout t "La sala actual és la sala " ?current crlf)
+            (printout t "Les sales disponibles són: " ?sales-disponibles crlf)
+            (printout t "Selecciona la sala a la que vols anar: " crlf)
+            (bind ?next (read))
+            ; ?next ha de ser una sala vàlida no visitada
+            (while (not (member$ ?next ?sales-disponibles)) 
+                (printout t "Sala no vàlida. Si us plau, tria una de les opcions disponibles: " ?sales-disponibles crlf)
+                (bind ?next (read))
+            )
+        )
+        
+        (retract ?sala-actual)
+        (assert (current-room ?next))
+        (assert (processar-obres ?next))
+        (modify ?sala (visitada TRUE))
+        (printout t "Movent-se a la sala: " ?next crlf)
+    )
 )
 
-(defrule verificar-obres-sala
-    (declare (salience -4))
-    (processar-obres ?sala-id)
-    (Obres (sala ?sala-id) (nom ?nom) (epoca ?ep) (estil ?es) (tematica ?tem) (visitada ?vis))
-    =>
-    (printout t "Obra a la sala " ?sala-id ": " ?nom 
-              " (Època: " ?ep ", Estil: " ?es ", Temàtica: " ?tem ", Visitada: " ?vis ")" crlf)
-)
+; (defrule restriccions_obres_sala
+;     ?proc <- (processar-obres ?sala-id)
+;     (Obres (sala ?sala-id)
+;            (nom ?nom) 
+;            (epoca ?ep) 
+;            (estil ?es) 
+;            (tematica ?tem) 
+;            (visitada FALSE) 
+;            (restriccio ?r))
+;     ?c <- (comptador (valor ?valor))
+;     =>
+;     (retract ?proc)
+; )
 
 (defrule finalitzar-visita
-    (declare (salience -4))
     ?current-room <- (current-room ?end-room)
     (Ruta (end-room ?end-room))
     =>
@@ -1660,7 +1640,6 @@
 
 ; Print quines obres s'han visitat a cada sala
 (defrule imprimir-obres-visitades
-   (declare (salience -4))
    (visita-acabada)
    =>
    (printout t "Obres visitades:" crlf)
