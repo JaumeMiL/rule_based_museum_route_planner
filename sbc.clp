@@ -1408,8 +1408,8 @@
     ;   Agafem Obres com a fets
     ?obra <- (Obres (nom ?nom) (epoca ?ep) (estil ?es) (autor_quadre ?auq) (tematica ?ot) (rellevancia ?r) (sala ?s))
     (not (mirant ?nom))
-    ;   Agafem preferencies
-    ?fetep <- (epoca ?e)
+    ;   Agafem preferències
+    ?fetep <- (preferencia-epoca ?e)
     ?fettem <- (preferencia-tematica ?t)
     ?fetestil <- (estil ?esv)
     ?fetaut <- (autor-preferit ?au)
@@ -1417,7 +1417,7 @@
     ;   Agafem Comptador
     ?cont <- (contador (valor ?c))
 
-    ;   Fem Matching amb print per verificar
+    ; Fem Matching amb print per verificar
     (test (eq ?e ?ep))
     (test (eq ?esv ?es))
     (test (eq ?au ?auq))
@@ -1454,7 +1454,7 @@
     (not (mirant ?nom))
     
     ;   Agafem preferencies
-    ?fetep <- (epoca ?e)
+    ?fetep <- (preferencia-epoca ?e)
     ?fettem <- (preferencia-tematica ?t)
     ?fetestil <- (estil ?esv)
     ?fetaut <- (autor-preferit ?au)
@@ -1498,7 +1498,7 @@
 
     (nocuadsuf2 True)
     ;   Agafem preferencies
-    ?fetep <- (epoca ?e)
+    ?fetep <- (preferencia-epoca ?e)
     ?fettem <- (preferencia-tematica ?t)
     ?fetestil <- (estil ?esv)
     ?fetaut <- (autor-preferit ?au)
@@ -1541,7 +1541,7 @@
 
     (nocuadsuf3 True)
     ;   Agafem preferencies
-    ?fetep <- (epoca ?e)
+    ?fetep <- (preferencia-epoca ?e)
     ?fettem <- (preferencia-tematica ?t)
     ?fetestil <- (estil ?esv)
     ?fetaut <- (autor-preferit ?au)
