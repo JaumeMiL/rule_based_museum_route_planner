@@ -61,7 +61,7 @@
         (default FALSE))
 )
 
-(deftemplate contador
+(deftemplate comptador
     (slot valor (type INTEGER))
 )
 
@@ -101,7 +101,7 @@
 ; temàtica Història (7), Mitologia (8), Religió (21), Retrat (12), Paisatge (14), Altres (12)
 ; estil Renaixement (7), Barroc (27), Neoclassicisme (11), Romanticisme (11), Altres (15)
 (deffacts instancies_obres
-    (contador (valor 0))
+    (comptador (valor 0))
     ;; Sala 1 - Època Antiga i Medieval
     (Obres 
         (nom "Codi d'Hammurabi")
@@ -1415,7 +1415,7 @@
     ?fetaut <- (autor-preferit ?au)
 
     ;   Agafem Comptador
-    ?cont <- (contador (valor ?c))
+    ?cont <- (comptador (valor ?c))
 
     ; Fem Matching amb print per verificar
     (test (eq ?e ?ep))
@@ -1430,7 +1430,7 @@
 
 (defrule NoCuadrosSuficientes_restrictiva1
     (declare (salience 5))
-    ?cont <- (contador (valor ?c)) 
+    ?cont <- (comptador (valor ?c)) 
     ?factw <- (weight ?w) 
     ?facttv <- (temps-visita ?tv) 
     ?factmt <- (mean_t ?mt) 
@@ -1460,7 +1460,7 @@
     ?fetaut <- (autor-preferit ?au)
 
     ;   Agafem Comptador
-    ?cont <- (contador (valor ?c))
+    ?cont <- (comptador (valor ?c))
 
     ;   Fem Matching amb print per verificar
     (test (eq ?e ?ep))
@@ -1476,7 +1476,7 @@
     (declare (salience 4))
 
     (nocuadsuf True)
-    ?cont <- (contador (valor ?c)) 
+    ?cont <- (comptador (valor ?c)) 
     ?factw <- (weight ?w) 
     ?facttv <- (temps-visita ?tv) 
     ?factmt <- (mean_t ?mt) 
@@ -1504,7 +1504,7 @@
     ?fetaut <- (autor-preferit ?au)
 
     ;   Agafem Comptador
-    ?cont <- (contador (valor ?c))
+    ?cont <- (comptador (valor ?c))
 
     ;   Fem Matching amb print per verificar
     (test (eq ?e ?ep))
@@ -1519,7 +1519,7 @@
     (declare (salience 3))
 
     (nocuadsuf2 True)
-    ?cont <- (contador (valor ?c)) 
+    ?cont <- (comptador (valor ?c)) 
     ?factw <- (weight ?w) 
     ?facttv <- (temps-visita ?tv) 
     ?factmt <- (mean_t ?mt) 
@@ -1547,7 +1547,7 @@
     ?fetaut <- (autor-preferit ?au)
 
     ;   Agafem Comptador
-    ?cont <- (contador (valor ?c))
+    ?cont <- (comptador (valor ?c))
 
     ;   Fem Matching amb print per verificar
     (test (eq ?e ?ep))
@@ -1561,7 +1561,7 @@
     (declare (salience 2))
 
     (nocuadsuf3 True)
-    ?cont <- (contador (valor ?c)) 
+    ?cont <- (comptador (valor ?c)) 
     ?factw <- (weight ?w) 
     ?facttv <- (temps-visita ?tv) 
     ?factmt <- (mean_t ?mt) 
