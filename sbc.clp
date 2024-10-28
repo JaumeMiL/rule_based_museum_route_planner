@@ -101,6 +101,7 @@
 ; temàtica Història (7), Mitologia (8), Religió (21), Retrat (12), Paisatge (14), Altres (12)
 ; estil Renaixement (7), Barroc (27), Neoclassicisme (11), Romanticisme (11), Altres (15)
 (deffacts instancies_obres
+    (contador (valor 0))
     ;; Sala 1 - Època Antiga i Medieval
     (Obres 
         (nom "Codi d'Hammurabi")
@@ -1238,7 +1239,7 @@
 )
 
 (defrule author "Pregunta quin autor prefereix el visitant"
-    (declare (salience 1))
+    (declare (salience 5))
     =>
     (printout t "Quin és el teu autor preferit: " crlf)
     (bind ?autor (readline))  ; readline per llegir nom i cognom(s)
@@ -1334,7 +1335,7 @@
 
 ; ant -> Visita > 2h, Primer cop, Interès (Alt) o Coneixement (Alt)
 (defrule classificar-visitant-ant
-    ; (declare (salience 0))
+    (declare (salience 5))
     (grup "Sol")
     (frequencia-visites "Primer cop")
     (temps-visita ?temps&:(>= ?temps 2))  
@@ -1349,7 +1350,7 @@
 
 ; butterfly -> Visita > 2h, Primer cop o esporàdic, Interes (Mitjà) i Coneixement (Alt o Mitjà)
 (defrule classificar-visitant-butterfly
-    ; (declare (salience 0))
+    (declare (salience 5))
     (grup "Sol")
     (or
         (frequencia-visites "Primer cop")
@@ -1367,7 +1368,7 @@
 
 ; grasshopper -> Visita < 2h, freq o esporàdic, (Interès (mitjà) i Coneixement (baix)) o (Interes (baix) i Coneixement (mitjà))
 (defrule classificar-visitant-grasshopper
-    ; (declare (salience 0))
+    (declare (salience 5))
     (grup "Sol")
     (or
         (frequencia-visites "Freqüent")
@@ -1387,7 +1388,7 @@
 
 ; fish -> Visita < 2h, freq o esporàdic, Interès (baix) i Coneixement (baix)
 (defrule classificar-visitant-fish
-    ; (declare (salience 0))
+    (declare (salience 5))
     (grup "Sol")
     (or
         (frequencia-visites "Freqüent")
@@ -1402,7 +1403,7 @@
 ;;;     REGLES DE MATCHING DE CUADRES       ;;;
 ;;     RESTRICCIO MAXIMA      ;;
 (defrule matchquadres_restrictiva1
-    (declare (salience 0))
+    (declare (salience 5))
 
     ;   Agafem Obres com a fets
     ?obra <- (Obres (nom ?nom) (epoca ?ep) (estil ?es) (autor_quadre ?auq) (tematica ?ot) (rellevancia ?r) (sala ?s))
@@ -1428,7 +1429,7 @@
 )
 
 (defrule NoCuadrosSuficientes_restrictiva1
-    (declare (salience 0))
+    (declare (salience 5))
     ?cont <- (contador (valor ?c)) 
     ?factw <- (weight ?w) 
     ?facttv <- (temps-visita ?tv) 
@@ -1444,7 +1445,7 @@
 
 ;;     RESTRICCIO MAXIMA -1     ;;
 (defrule matchquadres_restrictiva2
-    (declare (salience -1))
+    (declare (salience 4))
 
     (nocuadsuf True)
 
@@ -1472,7 +1473,7 @@
 )
 
 (defrule NoCuadrosSuficientes_restrictiva2
-    (declare (salience -1))
+    (declare (salience 4))
 
     (nocuadsuf True)
     ?cont <- (contador (valor ?c)) 
@@ -1489,7 +1490,7 @@
 
 ;;     RESTRICCIO MAXIMA -2     ;;
 (defrule matchquadres_restrictiva3
-    (declare (salience -2))
+    (declare (salience 3))
 
     ;   Agafem Obres com a fets
     ?obra <- (Obres (nom ?nom) (epoca ?ep) (estil ?es) (autor_quadre ?auq) (tematica ?ot) (rellevancia ?r) (sala ?s))
@@ -1515,7 +1516,7 @@
 )
 
 (defrule NoCuadrosSuficientes_restrictiva3
-    (declare (salience -2))
+    (declare (salience 3))
 
     (nocuadsuf2 True)
     ?cont <- (contador (valor ?c)) 
@@ -1532,7 +1533,7 @@
 
 ;;     RESTRICCIO MAXIMA -3     ;;
 (defrule matchquadres_restrictiva4
-    (declare (salience -3))
+    (declare (salience 2))
 
     ;   Agafem Obres com a fets
     ?obra <- (Obres (nom ?nom) (epoca ?ep) (estil ?es) (autor_quadre ?auq) (tematica ?ot) (rellevancia ?r) (sala ?s))
@@ -1557,7 +1558,7 @@
 )
 
 (defrule NoCuadrosSuficientes_restrictiva4
-    (declare (salience -3))
+    (declare (salience 2))
 
     (nocuadsuf3 True)
     ?cont <- (contador (valor ?c)) 
@@ -1574,6 +1575,7 @@
 
 ; Regla per inicialitzar la Ruta segons el tipus de visitant
 (defrule iniciar-ruta
+    (declare (salience -4))
     (tipus-visitant ?style)
     =>
     (printout t "Generant ruta per a un visitant de tipus: " ?style crlf)
@@ -1582,6 +1584,7 @@
 )
 
 (defrule anar-a-la-sala
+    (declare (salience -4))
     ?sala <- (Sala (id ?current) (connected-to $?next-rooms))
     ?sala-actual <- (current-room ?current)
     (Ruta (end-room ?end-room))
@@ -1610,6 +1613,7 @@
 )
 
 (defrule processar-obres-sala
+    (declare (salience -4))
     ?nova-sala <- (nova-sala-entrada ?sala-id)
     =>
     (retract ?nova-sala)
@@ -1617,6 +1621,7 @@
 )
 
 (defrule obres-vistes-de-sala
+    (declare (salience -4))
     ?proc <- (processar-obres ?sala-id)
     ?obra <- (Obres (nom ?nom) 
                     (epoca ?ep) 
@@ -1635,6 +1640,7 @@
 )
 
 (defrule verificar-obres-sala
+    (declare (salience -4))
     (processar-obres ?sala-id)
     (Obres (sala ?sala-id) (nom ?nom) (epoca ?ep) (estil ?es) (tematica ?tem) (visitada ?vis))
     =>
@@ -1643,6 +1649,7 @@
 )
 
 (defrule finalitzar-visita
+    (declare (salience -4))
     ?current-room <- (current-room ?end-room)
     (Ruta (end-room ?end-room))
     =>
@@ -1653,6 +1660,7 @@
 
 ; Print quines obres s'han visitat a cada sala
 (defrule imprimir-obres-visitades
+   (declare (salience -4))
    (visita-acabada)
    =>
    (printout t "Obres visitades:" crlf)
