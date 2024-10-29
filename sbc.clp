@@ -1389,15 +1389,27 @@
     (assert (tipus-visitant "Fish"))
 )
 
+; per defecte -> Grasshopper
+(defrule classificar-visitant-grasshopper-default
+    (declare (salience 88))
+    (grup "Sol")
+    (not (tipus-visitant "Ant"))
+    (not (tipus-visitant "Butterfly"))
+    (not (tipus-visitant "Fish"))
+    (not (tipus-visitant "Grasshopper"))
+    =>
+    (assert (tipus-visitant "Grasshopper"))
+)
+
 ;;;     REGLES DE MATCHING DE QUADRES       ;;;
 
 ; Inicialitzem el comptador (assegurar-nos que està present)
-(defrule inicialitzar-comptador
-    (declare (salience 88))
-    (not (comptador))
-    =>
-    (assert (comptador (valor 0)))
-)
+; (defrule inicialitzar-comptador
+;     (declare (salience 88))
+;     (not (comptador))
+;     =>
+;     (assert (comptador (valor 0)))
+; )
 
 (defrule matchquadres_restrictiva1
     (declare (salience 87))
@@ -1456,7 +1468,7 @@
     =>
     (printout t ?nom " ha fet match! Nivell de Restricció: -1" crlf)
     (modify ?cont (valor (+ ?c 1)))
-    (modify ?obra (restriccio -1) (visitada TRUE))
+    (modify ?obra (restriccio 2) (visitada TRUE))
     (retract ?process)
     (assert (processar-obres ?s))
 )
@@ -1489,7 +1501,7 @@
     =>
     (printout t ?nom " ha fet match! Nivell de Restricció: -2" crlf)
     (modify ?cont (valor (+ ?c 1)))
-    (modify ?obra (restriccio -2) (visitada TRUE))
+    (modify ?obra (restriccio 3) (visitada TRUE))
     (retract ?process)
     (assert (processar-obres ?s))
 )
@@ -1520,7 +1532,7 @@
     =>
     (printout t ?nom " ha fet match! Nivell de Restricció: -3" crlf)
     (modify ?cont (valor (+ ?c 1)))
-    (modify ?obra (restriccio -3) (visitada TRUE))
+    (modify ?obra (restriccio 4) (visitada TRUE))
     (retract ?process)
     (assert (processar-obres ?s))
 )
@@ -1544,7 +1556,10 @@
     (Ruta (end-room ?end-room))
     (test (neq ?current ?end-room))
     =>
-    ; Filtrem només les sales no visitades
+    ; Marquem la sala actual com visitada
+    (modify ?sala (visitada TRUE))
+    
+    ; Filtrem les sales no visitades
     (bind ?sales-disponibles (create$))
     (foreach ?next ?next-rooms
         (do-for-fact ((?s Sala)) (eq ?s:id ?next)
@@ -1555,35 +1570,46 @@
         )
     )
 
+    ; Si no hi ha sales disponibles, busquem qualsevol sala no visitada
     (if (= (length$ ?sales-disponibles) 0)
         then
-        (printout t "No hi ha més sales disponibles per visitar." crlf)
-        (assert (current-room ?end-room))  ; Anem directament a la sala final
+        (bind ?sales-no-visitades (create$))
+        (do-for-all-facts ((?s Sala)) (and (eq ?s:visitada FALSE) (neq ?s:id 0))
+            (bind ?sales-no-visitades (create$ ?sales-no-visitades ?s:id))
+        )
+        
+        (if (> (length$ ?sales-no-visitades) 0)
+            then
+            (bind ?next (nth$ 1 ?sales-no-visitades))
+            (retract ?sala-actual)
+            (assert (current-room ?next))
+            (assert (processar-obres ?next))
+            (printout t "No hi ha connexions directes disponibles. Saltant a la sala: " ?next crlf)
+            else
+            (printout t "No hi ha més sales per visitar." crlf)
+            (assert (current-room ?end-room))
+        )
         else
+        ; Comportament normal quan hi ha sales disponibles
         (if (= (length$ ?sales-disponibles) 1)
             then
-            ; Si només hi ha una opció, la seleccionem automàticament
             (bind ?next (nth$ 1 ?sales-disponibles))
             else
-            ; Si hi ha múltiples opcions, demanem a l'usuari que triï
             (printout t "La sala actual és la sala " ?current crlf)
             (printout t "Les sales disponibles són: " ?sales-disponibles crlf)
             (printout t "Selecciona la sala a la que vols anar: " crlf)
             (bind ?next (read))
-            ; ?next ha de ser una sala vàlida no visitada
             (while (not (member$ ?next ?sales-disponibles)) 
                 (printout t "Sala no vàlida. Si us plau, tria una de les opcions disponibles: " ?sales-disponibles crlf)
                 (bind ?next (read))
             )
         )
-        
         (retract ?sala-actual)
         (assert (current-room ?next))
         (assert (processar-obres ?next))
-        (modify ?sala (visitada TRUE))
         (printout t "Movent-se a la sala: " ?next crlf)
     )
-)
+) 
 
 (defrule finalitzar-visita
     (declare (salience 86))
