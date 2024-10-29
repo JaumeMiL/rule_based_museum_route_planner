@@ -1,15 +1,7 @@
 ;;; ---------------------------------------------------------
 ;;; ontologia_practica.clp
-;;; Translated by owl2clips
-;;; Translated to CLIPS from ontology ontologia_practica.ttl
-;;; :Date 11/10/2024 18:04:18
+;;; Correccions realitzades per solucionar problemes de "matching"
 ;;; ---------------------------------------------------------
-;;; ontologia_practica.clp
-;;; Translated by owl2clips
-;;; Translated to CLIPS from ontology ontologia_practica.ttl
-;;; :Date 11/10/2024 18:04:18
-
-; (defmodule MAIN (export ?ALL))
 
 (defclass Visitant
     (is-a USER)
@@ -104,9 +96,9 @@
         (type INTEGER))
 )
 
-; INSTÀNCIES
-; temàtica Història (7), Mitologia (8), Religió (21), Retrat (12), Paisatge (14), Altres (12)
-; estil Renaixement (7), Barroc (27), Neoclassicisme (11), Romanticisme (11), Altres (15)
+; INSTÀNCIES (omitides per petició)
+
+; Aquí carregaries les instàncies d'obres i sales
 (deffacts instancies_obres
     (comptador (valor 0))
     ;; Sala 1 - Època Antiga i Medieval
@@ -1057,7 +1049,7 @@
 )
 
 ;;; REGLES
-;(defmodule PreguntesGenerals)
+
 ; Funció de benvinguda i inici del programa
 (defrule initialRule "Regla principal"
     (declare (salience 100))
@@ -1092,14 +1084,13 @@
 
 ; Pregunta sobre l'època preferida amb seleccions múltiples
 (defrule preguntarEpoca "Pregunta sobre l'època preferida"
-    (declare (salience 20))
+    (declare (salience 98))
     =>
     (printout t "Quina és la teva època artística preferida?" crlf)
     (printout t "1. Antiga" crlf)
     (printout t "2. Medieval" crlf)
     (printout t "3. Edat Moderna" crlf)
     (printout t "4. Edat Contemporània" crlf)
-    ; (printout t "5. No tinc una preferència en quant a època artística" crlf)
     (printout t "Selecciona una o més opcions (per ex: 1 3 o 24): " crlf)
     (bind ?opc (readline))  ; Llegim la cadena d'opcions
 
@@ -1114,20 +1105,17 @@
     )
     (if (integerp (str-index "3" ?opc)) then
         (assert (preferencia-epoca "Edat Moderna"))
-        (printout t "Has seleccionat: Barroc" crlf)
+        (printout t "Has seleccionat: Edat Moderna" crlf)
     )
     (if (integerp (str-index "4" ?opc)) then
         (assert (preferencia-epoca "Edat Contemporània"))
         (printout t "Has seleccionat: Edat Contemporània" crlf)
     )
-    ; (if (integerp (str-index "5" ?opc)) then
-    ;     (assert (preferencia-epoca "ND")) ; ND = Not Defined
-    ;     (printout t "Has seleccionat: No tinc una preferència en quant a època artística" crlf)
-    ; )
 )
+
 ; Segona pregunta sobre la durada de la visita
 (defrule preguntarDuracio "Pregunta sobre la durada de la visita"
-    (declare (salience 19))
+    (declare (salience 97))
     =>
     (printout t "Quant temps tens disponible per la visita? (en hores): " crlf)
     (bind ?temps (read))
@@ -1137,7 +1125,7 @@
 
 ; Pregunta sobre la freqüència de visites al museu amb opcions numèriques
 (defrule preguntarFreqVisita "Pregunta sobre la freqüència de visita al museu"
-    (declare (salience 17))
+    (declare (salience 96))
     =>
     (printout t "Com et consideres pel que fa a visitar museus d'art?" crlf)
     (printout t "1. És el meu primer cop" crlf)
@@ -1145,7 +1133,7 @@
     (printout t "3. Visitant freqüent" crlf)
     (printout t "Selecciona una opció (1, 2 o 3): " crlf)
     (bind ?opc (read))
-    
+
     ; Control de les opcions seleccionades
     (if (eq ?opc 1) then
         (assert (frequencia-visites "Primer cop"))
@@ -1162,7 +1150,7 @@
 )
 
 (defrule preguntarTematica "Pregunta sobre la temàtica preferida"
-    (declare (salience 16))
+    (declare (salience 95))
     =>
     (printout t "Quina és la teva temàtica preferida?" crlf)
     (printout t "1. Religió" crlf)
@@ -1207,7 +1195,7 @@
 )
 
 (defrule estil "Pregunta quin estil prefereix el visitant"
-    (declare (salience 15))
+    (declare (salience 94))
     =>
     (printout t "Quin estil prefereixes?" crlf)
     (printout t "1. Renaixement" crlf)
@@ -1216,7 +1204,7 @@
     (printout t "4. Romanticisme" crlf)
     (printout t "5. Art Modern" crlf)
     (printout t "6. Altres" crlf)
-    (printout t "Selecciona una o més opcions (per ex: 1 3 o 24): " crlf)
+    (printout t "Selecciona una o més opcions: " crlf)
     (bind ?opc (readline))
 
     (if (integerp (str-index "1" ?opc)) then
@@ -1246,7 +1234,7 @@
 )
 
 (defrule author "Pregunta quin autor prefereix el visitant"
-    (declare (salience 5))
+    (declare (salience 93))
     =>
     (printout t "Quin és el teu autor preferit: " crlf)
     (bind ?autor (readline))  ; readline per llegir nom i cognom(s)
@@ -1255,53 +1243,53 @@
 )
 
 (defrule c_art "Pregunta quin coneixement d'art té el visitant"
-    (declare (salience 14))
+    (declare (salience 92))
     =>
     (printout t "Quin nivell de coneixement d'art tens?" crlf)
     (printout t "1. Alt" crlf)
     (printout t "2. Mitjà" crlf)
     (printout t "3. Baix" crlf)
     (printout t "Selecciona una opció: " crlf)
-    (bind ?grup (read))
-    (if (eq ?grup 1) then
+    (bind ?nivell (read))
+    (if (eq ?nivell 1) then
         (assert (coneixement "Alt"))
         (printout t "Has seleccionat: Alt" crlf)
     )
-    (if (eq ?grup 2) then
+    (if (eq ?nivell 2) then
         (assert (coneixement "Mitjà"))
         (printout t "Has seleccionat: Mitjà" crlf)
     )
-    (if (eq ?grup 3) then
+    (if (eq ?nivell 3) then
         (assert (coneixement "Baix"))
         (printout t "Has seleccionat: Baix" crlf)
     )
 )
 
 (defrule interes "Pregunta quin interès té el visitant"
-    (declare (salience 6))
+    (declare (salience 91))
     =>
     (printout t "Com d'interessat/da estàs per l'exposició?" crlf)
     (printout t "1. Molt" crlf)
     (printout t "2. Normal" crlf)
     (printout t "3. Poc" crlf)
     (printout t "Selecciona una opció: " crlf)
-    (bind ?grup (read))
-    (if (eq ?grup 1) then
+    (bind ?interes (read))
+    (if (eq ?interes 1) then
         (assert (interes "Alt"))
         (printout t "Has seleccionat: Molt" crlf)
     )
-    (if (eq ?grup 2) then
+    (if (eq ?interes 2) then
         (assert (interes "Mitjà"))
         (printout t "Has seleccionat: Normal" crlf)
     )
-    (if (eq ?grup 3) then
+    (if (eq ?interes 3) then
         (assert (interes "Baix"))
         (printout t "Has seleccionat: Poc" crlf)
     )
 )
 
 (defrule tipgrup "Pregunta el tipus de grup"
-    (declare (salience 6))
+    (declare (salience 90))
     (grup "Acompanyat")
     =>
     (printout t "Amb qui vens?" crlf)
@@ -1319,7 +1307,7 @@
     (if (eq ?grup 2) then
         (assert (tipus-grup "familia"))
         (assert (tipus-visitant "Grasshopper"))
-        (printout t "Has seleccionat: familia" crlf)
+        (printout t "Has seleccionat: família" crlf)
     )
     (if (eq ?grup 3) then
         (assert (tipus-grup "classe"))
@@ -1333,16 +1321,13 @@
     )
 )
 
-;(any-factp ((?f grup)) (eq ?f:implied (create$ "Sol")))        --> mira si existeix el fact (grup "Sol")         NOMES LINEA DE COMANDES!!
-;(any-factp ((?f grup)) (eq ?f:implied (create$ "Acompanyat"))) --> mira si existeix el fact (grup "Acompanyat")  NOMES LINEA DE COMANDES!!
-
-;;;     Clasificacció de Visitant individual     ;;;
+;;;     Classificació de Visitant individual     ;;;
 
 ;;      Ant      ;;
 
 ; ant -> Visita > 2h, Primer cop, Interès (Alt) o Coneixement (Alt)
 (defrule classificar-visitant-ant
-    (declare (salience 5))
+    (declare (salience 89))
     (grup "Sol")
     (frequencia-visites "Primer cop")
     (temps-visita ?temps&:(>= ?temps 2))  
@@ -1355,15 +1340,15 @@
 
 ;;      Butterfly      ;;
 
-; butterfly -> Visita > 2h, Primer cop o esporàdic, Interes (Mitjà) i Coneixement (Alt o Mitjà)
+; butterfly -> Visita > 2h, Primer cop o esporàdic, Interès (Mitjà) i Coneixement (Alt o Mitjà)
 (defrule classificar-visitant-butterfly
-    (declare (salience 5))
+    (declare (salience 89))
     (grup "Sol")
     (or
         (frequencia-visites "Primer cop")
         (frequencia-visites "Esporàdic"))
     (temps-visita ?temps&:(>= ?temps 2)) 
-    (interes "mitjà")  
+    (interes "Mitjà")  
     (or
         (coneixement "Mitjà")                
         (coneixement "Alt"))             
@@ -1373,29 +1358,26 @@
 
 ;;      Grasshopper      ;;
 
-; grasshopper -> Visita < 2h, freq o esporàdic, (Interès (mitjà) i Coneixement (baix)) o (Interes (baix) i Coneixement (mitjà))
+; grasshopper -> Visita < 2h, freq o esporàdic, (Interès (Mitjà) i Coneixement (Baix)) o (Interès (Baix) i Coneixement (Mitjà))
 (defrule classificar-visitant-grasshopper
-    (declare (salience 5))
+    (declare (salience 89))
     (grup "Sol")
     (or
         (frequencia-visites "Freqüent")
         (frequencia-visites "Esporàdic"))
     (temps-visita ?temps&:(< ?temps 2)) 
     (or
-        (interes "Mitjà")
-        (interes "Baix"))   
-    (or
-        (coneixement "Baix")
-        (coneixement "Mitjà"))
+        (and (interes "Mitjà") (coneixement "Baix"))
+        (and (interes "Baix") (coneixement "Mitjà")))
     =>
     (assert (tipus-visitant "Grasshopper"))
 )
 
 ;;      Fish      ;;
 
-; fish -> Visita < 2h, freq o esporàdic, Interès (baix) i Coneixement (baix)
+; fish -> Visita < 2h, freq o esporàdic, Interès (Baix) i Coneixement (Baix)
 (defrule classificar-visitant-fish
-    (declare (salience 5))
+    (declare (salience 89))
     (grup "Sol")
     (or
         (frequencia-visites "Freqüent")
@@ -1408,18 +1390,18 @@
 )
 
 ;;;     REGLES DE MATCHING DE QUADRES       ;;;
-;;     RESTRICCIO MAXIMA      ;;
-(defrule debug-facts
-    ?proc <- (processar-obres ?sala-id)
+
+; Inicialitzem el comptador (assegurar-nos que està present)
+(defrule inicialitzar-comptador
+    (declare (salience 88))
+    (not (comptador))
     =>
-    (printout t "=== DEBUG: Fets actuals ===" crlf)
-    (facts)
-    (printout t "=========================" crlf)
+    (assert (comptador (valor 0)))
 )
 
 (defrule matchquadres_restrictiva1
+    (declare (salience 87))
     ?process <- (processar-obres ?s)
-
     ;   Agafem Obres com a fets
     ?obra <- (Obres (nom ?nom)
                     (epoca ?ep) 
@@ -1429,146 +1411,134 @@
                     (rellevancia ?r) 
                     (sala ?s) 
                     (visitada FALSE))
-
     ; Coincideixen l'època, l'estil, el tema i l'autor
     (preferencia-epoca ?e&:(eq ?e ?ep))
     (estil ?esv&:(eq ?esv ?es))
     (preferencia-tematica ?t&:(eq ?t ?ot))
     (autor-preferit ?au&:(eq ?au ?auq))
-
-    ; Comptador és 0
+    ; Comptador
     ?cont <- (comptador (valor ?c))
-    (test (eq ?c 0))
     =>
-    (printout t ?nom " ha fet match! Nivell de Restriccio: 0" crlf)
+    (printout t ?nom " ha fet match! Nivell de Restricció: 0" crlf)
     (modify ?cont (valor (+ ?c 1)))
     (modify ?obra (visitada TRUE) (restriccio 1))
     (retract ?process)
     (assert (processar-obres ?s))
 )
 
+; Regles per disminuir el nivell de restricció si no s'han trobat prou obres
 (defrule NoCuadrosSuficientes_restrictiva1
-    ?cont <- (comptador (valor ?c)) 
-    ?factw <- (weight ?w) 
-    ?facttv <- (temps-visita ?tv) 
-    ?factmt <- (mean_t ?mt) 
-    ?factmdt <- (mean_d_t ?mdt)
-    
-    (test (< ?c (* (/ (- (* ?tv 3600) ?mdt) ?mt) 100)))
+    (declare (salience 87))
+    (not (matchquadres_restrictiva1))
+    (not (nocuadsuf))
     =>
     (assert (nocuadsuf True))
 )
 
-;;     RESTRICCIO MAXIMA -1     ;;
 (defrule matchquadres_restrictiva2
+    (declare (salience 87))
     (nocuadsuf True)
-
+    ?process <- (processar-obres ?s)
     ;   Agafem Obres com a fets
-    ?obra <- (Obres (nom ?nom) (epoca ?ep) (estil ?es) (autor_quadre ?auq) (tematica ?ot) (rellevancia ?r) (sala ?s) (visitada FALSE))
-
+    ?obra <- (Obres (nom ?nom)
+                    (epoca ?ep) 
+                    (estil ?es) 
+                    (tematica ?ot) 
+                    (rellevancia ?r) 
+                    (sala ?s) 
+                    (visitada FALSE))
     ; Coincideixen l'època, l'estil i el tema
     (preferencia-epoca ?e&:(eq ?e ?ep))
     (estil ?esv&:(eq ?esv ?es))
     (preferencia-tematica ?t&:(eq ?t ?ot))
-
-    ;   Agafem Comptador
+    ; Comptador
     ?cont <- (comptador (valor ?c))
-    (test (eq ?c 1))
     =>
-    (printout t ?nom " ha fet match! Nivell de Restriccio: -1" crlf)
+    (printout t ?nom " ha fet match! Nivell de Restricció: -1" crlf)
     (modify ?cont (valor (+ ?c 1)))
-    (modify ?obra (restriccio ?cont) (visitada TRUE))
+    (modify ?obra (restriccio -1) (visitada TRUE))
+    (retract ?process)
+    (assert (processar-obres ?s))
 )
 
 (defrule NoCuadrosSuficientes_restrictiva2
+    (declare (salience 87))
     (nocuadsuf True)
-    ?cont <- (comptador (valor ?c)) 
-    ?factw <- (weight ?w) 
-    ?facttv <- (temps-visita ?tv) 
-    ?factmt <- (mean_t ?mt) 
-    ?factmdt <- (mean_d_t ?mdt)
-    
-    (test (< ?c (* (/ (- (* ?tv 3600) ?mdt) ?mt) 100)))
+    (not (matchquadres_restrictiva2))
+    (not (nocuadsuf2))
     =>
     (assert (nocuadsuf2 True))
 )
 
-
-;;     RESTRICCIO MAXIMA -2     ;;
 (defrule matchquadres_restrictiva3
-    ; Agafem Obres com a fets
-    ?obra <- (Obres (nom ?nom) (epoca ?ep) (estil ?es) (autor_quadre ?auq) (tematica ?ot) (rellevancia ?r) (sala ?s) (visitada FALSE))
-
+    (declare (salience 87))
     (nocuadsuf2 True)
+    ?process <- (processar-obres ?s)
+    ;   Agafem Obres com a fets
+    ?obra <- (Obres (nom ?nom)
+                    (epoca ?ep) 
+                    (estil ?es) 
+                    (rellevancia ?r) 
+                    (sala ?s) 
+                    (visitada FALSE))
     ; Coincideixen l'època i l'estil
     (preferencia-epoca ?e&:(eq ?e ?ep))
     (estil ?esv&:(eq ?esv ?es))
-
-    ; Agafem Comptador
+    ; Comptador
     ?cont <- (comptador (valor ?c))
-    (test (eq ?c 2))
     =>
-    (printout t ?nom " ha fet match! Nivell de Restriccio: -2" crlf)
+    (printout t ?nom " ha fet match! Nivell de Restricció: -2" crlf)
     (modify ?cont (valor (+ ?c 1)))
-    (modify ?obra (restriccio ?cont) (visitada TRUE))
+    (modify ?obra (restriccio -2) (visitada TRUE))
+    (retract ?process)
+    (assert (processar-obres ?s))
 )
 
 (defrule NoCuadrosSuficientes_restrictiva3
+    (declare (salience 87))
     (nocuadsuf2 True)
-    ?cont <- (comptador (valor ?c)) 
-    ?factw <- (weight ?w) 
-    ?facttv <- (temps-visita ?tv) 
-    ?factmt <- (mean_t ?mt) 
-    ?factmdt <- (mean_d_t ?mdt)
-    
-    (test (< ?c (* (/ (- (* ?tv 3600) ?mdt) ?mt) 100)))
+    (not (matchquadres_restrictiva3))
+    (not (nocuadsuf3))
     =>
     (assert (nocuadsuf3 True))
 )
 
-
-;;     RESTRICCIO MAXIMA -3     ;;
 (defrule matchquadres_restrictiva4
-    ;   Agafem Obres com a fets
-    ?obra <- (Obres (nom ?nom) (epoca ?ep) (estil ?es) (autor_quadre ?auq) (tematica ?ot) (rellevancia ?r) (sala ?s) (visitada FALSE))
-
+    (declare (salience 87))
     (nocuadsuf3 True)
+    ?process <- (processar-obres ?s)
+    ;   Agafem Obres com a fets
+    ?obra <- (Obres (nom ?nom)
+                    (epoca ?ep) 
+                    (rellevancia ?r) 
+                    (sala ?s) 
+                    (visitada FALSE))
     ; Coincideix l'època
     (preferencia-epoca ?e&:(eq ?e ?ep))
-
-    ;   Agafem Comptador
+    ; Comptador
     ?cont <- (comptador (valor ?c))
-    (test (eq ?c 3))
     =>
-    (printout t ?nom " ha fet match! Nivell de Restriccio: -3" crlf)
+    (printout t ?nom " ha fet match! Nivell de Restricció: -3" crlf)
     (modify ?cont (valor (+ ?c 1)))
-    (modify ?obra (restriccio ?cont) (visitada TRUE))
+    (modify ?obra (restriccio -3) (visitada TRUE))
+    (retract ?process)
+    (assert (processar-obres ?s))
 )
-
-(defrule NoCuadrosSuficientes_restrictiva4
-    (nocuadsuf3 True)
-    ?cont <- (comptador (valor ?c)) 
-    ?factw <- (weight ?w) 
-    ?facttv <- (temps-visita ?tv) 
-    ?factmt <- (mean_t ?mt) 
-    ?factmdt <- (mean_d_t ?mdt)
-
-    (test (< ?c (* (/ (- (* ?tv 3600) ?mdt) ?mt) 100)))
-    =>
-    (printout t "Nocuadsuf4 (sembla inútil la veritat)" crlf)
-    (assert (nocuadsuf4 True))
-)
+; NO PODEM INCIAR LA RUTA FINS QUE NO HAGUEM ACABAT AMB LES REGLES DE MATCHING
 
 ; Regla per inicialitzar la Ruta segons el tipus de visitant
 (defrule iniciar-ruta
+    (declare (salience 86))
     (tipus-visitant ?style)
     =>
     (printout t "Generant ruta per a un visitant de tipus: " ?style crlf)
     (assert (Ruta (start-room 1) (end-room 0)))  ; Suposem una sala final predeterminada
     (assert (current-room 1))
+    (assert (processar-obres 1))  ; Afegim aquesta línia per processar les obres de la sala inicial
 )
 
 (defrule anar-a-la-sala
+    (declare (salience 86))
     ?sala <- (Sala (id ?current) (connected-to $?next-rooms) (visitada FALSE))
     ?sala-actual <- (current-room ?current)
     (Ruta (end-room ?end-room))
@@ -1584,7 +1554,7 @@
             )
         )
     )
-    
+
     (if (= (length$ ?sales-disponibles) 0)
         then
         (printout t "No hi ha més sales disponibles per visitar." crlf)
@@ -1615,21 +1585,8 @@
     )
 )
 
-; (defrule restriccions_obres_sala
-;     ?proc <- (processar-obres ?sala-id)
-;     (Obres (sala ?sala-id)
-;            (nom ?nom) 
-;            (epoca ?ep) 
-;            (estil ?es) 
-;            (tematica ?tem) 
-;            (visitada FALSE) 
-;            (restriccio ?r))
-;     ?c <- (comptador (valor ?valor))
-;     =>
-;     (retract ?proc)
-; )
-
 (defrule finalitzar-visita
+    (declare (salience 86))
     ?current-room <- (current-room ?end-room)
     (Ruta (end-room ?end-room))
     =>
@@ -1640,6 +1597,7 @@
 
 ; Print quines obres s'han visitat a cada sala
 (defrule imprimir-obres-visitades
+   (declare (salience 85))
    (visita-acabada)
    =>
    (printout t "Obres visitades:" crlf)
