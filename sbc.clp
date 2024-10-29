@@ -1569,7 +1569,7 @@
             )
         )
     )
-
+    (printout t "Sales disponibles: " ?sales-disponibles crlf)
     ; Si no hi ha sales disponibles, busquem qualsevol sala no visitada
     (if (= (length$ ?sales-disponibles) 0)
         then
@@ -1617,25 +1617,79 @@
     (Ruta (end-room ?end-room))
     =>
     (assert (processar-obres ?end-room))  ; Processem les obres de l'última sala
-    (printout t "Ruta completa. El visitant ha finalitzat la visita a la sala " ?end-room crlf)
     (assert (visita-acabada))
 )
 
 ; Print quines obres s'han visitat a cada sala
 (defrule imprimir-obres-visitades
-   (declare (salience 85))
-   (visita-acabada)
-   =>
-   (printout t "Obres visitades:" crlf)
-   (do-for-all-facts ((?sala Sala))
-      if (neq ?sala:id 0) then
-        (printout t "Sala " ?sala:id ":" crlf)
-        (do-for-all-facts ((?obra Obres))
-            (if (and (eq ?obra:sala ?sala:id)
-                    (eq ?obra:visitada TRUE))
-                then
-                (printout t " - " ?obra:nom crlf)
-            )
+    (declare (salience 85))
+    (visita-acabada)
+    =>
+    (printout t "..........................................................." crlf)
+    (printout t "Segons les teves preferències, et recomanarem les següents obres:" crlf)
+    (printout t "..........................................................." crlf)
+    
+    ; Comprovem i imprimim les obres imprescindibles (restricció 1)
+    (if (any-factp ((?o Obres)) (eq ?o:restriccio 1))
+        then
+        (printout t "Les imprescindibles:" crlf)
+        (do-for-all-facts ((?o Obres)) (eq ?o:restriccio 1)
+            (printout t "Sala " ?o:sala ": " ?o:nom crlf)
         )
-   )
+        (printout t crlf)
+    )
+    
+    ; Comprovem i imprimim les obres molt recomanades (restricció 2)
+    (if (any-factp ((?o Obres)) (eq ?o:restriccio 2))
+        then
+        (printout t "Molt recomanades:" crlf)
+        (do-for-all-facts ((?o Obres)) (eq ?o:restriccio 2)
+            (printout t "Sala " ?o:sala ": " ?o:nom crlf)
+        )
+        (printout t crlf)
+    )
+    
+    ; Comprovem i imprimim les obres recomanades (restricció 3)
+    (if (any-factp ((?o Obres)) (eq ?o:restriccio 3))
+        then
+        (printout t "Recomanades:" crlf)
+        (do-for-all-facts ((?o Obres)) (eq ?o:restriccio 3)
+            (printout t "Sala " ?o:sala ": " ?o:nom crlf)
+        )
+        (printout t crlf)
+    )
+    
+    ; Comprovem i imprimim les obres opcionals (restricció 4)
+    (if (any-factp ((?o Obres)) (eq ?o:restriccio 4))
+        then
+        (printout t "Opcionals:" crlf)
+        (do-for-all-facts ((?o Obres)) (eq ?o:restriccio 4)
+            (printout t "Sala " ?o:sala ": " ?o:nom crlf)
+        )
+        (printout t crlf)
+    )
+    
+    ; Imprimim estadístiques finals
+    (bind ?total 0)
+    (bind ?r1 0)
+    (bind ?r2 0)
+    (bind ?r3 0)
+    (bind ?r4 0)
+    
+    (do-for-all-facts ((?o Obres)) (> ?o:restriccio 0)
+        (bind ?total (+ ?total 1))
+        (if (eq ?o:restriccio 1) then (bind ?r1 (+ ?r1 1)))
+        (if (eq ?o:restriccio 2) then (bind ?r2 (+ ?r2 1)))
+        (if (eq ?o:restriccio 3) then (bind ?r3 (+ ?r3 1)))
+        (if (eq ?o:restriccio 4) then (bind ?r4 (+ ?r4 1)))
+    )
+    
+    (printout t "..........................................................." crlf)
+    (printout t "Resum de la visita:" crlf)
+    (printout t "Total d'obres recomanades: " ?total crlf)
+    (if (> ?r1 0) then (printout t "- Imprescindibles: " ?r1 crlf))
+    (if (> ?r2 0) then (printout t "- Molt recomanades: " ?r2 crlf))
+    (if (> ?r3 0) then (printout t "- Recomanades: " ?r3 crlf))
+    (if (> ?r4 0) then (printout t "- Opcionals: " ?r4 crlf))
+    (printout t "..........................................................." crlf)
 )
