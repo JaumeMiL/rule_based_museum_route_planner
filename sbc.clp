@@ -1172,7 +1172,7 @@
     (printout t "5. Història" crlf)
     (printout t "6. Altres" crlf)
     (printout t "7. No tinc una preferència en quant a temàtica" crlf)
-    (printout t "Selecciona una o més opcions (per ex: 1 3 o 2 4): " crlf)
+    (printout t "Selecciona una o més opcions (per ex: 1 3 o 24): " crlf)
     (bind ?opc (readline))
 
     ; Verifiquem cada opció utilitzant str-index i integerp
@@ -1216,7 +1216,7 @@
     (printout t "4. Romanticisme" crlf)
     (printout t "5. Art Modern" crlf)
     (printout t "6. Altres" crlf)
-    (printout t "Selecciona una o més opcions: " crlf)
+    (printout t "Selecciona una o més opcions (per ex: 1 3 o 24): " crlf)
     (bind ?opc (readline))
 
     (if (integerp (str-index "1" ?opc)) then
