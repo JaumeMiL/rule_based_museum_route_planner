@@ -1188,10 +1188,6 @@
         (assert (preferencia-tematica "Altres"))
         (printout t "Has seleccionat: Altres" crlf)
     )
-    (if (integerp (str-index "7" ?opc)) then
-        (assert (preferencia-tematica "ND")) ; ND = No Definida
-        (printout t "Has seleccionat: No tinc una preferència en quant a temàtica" crlf)
-    )
 )
 
 (defrule estil "Pregunta quin estil prefereix el visitant"
