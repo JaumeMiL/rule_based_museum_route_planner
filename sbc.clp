@@ -329,7 +329,7 @@
         (estil "Barroc")
         (autor_quadre "Diego Rodríguez de Silva y Velázquez")
         (sala 3)
-        (tematica " Altres")
+        (tematica "Altres")
         (dimensions 3432)
         (complexitat "Baixa")
         (rellevancia "Mitjana")
@@ -656,10 +656,10 @@
         (nom "Riña de gatos")
         (any_de_creacio 1786)
         (epoca "Edat Moderna")
-         (estil "Altres")
+        (estil "Altres")
         (autor_quadre "Francisco de Goya y Lucientes")
         (sala 6)
-        (tematica " Altres")
+        (tematica "Altres")
         (dimensions 11104)
         (complexitat "Mitjana")
         (rellevancia "Baixa")
@@ -1159,7 +1159,6 @@
     (printout t "4. Retrat" crlf)
     (printout t "5. Història" crlf)
     (printout t "6. Altres" crlf)
-    (printout t "7. No tinc una preferència en quant a temàtica" crlf)
     (printout t "Selecciona una o més opcions (per ex: 1 3 o 24): " crlf)
     (bind ?opc (readline))
 
@@ -1187,10 +1186,6 @@
     (if (integerp (str-index "6" ?opc)) then
         (assert (preferencia-tematica "Altres"))
         (printout t "Has seleccionat: Altres" crlf)
-    )
-    (if (integerp (str-index "7" ?opc)) then
-        (assert (preferencia-tematica "ND")) ; ND = No Definida
-        (printout t "Has seleccionat: No tinc una preferència en quant a temàtica" crlf)
     )
 )
 
@@ -1293,10 +1288,10 @@
     (grup "Acompanyat")
     =>
     (printout t "Amb qui vens?" crlf)
-    (printout t "1. amics" crlf)
-    (printout t "2. família" crlf)
-    (printout t "3. classe" crlf)
-    (printout t "4. grup turístic" crlf)
+    (printout t "1. Amb els amics" crlf)
+    (printout t "2. Amb la família" crlf)
+    (printout t "3. Amb la classe" crlf)
+    (printout t "4. Amb un grup turístic" crlf)
     (printout t "Selecciona una opció: " crlf)
     (bind ?grup (read))
     (if (eq ?grup 1) then
