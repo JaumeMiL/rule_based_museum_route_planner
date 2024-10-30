@@ -1288,10 +1288,10 @@
     (grup "Acompanyat")
     =>
     (printout t "Amb qui vens?" crlf)
-    (printout t "1. amics" crlf)
-    (printout t "2. família" crlf)
-    (printout t "3. classe" crlf)
-    (printout t "4. grup turístic" crlf)
+    (printout t "1. Amb els amics" crlf)
+    (printout t "2. Amb la família" crlf)
+    (printout t "3. Amb la classe" crlf)
+    (printout t "4. Amb un grup turístic" crlf)
     (printout t "Selecciona una opció: " crlf)
     (bind ?grup (read))
     (if (eq ?grup 1) then
