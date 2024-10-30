@@ -1159,7 +1159,6 @@
     (printout t "4. Retrat" crlf)
     (printout t "5. Història" crlf)
     (printout t "6. Altres" crlf)
-    (printout t "7. No tinc una preferència en quant a temàtica" crlf)
     (printout t "Selecciona una o més opcions (per ex: 1 3 o 24): " crlf)
     (bind ?opc (readline))
 
