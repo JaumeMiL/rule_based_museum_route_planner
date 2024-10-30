@@ -1301,7 +1301,7 @@
     (bind ?grup (read))
     (if (eq ?grup 1) then
         (assert (tipus-grup "amics"))
-        (assert (tipus-visitant "Grasshopper"))
+        (assert (tipus-visitant "Butterfly"))
         (printout t "Has seleccionat: amics" crlf)
     )
     (if (eq ?grup 2) then
@@ -1316,7 +1316,7 @@
     )
     (if (eq ?grup 4) then
         (assert (tipus-grup "grup turístic"))
-        (assert (tipus-visitant "Ant"))
+        (assert (tipus-visitant "Grasshopper"))
         (printout t "Has seleccionat: grup turístic" crlf)
     )
 )
@@ -1389,7 +1389,7 @@
     (assert (tipus-visitant "Fish"))
 )
 
-; per defecte -> Grasshopper
+; per defecte -> Butterflies perquè són un 50%
 (defrule classificar-visitant-grasshopper-default
     (declare (salience 88))
     (grup "Sol")
@@ -1398,19 +1398,10 @@
     (not (tipus-visitant "Fish"))
     (not (tipus-visitant "Grasshopper"))
     =>
-    (assert (tipus-visitant "Grasshopper"))
+    (assert (tipus-visitant "Butterfly"))
 )
 
 ;;;     REGLES DE MATCHING DE QUADRES       ;;;
-
-; Inicialitzem el comptador (assegurar-nos que està present)
-; (defrule inicialitzar-comptador
-;     (declare (salience 88))
-;     (not (comptador))
-;     =>
-;     (assert (comptador (valor 0)))
-; )
-
 (defrule matchquadres_restrictiva1
     (declare (salience 87))
     ?process <- (processar-obres ?s)
