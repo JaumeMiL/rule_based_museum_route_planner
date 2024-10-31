@@ -738,7 +738,7 @@
         (rellevancia "Mitjana")
     )
     (Obres
-        (nom "Bosc de Fontainebleau Els cacadors")
+        (nom "Bosc de Fontainebleau Els caçadors")
         (any_de_creacio 1855)
         (epoca "Edat Contemporània")
         (estil "Romanticisme")
@@ -1373,12 +1373,12 @@
     ?process <- (processar-obres ?s)
     ;   Agafem Obres com a fets
     ?obra <- (Obres (nom ?nom)
-                    (epoca ?ep) 
-                    (estil ?es) 
-                    (autor_quadre ?auq) 
-                    (tematica ?ot) 
-                    (rellevancia ?r) 
-                    (sala ?s) 
+                    (epoca ?ep)
+                    (estil ?es)
+                    (autor_quadre ?auq)
+                    (tematica ?ot)
+                    (rellevancia ?r)
+                    (sala ?s)
                     (visitada FALSE))
 
     ?fetaut <- (autor-preferit ?au)
@@ -1421,12 +1421,13 @@
     ?process <- (processar-obres ?s)
     ;   Agafem Obres com a fets
     ?obra <- (Obres (nom ?nom)
-                    (epoca ?ep) 
-                    (estil ?es) 
-                    (tematica ?ot) 
-                    (rellevancia ?r) 
-                    (sala ?s) 
+                    (epoca ?ep)
+                    (estil ?es)
+                    (tematica ?ot)
+                    (rellevancia ?r)
+                    (sala ?s)
                     (visitada FALSE))
+
     ; Coincideixen l'època, l'estil i el tema
     (and
         (preferencia-epoca ?e&:(eq ?e ?ep))
@@ -1465,10 +1466,10 @@
     ?process <- (processar-obres ?s)
     ;   Agafem Obres com a fets
     ?obra <- (Obres (nom ?nom)
-                    (epoca ?ep) 
-                    (estil ?es) 
-                    (rellevancia ?r) 
-                    (sala ?s) 
+                    (epoca ?ep)
+                    (estil ?es)
+                    (rellevancia ?r)
+                    (sala ?s)
                     (visitada FALSE))
     ; Coincideixen l'època i l'estil
     (and
@@ -1507,9 +1508,9 @@
     ?process <- (processar-obres ?s)
     ;   Agafem Obres com a fets
     ?obra <- (Obres (nom ?nom)
-                    (epoca ?ep) 
-                    (rellevancia ?r) 
-                    (sala ?s) 
+                    (epoca ?ep)
+                    (rellevancia ?r)
+                    (sala ?s)
                     (visitada FALSE))
     ; Coincideix l'època
     (preferencia-epoca ?e&:(eq ?e ?ep))
@@ -1522,6 +1523,7 @@
     (retract ?process)
     (assert (processar-obres ?s))
 )
+
 ; NO PODEM INCIAR LA RUTA FINS QUE NO HAGUEM ACABAT AMB LES REGLES DE MATCHING
 
 ; Regla per inicialitzar la Ruta segons el tipus de visitant
@@ -1530,7 +1532,7 @@
     (tipus-visitant ?style)
     =>
     (printout t "Generant ruta per a un visitant de tipus: " ?style crlf)
-    (assert (Ruta (start-room 1) (end-room 0)))  ; Suposem una sala final predeterminada
+    (assert (Ruta (start-room 1) (end-room 0)))  ; Afegim una sala amb id 0 (sink) que no té cap obra
     (assert (current-room 1))
     (assert (processar-obres 1))  ; Afegim aquesta línia per processar les obres de la sala inicial
 )
@@ -1600,8 +1602,11 @@
     (declare (salience 78))
     ?current-room <- (current-room ?end-room)
     (Ruta (end-room ?end-room))
+    ?sala <- (Sala (id ?end-room))
     =>
-    (assert (processar-obres ?end-room))  ; Processem les obres de l'última sala
+    ; delete end room from Sala
+    (retract ?current-room)
+    (retract ?sala)
     (assert (visita-acabada))
 )
 
@@ -1676,4 +1681,23 @@
     (if (> ?r3 0) then (printout t "- Recomanades: " ?r3 crlf))
     (if (> ?r4 0) then (printout t "- Opcionals: " ?r4 crlf))
     (printout t "..........................................................." crlf)
+
+    ; Ruta completa
+    (printout t "Aquí tens la ruta proposada completa ordenada per sales:" crlf)
+    
+    (do-for-all-facts ((?sala Sala))
+        (printout t "Sala " ?sala:id ":" crlf)
+        (do-for-all-facts ((?obra Obres))
+            (if (and (eq ?obra:sala ?sala:id)
+                    (eq ?obra:visitada TRUE))
+                then
+                (printout t " - " ?obra:nom crlf)
+            )
+        )
+   )
+
+    ; Acomiadament
+    (printout t "..........................................................." crlf)
+    (printout t "Gràcies per visitar el Museu GIA-SBC" crlf)
+    (printout t "Esperem que hagis gaudit de la teva visita!" crlf)
 )
