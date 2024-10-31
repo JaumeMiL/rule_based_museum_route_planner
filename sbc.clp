@@ -1371,7 +1371,7 @@
 ;;;     REGLES DE MATCHING DE QUADRES       ;;;
 (defrule matchquadres_restrictiva1
     (declare (salience 87))
-    ?process <- (processar-obres ?s)
+    ;?process <- (processar-obres ?s)
     ;   Agafem Obres com a fets
     ?obra <- (Obres (nom ?nom)
                     (epoca ?ep)
@@ -1395,8 +1395,8 @@
     (printout t ?nom " ha fet match! Nivell de Restricció: 0" crlf)
     (modify ?cont (valor (+ ?c 1)))
     (modify ?obra (visitada TRUE) (restriccio 1))
-    (retract ?process)
-    (assert (processar-obres ?s))
+    ;(retract ?process)
+    ;(assert (processar-obres ?s))
     (assert (matchquadres1 True))
 )
 
@@ -1419,7 +1419,7 @@
     (declare (salience 85))
     (matchquadres1 True)
     (nocuadsuf True)
-    ?process <- (processar-obres ?s)
+    ;?process <- (processar-obres ?s)
     ;   Agafem Obres com a fets
     ?obra <- (Obres (nom ?nom)
                     (epoca ?ep)
@@ -1440,8 +1440,8 @@
     (printout t ?nom " ha fet match! Nivell de Restricció: -1" crlf)
     (modify ?cont (valor (+ ?c 1)))
     (modify ?obra (restriccio 2) (visitada TRUE))
-    (retract ?process)
-    (assert (processar-obres ?s))
+    ;(retract ?process)
+    ;(assert (processar-obres ?s))
     (assert (matchquadres2 True))
 )
 
@@ -1464,7 +1464,7 @@
     (declare (salience 83))
     (matchquadres2 True)
     (nocuadsuf2 True)
-    ?process <- (processar-obres ?s)
+    ;?process <- (processar-obres ?s)
     ;   Agafem Obres com a fets
     ?obra <- (Obres (nom ?nom)
                     (epoca ?ep)
@@ -1482,8 +1482,8 @@
     (printout t ?nom " ha fet match! Nivell de Restricció: -2" crlf)
     (modify ?cont (valor (+ ?c 1)))
     (modify ?obra (restriccio 3) (visitada TRUE))
-    (retract ?process)
-    (assert (processar-obres ?s))
+    ;(retract ?process)
+    ;(assert (processar-obres ?s))
     (assert (matchquadres3 True))
 )
 
@@ -1506,7 +1506,7 @@
     (declare (salience 81))
     (matchquadres3 True)
     (nocuadsuf3 True)
-    ?process <- (processar-obres ?s)
+    ;?process <- (processar-obres ?s)
     ;   Agafem Obres com a fets
     ?obra <- (Obres (nom ?nom)
                     (epoca ?ep)
@@ -1521,8 +1521,8 @@
     (printout t ?nom " ha fet match! Nivell de Restricció: -3" crlf)
     (modify ?cont (valor (+ ?c 1)))
     (modify ?obra (restriccio 4) (visitada TRUE))
-    (retract ?process)
-    (assert (processar-obres ?s))
+    ;(retract ?process)
+    ;(assert (processar-obres ?s))
 )
 
 ; NO PODEM INCIAR LA RUTA FINS QUE NO HAGUEM ACABAT AMB LES REGLES DE MATCHING
