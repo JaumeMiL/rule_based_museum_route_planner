@@ -60,6 +60,10 @@
 ; Aquí carregaries les instàncies d'obres i sales
 (deffacts instancies_obres
     (comptador (valor 0))
+    (mean_t 120) 
+    (mean_d_t 1000)
+    (numObres 78)
+
     ;; Sala 1 - Època Antiga i Medieval
     (Obres 
         (nom "Codi d'Hammurabi")
@@ -1256,21 +1260,25 @@
     (if (eq ?grup 1) then
         (assert (tipus-grup "amics"))
         (assert (tipus-visitant "Butterfly"))
+        (assert (weight 0))
         (printout t "Has seleccionat: amics" crlf)
     )
     (if (eq ?grup 2) then
         (assert (tipus-grup "familia"))
         (assert (tipus-visitant "Grasshopper"))
+        (assert (weight 0))
         (printout t "Has seleccionat: família" crlf)
     )
     (if (eq ?grup 3) then
         (assert (tipus-grup "classe"))
         (assert (tipus-visitant "Ant"))
+        (assert (weight 15))
         (printout t "Has seleccionat: classe" crlf)
     )
     (if (eq ?grup 4) then
         (assert (tipus-grup "grup turístic"))
         (assert (tipus-visitant "Grasshopper"))
+        (assert (weight 10))
         (printout t "Has seleccionat: grup turístic" crlf)
     )
 )
@@ -1290,6 +1298,7 @@
         (coneixement "Alt"))             
     =>
     (assert (tipus-visitant "Ant"))
+    (assert (weight 15))
 )
 
 ;;      Butterfly      ;;
@@ -1325,6 +1334,7 @@
         (and (interes "Baix") (coneixement "Mitjà")))
     =>
     (assert (tipus-visitant "Grasshopper"))
+    (assert (weight 0))
 )
 
 ;;      Fish      ;;
@@ -1341,6 +1351,7 @@
     (coneixement "Baix")             
     =>
     (assert (tipus-visitant "Fish"))
+    (assert (weight -5))
 )
 
 ; per defecte -> Butterflies perquè són un 50%
@@ -1353,6 +1364,7 @@
     (not (tipus-visitant "Grasshopper"))
     =>
     (assert (tipus-visitant "Butterfly"))
+    (assert (weight 15))
 )
 
 ;;;     REGLES DE MATCHING DE QUADRES       ;;;
@@ -1368,11 +1380,14 @@
                     (rellevancia ?r) 
                     (sala ?s) 
                     (visitada FALSE))
+
+    ?fetaut <- (autor-preferit ?au)
     ; Coincideixen l'època, l'estil, el tema i l'autor
-    (preferencia-epoca ?e&:(eq ?e ?ep))
-    (estil ?esv&:(eq ?esv ?es))
-    (preferencia-tematica ?t&:(eq ?t ?ot))
-    (autor-preferit ?au&:(eq ?au ?auq))
+    (and
+        (preferencia-epoca ?e&:(eq ?e ?ep))
+        (estil ?esv&:(eq ?esv ?es))
+        (preferencia-tematica ?t&:(eq ?t ?ot))
+        (test (eq ?au ?auq)))
     ; Comptador
     ?cont <- (comptador (valor ?c))
     =>
@@ -1381,19 +1396,27 @@
     (modify ?obra (visitada TRUE) (restriccio 1))
     (retract ?process)
     (assert (processar-obres ?s))
+    (assert (matchquadres1 True))
 )
 
 ; Regles per disminuir el nivell de restricció si no s'han trobat prou obres
 (defrule NoCuadrosSuficientes_restrictiva1
-    (declare (salience 87))
-    (not (matchquadres_restrictiva1))
-    (not (nocuadsuf))
+    (declare (salience 86))
+    ?cont <- (comptador (valor ?c)) 
+    ?factw <- (weight ?w) 
+    ?facttv <- (temps-visita ?tv) 
+    ?factmt <- (mean_t ?mt) 
+    ?factmdt <- (mean_d_t ?mdt)
+    ?factCant <- (numObres ?cantobr)
+    (test (< ?c (/ (- (* ?tv 3600) ?mdt) (+ ?mt ?w))))
     =>
     (assert (nocuadsuf True))
+    (assert (matchquadres1 True))
 )
 
 (defrule matchquadres_restrictiva2
-    (declare (salience 87))
+    (declare (salience 85))
+    (matchquadres1 True)
     (nocuadsuf True)
     ?process <- (processar-obres ?s)
     ;   Agafem Obres com a fets
@@ -1405,9 +1428,10 @@
                     (sala ?s) 
                     (visitada FALSE))
     ; Coincideixen l'època, l'estil i el tema
-    (preferencia-epoca ?e&:(eq ?e ?ep))
-    (estil ?esv&:(eq ?esv ?es))
-    (preferencia-tematica ?t&:(eq ?t ?ot))
+    (and
+        (preferencia-epoca ?e&:(eq ?e ?ep))
+        (estil ?esv&:(eq ?esv ?es))
+        (preferencia-tematica ?t&:(eq ?t ?ot)))
     ; Comptador
     ?cont <- (comptador (valor ?c))
     =>
@@ -1416,19 +1440,27 @@
     (modify ?obra (restriccio 2) (visitada TRUE))
     (retract ?process)
     (assert (processar-obres ?s))
+    (assert (matchquadres2 True))
 )
 
 (defrule NoCuadrosSuficientes_restrictiva2
-    (declare (salience 87))
+    (declare (salience 84))
     (nocuadsuf True)
-    (not (matchquadres_restrictiva2))
-    (not (nocuadsuf2))
+    ?cont <- (comptador (valor ?c)) 
+    ?factw <- (weight ?w) 
+    ?facttv <- (temps-visita ?tv) 
+    ?factmt <- (mean_t ?mt) 
+    ?factmdt <- (mean_d_t ?mdt)
+    ?factCant <- (numObres ?cantobr)
+    (test (< ?c (/ (- (* ?tv 3600) ?mdt) (+ ?mt ?w))))
     =>
     (assert (nocuadsuf2 True))
+    (assert (matchquadres2 True))
 )
 
 (defrule matchquadres_restrictiva3
-    (declare (salience 87))
+    (declare (salience 83))
+    (matchquadres2 True)
     (nocuadsuf2 True)
     ?process <- (processar-obres ?s)
     ;   Agafem Obres com a fets
@@ -1439,8 +1471,9 @@
                     (sala ?s) 
                     (visitada FALSE))
     ; Coincideixen l'època i l'estil
-    (preferencia-epoca ?e&:(eq ?e ?ep))
-    (estil ?esv&:(eq ?esv ?es))
+    (and
+        (preferencia-epoca ?e&:(eq ?e ?ep))
+        (estil ?esv&:(eq ?esv ?es)))
     ; Comptador
     ?cont <- (comptador (valor ?c))
     =>
@@ -1449,19 +1482,27 @@
     (modify ?obra (restriccio 3) (visitada TRUE))
     (retract ?process)
     (assert (processar-obres ?s))
+    (assert (matchquadres3 True))
 )
 
 (defrule NoCuadrosSuficientes_restrictiva3
-    (declare (salience 87))
+    (declare (salience 82))
     (nocuadsuf2 True)
-    (not (matchquadres_restrictiva3))
-    (not (nocuadsuf3))
+    ?cont <- (comptador (valor ?c)) 
+    ?factw <- (weight ?w) 
+    ?facttv <- (temps-visita ?tv) 
+    ?factmt <- (mean_t ?mt) 
+    ?factmdt <- (mean_d_t ?mdt)
+    ?factCant <- (numObres ?cantobr)
+    (test (< ?c (/ (- (* ?tv 3600) ?mdt) (+ ?mt ?w))))
     =>
     (assert (nocuadsuf3 True))
+    (assert (matchquadres3 True))
 )
 
 (defrule matchquadres_restrictiva4
-    (declare (salience 87))
+    (declare (salience 81))
+    (matchquadres3 True)
     (nocuadsuf3 True)
     ?process <- (processar-obres ?s)
     ;   Agafem Obres com a fets
@@ -1485,7 +1526,7 @@
 
 ; Regla per inicialitzar la Ruta segons el tipus de visitant
 (defrule iniciar-ruta
-    (declare (salience 86))
+    (declare (salience 80))
     (tipus-visitant ?style)
     =>
     (printout t "Generant ruta per a un visitant de tipus: " ?style crlf)
@@ -1495,7 +1536,7 @@
 )
 
 (defrule anar-a-la-sala
-    (declare (salience 86))
+    (declare (salience 79))
     ?sala <- (Sala (id ?current) (connected-to $?next-rooms) (visitada FALSE))
     ?sala-actual <- (current-room ?current)
     (Ruta (end-room ?end-room))
@@ -1556,7 +1597,7 @@
 ) 
 
 (defrule finalitzar-visita
-    (declare (salience 86))
+    (declare (salience 78))
     ?current-room <- (current-room ?end-room)
     (Ruta (end-room ?end-room))
     =>
@@ -1566,7 +1607,7 @@
 
 ; Print quines obres s'han visitat a cada sala
 (defrule imprimir-obres-visitades
-    (declare (salience 85))
+    (declare (salience 77))
     (visita-acabada)
     ?comp <- (comptador (valor ?total))
     =>
