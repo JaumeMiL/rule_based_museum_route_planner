@@ -1317,6 +1317,7 @@
         (coneixement "Alt"))             
      =>
     (assert (tipus-visitant "Butterfly"))
+    (assert (weight 15))
 )
 
 ;;      Grasshopper      ;;
@@ -1355,7 +1356,7 @@
 )
 
 ; per defecte -> Butterflies perquè són un 50%
-(defrule classificar-visitant-grasshopper-default
+(defrule classificar-visitant-butterfly-default
     (declare (salience 88))
     (grup "Sol")
     (not (tipus-visitant "Ant"))
@@ -1370,7 +1371,7 @@
 ;;;     REGLES DE MATCHING DE QUADRES       ;;;
 (defrule matchquadres_restrictiva1
     (declare (salience 87))
-    ?process <- (processar-obres ?s)
+    ;?process <- (processar-obres ?s)
     ;   Agafem Obres com a fets
     ?obra <- (Obres (nom ?nom)
                     (epoca ?ep)
