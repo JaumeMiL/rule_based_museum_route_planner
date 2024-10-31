@@ -775,7 +775,7 @@
         (rellevancia "Mitjana")
     )
     (Obres
-        (nom "Bosc de Fontainebleau Els cacadors")
+        (nom "Bosc de Fontainebleau Els caçadors")
         (any_de_creacio 1855)
         (epoca "Edat Contemporània")
         (estil "Romanticisme")
@@ -1402,12 +1402,12 @@
     ?process <- (processar-obres ?s)
     ;   Agafem Obres com a fets
     ?obra <- (Obres (nom ?nom)
-                    (epoca ?ep) 
-                    (estil ?es) 
-                    (autor_quadre ?auq) 
-                    (tematica ?ot) 
-                    (rellevancia ?r) 
-                    (sala ?s) 
+                    (epoca ?ep)
+                    (estil ?es)
+                    (autor_quadre ?auq)
+                    (tematica ?ot)
+                    (rellevancia ?r)
+                    (sala ?s)
                     (visitada FALSE))
     ; Coincideixen l'època, l'estil, el tema i l'autor
     (preferencia-epoca ?e&:(eq ?e ?ep))
@@ -1439,11 +1439,11 @@
     ?process <- (processar-obres ?s)
     ;   Agafem Obres com a fets
     ?obra <- (Obres (nom ?nom)
-                    (epoca ?ep) 
-                    (estil ?es) 
-                    (tematica ?ot) 
-                    (rellevancia ?r) 
-                    (sala ?s) 
+                    (epoca ?ep)
+                    (estil ?es)
+                    (tematica ?ot)
+                    (rellevancia ?r)
+                    (sala ?s)
                     (visitada FALSE))
     ; Coincideixen l'època, l'estil i el tema
     (preferencia-epoca ?e&:(eq ?e ?ep))
@@ -1474,10 +1474,10 @@
     ?process <- (processar-obres ?s)
     ;   Agafem Obres com a fets
     ?obra <- (Obres (nom ?nom)
-                    (epoca ?ep) 
-                    (estil ?es) 
-                    (rellevancia ?r) 
-                    (sala ?s) 
+                    (epoca ?ep)
+                    (estil ?es)
+                    (rellevancia ?r)
+                    (sala ?s)
                     (visitada FALSE))
     ; Coincideixen l'època i l'estil
     (preferencia-epoca ?e&:(eq ?e ?ep))
@@ -1507,9 +1507,9 @@
     ?process <- (processar-obres ?s)
     ;   Agafem Obres com a fets
     ?obra <- (Obres (nom ?nom)
-                    (epoca ?ep) 
-                    (rellevancia ?r) 
-                    (sala ?s) 
+                    (epoca ?ep)
+                    (rellevancia ?r)
+                    (sala ?s)
                     (visitada FALSE))
     ; Coincideix l'època
     (preferencia-epoca ?e&:(eq ?e ?ep))
