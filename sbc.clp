@@ -1535,7 +1535,7 @@
     (printout t "Generant ruta per a un visitant de tipus: " ?style crlf)
     (assert (Ruta (start-room 1) (end-room 0)))  ; Afegim una sala amb id 0 (sink) que no té cap obra
     (assert (current-room 1))
-    (assert (processar-obres 1))  ; Afegim aquesta línia per processar les obres de la sala inicial
+    ; (assert (processar-obres 1))  ; Afegim aquesta línia per processar les obres de la sala inicial
 )
 
 (defrule anar-a-la-sala
@@ -1571,7 +1571,7 @@
             (bind ?next (nth$ 1 ?sales-no-visitades))
             (retract ?sala-actual)
             (assert (current-room ?next))
-            (assert (processar-obres ?next))
+            ; (assert (processar-obres ?next))
             (printout t "No hi ha connexions directes disponibles. Saltant a la sala: " ?next crlf)
             else
             (printout t "No hi ha més sales per visitar." crlf)
@@ -1594,7 +1594,7 @@
         )
         (retract ?sala-actual)
         (assert (current-room ?next))
-        (assert (processar-obres ?next))
+        ; (assert (processar-obres ?next))
         (printout t "Movent-se a la sala: " ?next crlf)
     )
 ) 
