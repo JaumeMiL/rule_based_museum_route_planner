@@ -1405,7 +1405,6 @@
     ?facttv <- (temps-visita ?tv) 
     ?factmt <- (mean_t ?mt) 
     ?factmdt <- (mean_d_t ?mdt)
-    ?factCant <- (numObres ?cantobr)
     (test (< ?c (/ (- (* ?tv 3600) ?mdt) (+ ?mt ?w))))
     =>
     (assert (nocuadsuf True))
@@ -1447,7 +1446,6 @@
     ?facttv <- (temps-visita ?tv) 
     ?factmt <- (mean_t ?mt) 
     ?factmdt <- (mean_d_t ?mdt)
-    ?factCant <- (numObres ?cantobr)
     (test (< ?c (/ (- (* ?tv 3600) ?mdt) (+ ?mt ?w))))
     =>
     (assert (nocuadsuf2 True))
@@ -1486,7 +1484,6 @@
     ?facttv <- (temps-visita ?tv) 
     ?factmt <- (mean_t ?mt) 
     ?factmdt <- (mean_d_t ?mdt)
-    ?factCant <- (numObres ?cantobr)
     (test (< ?c (/ (- (* ?tv 3600) ?mdt) (+ ?mt ?w))))
     =>
     (assert (nocuadsuf3 True))
@@ -1685,5 +1682,5 @@
     ; Acomiadament
     (printout t "..........................................................." crlf)
     (printout t "Gràcies per visitar el Museu GIA-SBC" crlf)
-    (printout t "Esperem que hagis gaudit de la teva visita!" crlf)
+    (printout t "Esperem que gaudeixis de la teva visita!" crlf)
 )
