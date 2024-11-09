@@ -62,7 +62,6 @@
     (comptador (valor 0))
     (mean_t 120) 
     (mean_d_t 1000)
-    (numObres 78)
 
     ;; Sala 1 - Època Antiga i Medieval
     (Obres 
@@ -1371,7 +1370,6 @@
 ;;;     REGLES DE MATCHING DE QUADRES       ;;;
 (defrule matchquadres_restrictiva1
     (declare (salience 87))
-    ;?process <- (processar-obres ?s)
     ;   Agafem Obres com a fets
     ?obra <- (Obres (nom ?nom)
                     (epoca ?ep)
@@ -1395,8 +1393,6 @@
     (printout t ?nom " ha fet match! Nivell de Restricció: 0" crlf)
     (modify ?cont (valor (+ ?c 1)))
     (modify ?obra (visitada TRUE) (restriccio 1))
-    ;(retract ?process)
-    ;(assert (processar-obres ?s))
     (assert (matchquadres1 True))
 )
 
@@ -1408,7 +1404,6 @@
     ?facttv <- (temps-visita ?tv) 
     ?factmt <- (mean_t ?mt) 
     ?factmdt <- (mean_d_t ?mdt)
-    ?factCant <- (numObres ?cantobr)
     (test (< ?c (/ (- (* ?tv 3600) ?mdt) (+ ?mt ?w))))
     =>
     (assert (nocuadsuf True))
@@ -1419,7 +1414,6 @@
     (declare (salience 85))
     (matchquadres1 True)
     (nocuadsuf True)
-    ;?process <- (processar-obres ?s)
     ;   Agafem Obres com a fets
     ?obra <- (Obres (nom ?nom)
                     (epoca ?ep)
@@ -1440,8 +1434,6 @@
     (printout t ?nom " ha fet match! Nivell de Restricció: -1" crlf)
     (modify ?cont (valor (+ ?c 1)))
     (modify ?obra (restriccio 2) (visitada TRUE))
-    ;(retract ?process)
-    ;(assert (processar-obres ?s))
     (assert (matchquadres2 True))
 )
 
@@ -1453,7 +1445,6 @@
     ?facttv <- (temps-visita ?tv) 
     ?factmt <- (mean_t ?mt) 
     ?factmdt <- (mean_d_t ?mdt)
-    ?factCant <- (numObres ?cantobr)
     (test (< ?c (/ (- (* ?tv 3600) ?mdt) (+ ?mt ?w))))
     =>
     (assert (nocuadsuf2 True))
@@ -1464,7 +1455,6 @@
     (declare (salience 83))
     (matchquadres2 True)
     (nocuadsuf2 True)
-    ;?process <- (processar-obres ?s)
     ;   Agafem Obres com a fets
     ?obra <- (Obres (nom ?nom)
                     (epoca ?ep)
@@ -1482,8 +1472,6 @@
     (printout t ?nom " ha fet match! Nivell de Restricció: -2" crlf)
     (modify ?cont (valor (+ ?c 1)))
     (modify ?obra (restriccio 3) (visitada TRUE))
-    ;(retract ?process)
-    ;(assert (processar-obres ?s))
     (assert (matchquadres3 True))
 )
 
@@ -1495,7 +1483,6 @@
     ?facttv <- (temps-visita ?tv) 
     ?factmt <- (mean_t ?mt) 
     ?factmdt <- (mean_d_t ?mdt)
-    ?factCant <- (numObres ?cantobr)
     (test (< ?c (/ (- (* ?tv 3600) ?mdt) (+ ?mt ?w))))
     =>
     (assert (nocuadsuf3 True))
@@ -1506,7 +1493,6 @@
     (declare (salience 81))
     (matchquadres3 True)
     (nocuadsuf3 True)
-    ;?process <- (processar-obres ?s)
     ;   Agafem Obres com a fets
     ?obra <- (Obres (nom ?nom)
                     (epoca ?ep)
@@ -1521,8 +1507,6 @@
     (printout t ?nom " ha fet match! Nivell de Restricció: -3" crlf)
     (modify ?cont (valor (+ ?c 1)))
     (modify ?obra (restriccio 4) (visitada TRUE))
-    ;(retract ?process)
-    ;(assert (processar-obres ?s))
 )
 
 ; NO PODEM INCIAR LA RUTA FINS QUE NO HAGUEM ACABAT AMB LES REGLES DE MATCHING
@@ -1700,5 +1684,5 @@
     ; Acomiadament
     (printout t "..........................................................." crlf)
     (printout t "Gràcies per visitar el Museu GIA-SBC" crlf)
-    (printout t "Esperem que hagis gaudit de la teva visita!" crlf)
+    (printout t "Esperem que gaudeixis de la teva visita!" crlf)
 )
