@@ -1623,20 +1623,20 @@
         (printout t crlf)
     )
 
-    ; Restricció 2 (Molt recomanades)
+    ; Restricció 2 (Molt recomanables)
     (if (any-factp ((?o Obres)) (eq ?o:restriccio 2))
         then
-        (printout t "Molt recomanades:" crlf)
+        (printout t "Molt recomanables:" crlf)
         (do-for-all-facts ((?o Obres)) (eq ?o:restriccio 2)
             (printout t "Sala " ?o:sala ": " ?o:nom crlf)
         )
         (printout t crlf)
     )
 
-    ; Restricció 3 (Recomanades)
+    ; Restricció 3 (Recomanables)
     (if (any-factp ((?o Obres)) (eq ?o:restriccio 3))
         then
-        (printout t "Recomanades:" crlf)
+        (printout t "Recomanables:" crlf)
         (do-for-all-facts ((?o Obres)) (eq ?o:restriccio 3)
             (printout t "Sala " ?o:sala ": " ?o:nom crlf)
         )
@@ -1670,8 +1670,8 @@
     (printout t "Resum de la visita:" crlf)
     (printout t "Total d'obres recomanades: " ?total crlf)
     (if (> ?r1 0) then (printout t "- Imprescindibles: " ?r1 crlf))
-    (if (> ?r2 0) then (printout t "- Molt recomanades: " ?r2 crlf))
-    (if (> ?r3 0) then (printout t "- Recomanades: " ?r3 crlf))
+    (if (> ?r2 0) then (printout t "- Molt recomanables: " ?r2 crlf))
+    (if (> ?r3 0) then (printout t "- Recomanables: " ?r3 crlf))
     (if (> ?r4 0) then (printout t "- Opcionals: " ?r4 crlf))
     (printout t "..........................................................." crlf)
 
