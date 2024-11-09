@@ -1390,7 +1390,7 @@
     ; Comptador
     ?cont <- (comptador (valor ?c))
     =>
-    (printout t ?nom " ha fet match! Nivell de Restricció: 0" crlf)
+    ;(printout t ?nom " ha fet match! Nivell de Restricció: 1" crlf)
     (modify ?cont (valor (+ ?c 1)))
     (modify ?obra (visitada TRUE) (restriccio 1))
     (assert (matchquadres1 True))
@@ -1431,7 +1431,7 @@
     ; Comptador
     ?cont <- (comptador (valor ?c))
     =>
-    (printout t ?nom " ha fet match! Nivell de Restricció: -1" crlf)
+    ;(printout t ?nom " ha fet match! Nivell de Restricció: 2" crlf)
     (modify ?cont (valor (+ ?c 1)))
     (modify ?obra (restriccio 2) (visitada TRUE))
     (assert (matchquadres2 True))
@@ -1469,7 +1469,7 @@
     ; Comptador
     ?cont <- (comptador (valor ?c))
     =>
-    (printout t ?nom " ha fet match! Nivell de Restricció: -2" crlf)
+    ;(printout t ?nom " ha fet match! Nivell de Restricció: 3" crlf)
     (modify ?cont (valor (+ ?c 1)))
     (modify ?obra (restriccio 3) (visitada TRUE))
     (assert (matchquadres3 True))
@@ -1504,7 +1504,7 @@
     ; Comptador
     ?cont <- (comptador (valor ?c))
     =>
-    (printout t ?nom " ha fet match! Nivell de Restricció: -3" crlf)
+    ;(printout t ?nom " ha fet match! Nivell de Restricció: 4" crlf)
     (modify ?cont (valor (+ ?c 1)))
     (modify ?obra (restriccio 4) (visitada TRUE))
 )
