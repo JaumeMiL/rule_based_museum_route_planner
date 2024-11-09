@@ -1628,43 +1628,39 @@
     (printout t "..........................................................." crlf)
 
     ; Restricció 1 (Imprescindibles)
-    (if (any-factp ((?o Obres)) (and (eq ?o:restriccio 1) (any-factp ((?s Sala)) (and (eq ?s:id ?o:sala) (eq ?s:visitada TRUE)))))
-        then
+    (do-for-all-facts ((?o Obres))
+        (and (eq ?o:restriccio 1)
+             (any-factp ((?s Sala)) (and (eq ?s:id ?o:sala) (eq ?s:visitada TRUE))))
+        =>
         (printout t "Les imprescindibles:" crlf)
-        (do-for-all-facts ((?o Obres)) (and (eq ?o:restriccio 1) (any-factp ((?s Sala)) (and (eq ?s:id ?o:sala) (eq ?s:visitada TRUE))))
-            (printout t "Sala " ?o:sala ": " ?o:nom crlf)
-        )
-        (printout t crlf)
+        (printout t "Sala " ?o:sala ": " ?o:nom crlf)
     )
 
     ; Restricció 2 (Molt recomanables)
-    (if (any-factp ((?o Obres)) (and (eq ?o:restriccio 2) (any-factp ((?s Sala)) (and (eq ?s:id ?o:sala) (eq ?s:visitada TRUE)))))
-        then
+    (do-for-all-facts ((?o Obres))
+        (and (eq ?o:restriccio 2)
+             (any-factp ((?s Sala)) (and (eq ?s:id ?o:sala) (eq ?s:visitada TRUE))))
+        =>
         (printout t "Molt recomanables:" crlf)
-        (do-for-all-facts ((?o Obres)) (and (eq ?o:restriccio 2) (any-factp ((?s Sala)) (and (eq ?s:id ?o:sala) (eq ?s:visitada TRUE))))
-            (printout t "Sala " ?o:sala ": " ?o:nom crlf)
-        )
-        (printout t crlf)
+        (printout t "Sala " ?o:sala ": " ?o:nom crlf)
     )
 
     ; Restricció 3 (Recomanables)
-    (if (any-factp ((?o Obres)) (and (eq ?o:restriccio 3) (any-factp ((?s Sala)) (and (eq ?s:id ?o:sala) (eq ?s:visitada TRUE)))))
-        then
+    (do-for-all-facts ((?o Obres))
+        (and (eq ?o:restriccio 3)
+             (any-factp ((?s Sala)) (and (eq ?s:id ?o:sala) (eq ?s:visitada TRUE))))
+        =>
         (printout t "Recomanables:" crlf)
-        (do-for-all-facts ((?o Obres)) (and (eq ?o:restriccio 3) (any-factp ((?s Sala)) (and (eq ?s:id ?o:sala) (eq ?s:visitada TRUE))))
-            (printout t "Sala " ?o:sala ": " ?o:nom crlf)
-        )
-        (printout t crlf)
+        (printout t "Sala " ?o:sala ": " ?o:nom crlf)
     )
 
     ; Restricció 4 (Opcionals)
-    (if (any-factp ((?o Obres)) (and (eq ?o:restriccio 4) (any-factp ((?s Sala)) (and (eq ?s:id ?o:sala) (eq ?s:visitada TRUE)))))
-        then
+    (do-for-all-facts ((?o Obres))
+        (and (eq ?o:restriccio 4)
+             (any-factp ((?s Sala)) (and (eq ?s:id ?o:sala) (eq ?s:visitada TRUE))))
+        =>
         (printout t "Opcionals:" crlf)
-        (do-for-all-facts ((?o Obres)) (and (eq ?o:restriccio 4) (any-factp ((?s Sala)) (and (eq ?s:id ?o:sala) (eq ?s:visitada TRUE))))
-            (printout t "Sala " ?o:sala ": " ?o:nom crlf)
-        )
-        (printout t crlf)
+        (printout t "Sala " ?o:sala ": " ?o:nom crlf)
     )
 
     ; Imprimim estadístiques finals
