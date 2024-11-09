@@ -62,7 +62,7 @@
     (comptador (valor 0))
     (mean_t 120) 
     (mean_d_t 1000)
-    (numObres 78)
+    (numObres 76)
 
     ;; Sala 1 - Època Antiga i Medieval
     (Obres 
@@ -1317,7 +1317,7 @@
         (coneixement "Alt"))             
      =>
     (assert (tipus-visitant "Butterfly"))
-    (assert (weight 15))
+    (assert (weight 10))
 )
 
 ;;      Grasshopper      ;;
@@ -1365,13 +1365,12 @@
     (not (tipus-visitant "Grasshopper"))
     =>
     (assert (tipus-visitant "Butterfly"))
-    (assert (weight 15))
+    (assert (weight 10))
 )
 
 ;;;     REGLES DE MATCHING DE QUADRES       ;;;
 (defrule matchquadres_restrictiva1
     (declare (salience 87))
-    ;?process <- (processar-obres ?s)
     ;   Agafem Obres com a fets
     ?obra <- (Obres (nom ?nom)
                     (epoca ?ep)
@@ -1392,11 +1391,9 @@
     ; Comptador
     ?cont <- (comptador (valor ?c))
     =>
-    (printout t ?nom " ha fet match! Nivell de Restricció: 0" crlf)
+    ; (printout t ?nom " ha fet match! Nivell de Restricció: 0" crlf)
     (modify ?cont (valor (+ ?c 1)))
     (modify ?obra (visitada TRUE) (restriccio 1))
-    ;(retract ?process)
-    ;(assert (processar-obres ?s))
     (assert (matchquadres1 True))
 )
 
@@ -1419,7 +1416,6 @@
     (declare (salience 85))
     (matchquadres1 True)
     (nocuadsuf True)
-    ;?process <- (processar-obres ?s)
     ;   Agafem Obres com a fets
     ?obra <- (Obres (nom ?nom)
                     (epoca ?ep)
@@ -1437,11 +1433,9 @@
     ; Comptador
     ?cont <- (comptador (valor ?c))
     =>
-    (printout t ?nom " ha fet match! Nivell de Restricció: -1" crlf)
+    ; (printout t ?nom " ha fet match! Nivell de Restricció: -1" crlf)
     (modify ?cont (valor (+ ?c 1)))
     (modify ?obra (restriccio 2) (visitada TRUE))
-    ;(retract ?process)
-    ;(assert (processar-obres ?s))
     (assert (matchquadres2 True))
 )
 
@@ -1464,7 +1458,6 @@
     (declare (salience 83))
     (matchquadres2 True)
     (nocuadsuf2 True)
-    ;?process <- (processar-obres ?s)
     ;   Agafem Obres com a fets
     ?obra <- (Obres (nom ?nom)
                     (epoca ?ep)
@@ -1479,11 +1472,9 @@
     ; Comptador
     ?cont <- (comptador (valor ?c))
     =>
-    (printout t ?nom " ha fet match! Nivell de Restricció: -2" crlf)
+    ; (printout t ?nom " ha fet match! Nivell de Restricció: -2" crlf)
     (modify ?cont (valor (+ ?c 1)))
     (modify ?obra (restriccio 3) (visitada TRUE))
-    ;(retract ?process)
-    ;(assert (processar-obres ?s))
     (assert (matchquadres3 True))
 )
 
@@ -1506,7 +1497,6 @@
     (declare (salience 81))
     (matchquadres3 True)
     (nocuadsuf3 True)
-    ;?process <- (processar-obres ?s)
     ;   Agafem Obres com a fets
     ?obra <- (Obres (nom ?nom)
                     (epoca ?ep)
@@ -1518,11 +1508,9 @@
     ; Comptador
     ?cont <- (comptador (valor ?c))
     =>
-    (printout t ?nom " ha fet match! Nivell de Restricció: -3" crlf)
+    ; (printout t ?nom " ha fet match! Nivell de Restricció: -3" crlf)
     (modify ?cont (valor (+ ?c 1)))
     (modify ?obra (restriccio 4) (visitada TRUE))
-    ;(retract ?process)
-    ;(assert (processar-obres ?s))
 )
 
 ; NO PODEM INCIAR LA RUTA FINS QUE NO HAGUEM ACABAT AMB LES REGLES DE MATCHING
@@ -1535,7 +1523,6 @@
     (printout t "Generant ruta per a un visitant de tipus: " ?style crlf)
     (assert (Ruta (start-room 1) (end-room 0)))  ; Afegim una sala amb id 0 (sink) que no té cap obra
     (assert (current-room 1))
-    ; (assert (processar-obres 1))  ; Afegim aquesta línia per processar les obres de la sala inicial
 )
 
 (defrule anar-a-la-sala
@@ -1571,7 +1558,6 @@
             (bind ?next (nth$ 1 ?sales-no-visitades))
             (retract ?sala-actual)
             (assert (current-room ?next))
-            ; (assert (processar-obres ?next))
             (printout t "No hi ha connexions directes disponibles. Saltant a la sala: " ?next crlf)
             else
             (printout t "No hi ha més sales per visitar." crlf)
@@ -1585,7 +1571,7 @@
             else
             (printout t "La sala actual és la sala " ?current crlf)
             (printout t "Les sales disponibles són: " ?sales-disponibles crlf)
-            (printout t "Selecciona la sala a la que vols anar: " crlf)
+            (printout t "Selecciona la sala a la que vols anar: ")
             (bind ?next (read))
             (while (not (member$ ?next ?sales-disponibles)) 
                 (printout t "Sala no vàlida. Si us plau, tria una de les opcions disponibles: " ?sales-disponibles crlf)
@@ -1594,8 +1580,7 @@
         )
         (retract ?sala-actual)
         (assert (current-room ?next))
-        ; (assert (processar-obres ?next))
-        (printout t "Movent-se a la sala: " ?next crlf)
+        ; (printout t "Movent-se a la sala: " ?next crlf)
     )
 ) 
 
