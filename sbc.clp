@@ -1413,8 +1413,10 @@
 
 (defrule matchquadres_restrictiva2
     (declare (salience 85))
+    ; Parametres de Control
     (matchquadres1 True)
     (nocuadsuf True)
+
     ;   Agafem Obres com a fets
     ?obra <- (Obres (nom ?nom)
                     (epoca ?ep)
@@ -1440,7 +1442,9 @@
 
 (defrule NoCuadrosSuficientes_restrictiva2
     (declare (salience 84))
+    ; Parametres de Control
     (nocuadsuf True)
+
     ?cont <- (comptador (valor ?c)) 
     ?factw <- (weight ?w) 
     ?facttv <- (temps-visita ?tv) 
@@ -1454,8 +1458,10 @@
 
 (defrule matchquadres_restrictiva3
     (declare (salience 83))
+    ; Parametres de Control
     (matchquadres2 True)
     (nocuadsuf2 True)
+
     ;   Agafem Obres com a fets
     ?obra <- (Obres (nom ?nom)
                     (epoca ?ep)
@@ -1478,7 +1484,9 @@
 
 (defrule NoCuadrosSuficientes_restrictiva3
     (declare (salience 82))
+    ; Parametres de Control
     (nocuadsuf2 True)
+
     ?cont <- (comptador (valor ?c)) 
     ?factw <- (weight ?w) 
     ?facttv <- (temps-visita ?tv) 
@@ -1492,8 +1500,10 @@
 
 (defrule matchquadres_restrictiva4
     (declare (salience 81))
+    ; Parametres de Control
     (matchquadres3 True)
     (nocuadsuf3 True)
+    
     ;   Agafem Obres com a fets
     ?obra <- (Obres (nom ?nom)
                     (epoca ?ep)
