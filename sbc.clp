@@ -62,6 +62,7 @@
     (comptador (valor 0))
     (mean_t 120) 
     (mean_d_t 1000)
+    (numObres 76)
 
     ;; Sala 1 - Època Antiga i Medieval
     (Obres 
@@ -1316,7 +1317,7 @@
         (coneixement "Alt"))             
      =>
     (assert (tipus-visitant "Butterfly"))
-    (assert (weight 15))
+    (assert (weight 10))
 )
 
 ;;      Grasshopper      ;;
@@ -1364,7 +1365,7 @@
     (not (tipus-visitant "Grasshopper"))
     =>
     (assert (tipus-visitant "Butterfly"))
-    (assert (weight 15))
+    (assert (weight 10))
 )
 
 ;;;     REGLES DE MATCHING DE QUADRES       ;;;
@@ -1519,7 +1520,6 @@
     (printout t "Generant ruta per a un visitant de tipus: " ?style crlf)
     (assert (Ruta (start-room 1) (end-room 0)))  ; Afegim una sala amb id 0 (sink) que no té cap obra
     (assert (current-room 1))
-    ; (assert (processar-obres 1))  ; Afegim aquesta línia per processar les obres de la sala inicial
 )
 
 (defrule anar-a-la-sala
@@ -1555,7 +1555,6 @@
             (bind ?next (nth$ 1 ?sales-no-visitades))
             (retract ?sala-actual)
             (assert (current-room ?next))
-            ; (assert (processar-obres ?next))
             (printout t "No hi ha connexions directes disponibles. Saltant a la sala: " ?next crlf)
             else
             (printout t "No hi ha més sales per visitar." crlf)
@@ -1569,7 +1568,7 @@
             else
             (printout t "La sala actual és la sala " ?current crlf)
             (printout t "Les sales disponibles són: " ?sales-disponibles crlf)
-            (printout t "Selecciona la sala a la que vols anar: " crlf)
+            (printout t "Selecciona la sala a la que vols anar: ")
             (bind ?next (read))
             (while (not (member$ ?next ?sales-disponibles)) 
                 (printout t "Sala no vàlida. Si us plau, tria una de les opcions disponibles: " ?sales-disponibles crlf)
@@ -1578,8 +1577,7 @@
         )
         (retract ?sala-actual)
         (assert (current-room ?next))
-        ; (assert (processar-obres ?next))
-        (printout t "Movent-se a la sala: " ?next crlf)
+        ; (printout t "Movent-se a la sala: " ?next crlf)
     )
 ) 
 
