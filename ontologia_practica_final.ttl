@@ -1,0 +1,226 @@
+@prefix : <http://www.semanticweb.org/danil/ontologies/2024/10/ontologia_practica_final/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/danil/ontologies/2024/10/ontologia_practica_final/> .
+
+<http://www.semanticweb.org/danil/ontologies/2024/10/ontologia_practica_final> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/danil/ontologies/2024/10/ontologia_practica_final#Mira_a
+:Mira_a rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf owl:topObjectProperty ;
+        rdfs:domain :Visitant ;
+        rdfs:range :Obres .
+
+
+###  http://www.semanticweb.org/danil/ontologies/2024/10/ontologia_practica_final#connected_to
+:connected_to rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdfs:domain :Sales ;
+              rdfs:range :Sales .
+
+
+###  http://www.semanticweb.org/danil/ontologies/2024/10/ontologia_practica_final#estan_en
+:estan_en rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          rdf:type owl:FunctionalProperty ;
+          rdfs:domain :Obres ;
+          rdfs:range :Sales .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/danil/ontologies/2024/10/ontologia_practica_final#any_de_creacio
+:any_de_creacio rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf owl:topDataProperty ;
+                rdfs:domain :Obres ;
+                rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/danil/ontologies/2024/10/ontologia_practica_final#autor_pref
+:autor_pref rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdfs:domain :Visitant ;
+            rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/danil/ontologies/2024/10/ontologia_practica_final#autor_quadre
+:autor_quadre rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty ;
+              rdfs:domain :Obres ;
+              rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/danil/ontologies/2024/10/ontologia_practica_final#complexitat
+:complexitat rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:domain :Obres ;
+             rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/danil/ontologies/2024/10/ontologia_practica_final#dimensions
+:dimensions rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdfs:domain :Obres ;
+            rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/danil/ontologies/2024/10/ontologia_practica_final#epoca
+:epoca rdf:type owl:DatatypeProperty ;
+       rdfs:subPropertyOf owl:topDataProperty ;
+       rdfs:domain :Obres ;
+       rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/danil/ontologies/2024/10/ontologia_practica_final#epoca_pref
+:epoca_pref rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdfs:domain :Visitant ;
+            rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/danil/ontologies/2024/10/ontologia_practica_final#estil
+:estil rdf:type owl:DatatypeProperty ;
+       rdfs:subPropertyOf owl:topDataProperty ;
+       rdfs:domain :Obres ;
+       rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/danil/ontologies/2024/10/ontologia_practica_final#estil_pref
+:estil_pref rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdfs:domain :Visitant ;
+            rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/danil/ontologies/2024/10/ontologia_practica_final#id
+:id rdf:type owl:DatatypeProperty ;
+    rdfs:subPropertyOf owl:topDataProperty ;
+    rdfs:domain :Sales ;
+    rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/danil/ontologies/2024/10/ontologia_practica_final#nom
+:nom rdf:type owl:DatatypeProperty ;
+     rdfs:subPropertyOf owl:topDataProperty ;
+     rdfs:domain :Obres ;
+     rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/danil/ontologies/2024/10/ontologia_practica_final#primer_cop_o_no
+:primer_cop_o_no rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf owl:topDataProperty ;
+                 rdfs:domain :Visitant ;
+                 rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/danil/ontologies/2024/10/ontologia_practica_final#rellevancia
+:rellevancia rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:domain :Obres ;
+             rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/danil/ontologies/2024/10/ontologia_practica_final#restriccio
+:restriccio rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdf:type owl:FunctionalProperty ;
+            rdfs:domain :Obres ;
+            rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/danil/ontologies/2024/10/ontologia_practica_final#sala_visitada
+:sala_visitada rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf owl:topDataProperty ;
+               rdfs:domain :Sales ;
+               rdfs:range xsd:boolean .
+
+
+###  http://www.semanticweb.org/danil/ontologies/2024/10/ontologia_practica_final#tematica
+:tematica rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf owl:topDataProperty ;
+          rdfs:domain :Obres ;
+          rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/danil/ontologies/2024/10/ontologia_practica_final#tematica_pref
+:tematica_pref rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf owl:topDataProperty ;
+               rdfs:domain :Visitant ;
+               rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/danil/ontologies/2024/10/ontologia_practica_final#tipus_de_comportament
+:tipus_de_comportament rdf:type owl:DatatypeProperty ;
+                       rdfs:subPropertyOf owl:topDataProperty ;
+                       rdfs:domain :Visitant_sol ;
+                       rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/danil/ontologies/2024/10/ontologia_practica_final#tipus_de_grup
+:tipus_de_grup rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf owl:topDataProperty ;
+               rdfs:domain :Visitant_acompanyat ;
+               rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/danil/ontologies/2024/10/ontologia_practica_final#visitada
+:visitada rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf owl:topDataProperty ;
+          rdfs:domain :Obres ;
+          rdfs:range xsd:boolean .
+
+
+###  http://www.w3.org/2002/07/owl#topDataProperty
+owl:topDataProperty rdfs:domain :Visitant_sol ;
+                    rdfs:range xsd:string .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/danil/ontologies/2024/10/ontologia_practica_final#Obres
+:Obres rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/danil/ontologies/2024/10/ontologia_practica_final#Sales
+:Sales rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/danil/ontologies/2024/10/ontologia_practica_final#Visitant
+:Visitant rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/danil/ontologies/2024/10/ontologia_practica_final#Visitant_acompanyat
+:Visitant_acompanyat rdf:type owl:Class ;
+                     rdfs:subClassOf :Visitant ;
+                     owl:disjointWith :Visitant_sol .
+
+
+###  http://www.semanticweb.org/danil/ontologies/2024/10/ontologia_practica_final#Visitant_sol
+:Visitant_sol rdf:type owl:Class ;
+              rdfs:subClassOf :Visitant .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Obres
+                :Sales
+                :Visitant
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
