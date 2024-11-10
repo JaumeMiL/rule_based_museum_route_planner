@@ -53,7 +53,7 @@ nx.draw(
     font_size=6,
     font_weight="bold",
     arrowstyle="->",
-    arrowsize=11,
+    arrowsize=20,
 )
 # Afegim marc quadrat per als nodes
 nx.draw_networkx_nodes(G, pos, node_shape="s", node_size=800, node_color="white", edgecolors="black")
