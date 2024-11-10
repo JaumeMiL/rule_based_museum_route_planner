@@ -997,33 +997,33 @@
     )
 )
 
-(deffacts instancies_sales
-    (Sala (id 0))
-    (Sala (id 1) (connected-to 2))
-    (Sala (id 2) (connected-to 3))
-    (Sala (id 3) (connected-to 4))
-    (Sala (id 4) (connected-to 5))
-    (Sala (id 5) (connected-to 6 7))
-    (Sala (id 6) (connected-to 5))
-    (Sala (id 7) (connected-to 8))
-    (Sala (id 8) (connected-to 9))
-    (Sala (id 9) (connected-to 10))
-    (Sala (id 10) (connected-to 0))
-)
-
 ;(deffacts instancies_sales
 ;    (Sala (id 0))
-;    (Sala (id 1) (connected-to 2 5))
-;    (Sala (id 2) (connected-to 3 5))
-;    (Sala (id 3) (connected-to 2 4 5))
-;    (Sala (id 4) (connected-to 3 5))
-;    (Sala (id 5) (connected-to 2 3 4 6))
-;    (Sala (id 6) (connected-to 7))
-;    (Sala (id 7) (connected-to 8 10))
+;    (Sala (id 1) (connected-to 2))
+;    (Sala (id 2) (connected-to 3))
+;    (Sala (id 3) (connected-to 4))
+;    (Sala (id 4) (connected-to 5))
+;    (Sala (id 5) (connected-to 6 7))
+;    (Sala (id 6) (connected-to 5))
+;    (Sala (id 7) (connected-to 8))
 ;    (Sala (id 8) (connected-to 9))
 ;    (Sala (id 9) (connected-to 10))
 ;    (Sala (id 10) (connected-to 0))
 ;)
+
+(deffacts instancies_sales
+    (Sala (id 0))
+    (Sala (id 1) (connected-to 2 5))
+    (Sala (id 2) (connected-to 3 5))
+    (Sala (id 3) (connected-to 2 4 5))
+    (Sala (id 4) (connected-to 3 5))
+    (Sala (id 5) (connected-to 2 3 4 6))
+    (Sala (id 6) (connected-to 7))
+    (Sala (id 7) (connected-to 8 10))
+    (Sala (id 8) (connected-to 9))
+    (Sala (id 9) (connected-to 10))
+    (Sala (id 10) (connected-to 0))
+)
 
 ;;; REGLES
 
@@ -1621,7 +1621,6 @@
 (defrule imprimir-obres-visitades
     (declare (salience 77))
     (visita-acabada)
-    ?comp <- (comptador (valor ?total))
     =>
     (printout t "..........................................................." crlf)
     (printout t "Segons les teves preferències, et recomanarem les següents obres:" crlf)
@@ -1631,12 +1630,17 @@
     (bind ?r3 0)
     (bind ?r4 0)
 
-    (do-for-all-facts ((?o Obres)) (> ?o:restriccio 0)
+    (do-for-all-facts ((?o Obres))
+        (and (> ?o:restriccio 0)
+             (any-factp ((?s Sala)) (and (eq ?s:id ?o:sala) (eq ?s:visitada TRUE))))
+        =>
         (if (eq ?o:restriccio 1) then (bind ?r1 (+ ?r1 1)))
         (if (eq ?o:restriccio 2) then (bind ?r2 (+ ?r2 1)))
         (if (eq ?o:restriccio 3) then (bind ?r3 (+ ?r3 1)))
         (if (eq ?o:restriccio 4) then (bind ?r4 (+ ?r4 1)))
     )
+
+    (bind ?total (+ ?r1 ?r2 ?r3 ?r4))
 
     (printout t "..........................................................." crlf)
     (printout t "Resum de la visita:" crlf)
