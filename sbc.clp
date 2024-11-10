@@ -1625,44 +1625,6 @@
     =>
     (printout t "..........................................................." crlf)
     (printout t "Segons les teves preferències, et recomanarem les següents obres:" crlf)
-    (printout t "..........................................................." crlf)
-
-    ; Restricció 1 (Imprescindibles)
-    (do-for-all-facts ((?o Obres))
-        (and (eq ?o:restriccio 1)
-             (any-factp ((?s Sala)) (and (eq ?s:id ?o:sala) (eq ?s:visitada TRUE))))
-        =>
-        (printout t "Les imprescindibles:" crlf)
-        (printout t "Sala " ?o:sala ": " ?o:nom crlf)
-    )
-
-    ; Restricció 2 (Molt recomanables)
-    (do-for-all-facts ((?o Obres))
-        (and (eq ?o:restriccio 2)
-             (any-factp ((?s Sala)) (and (eq ?s:id ?o:sala) (eq ?s:visitada TRUE))))
-        =>
-        (printout t "Molt recomanables:" crlf)
-        (printout t "Sala " ?o:sala ": " ?o:nom crlf)
-    )
-
-    ; Restricció 3 (Recomanables)
-    (do-for-all-facts ((?o Obres))
-        (and (eq ?o:restriccio 3)
-             (any-factp ((?s Sala)) (and (eq ?s:id ?o:sala) (eq ?s:visitada TRUE))))
-        =>
-        (printout t "Recomanables:" crlf)
-        (printout t "Sala " ?o:sala ": " ?o:nom crlf)
-    )
-
-    ; Restricció 4 (Opcionals)
-    (do-for-all-facts ((?o Obres))
-        (and (eq ?o:restriccio 4)
-             (any-factp ((?s Sala)) (and (eq ?s:id ?o:sala) (eq ?s:visitada TRUE))))
-        =>
-        (printout t "Opcionals:" crlf)
-        (printout t "Sala " ?o:sala ": " ?o:nom crlf)
-    )
-
     ; Imprimim estadístiques finals
     (bind ?r1 0)
     (bind ?r2 0)
@@ -1696,7 +1658,12 @@
                 (if (and (eq ?obra:sala ?sala:id)
                         (eq ?obra:visitada TRUE))
                     then
-                    (printout t " - " ?obra:nom crlf)
+                    (printout t " - " ?obra:nom " (")
+                    (if (eq ?obra:restriccio 1) then (printout t "Imprescindible"))
+                    (if (eq ?obra:restriccio 2) then (printout t "Molt recomanable"))
+                    (if (eq ?obra:restriccio 3) then (printout t "Recomanable"))
+                    (if (eq ?obra:restriccio 4) then (printout t "Opcional"))
+                    (printout t ")" crlf)
                 )
             )
         )
